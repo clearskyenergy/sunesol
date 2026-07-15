@@ -1,0 +1,17 @@
+{
+  "rewrites": [
+    {
+      "source": "/editor.html",
+      "destination": "https://tools.csebuilders.com/editor.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*\\.pptx)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/vnd.openxmlformats-officedocument.presentationml.presentation" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}

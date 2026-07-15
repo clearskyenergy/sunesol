@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════════════════════════
+  ClearSky-OMEGA · EnergyOS Platform
+  Site Investment Analysis  ·  Investor-grade site underwriting
+
+  © 2025 ClearSky Energy Solutions LLC. All rights reserved.
+  Proprietary and Confidential. Author: Tommy Gilmer.
+
+  Takes an address / ZIP + utility, resolves the ISO market, available grid
+  power, on-site DER, BESS deployment, the full value stack, and data-center
+  compute marketplace revenue, nets out energy + install cost, and returns a
+  full P&L with IRR — then drafts an AI investor-facing proposal for the site.
+  Queries live market / incentive data where an API is available and verified.
+  ═══════════════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Tommy Gilmer · ClearSky Energy Solutions LLC">
+<meta name="copyright" content="© 2025 ClearSky Energy Solutions LLC. Proprietary.">
+<title>Site Investment Analysis · ClearSky-OMEGA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cs-navy:#0B1E35;--cs-dark:#0D2440;--cs-blue:#1B4F8A;--cs-sky:#2E86C1;
+  --cs-accent:#C9A84C;--cs-gold:#E8C56A;--cs-text:#1A2332;--cs-sub:#6B7A8D;
+  --cs-bg:#F4F1EC;--cs-surface:#FAFAF8;--cs-border:#DDD8D0;
+  --cs-green:#1DB954;--cs-red:#E53935;--cs-amber:#D97706;--cs-purple:#7C3AED;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-text);min-height:100vh}
+
+/* ── TOPBAR ── */
+#topbar{height:60px;background:var(--cs-navy);display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.08)}
+.tb-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tb-logo-txt{color:#fff;font-weight:700;font-size:15px;letter-spacing:-.2px}
+.tb-logo-txt span{color:var(--cs-gold)}
+.tb-sep{width:1px;height:24px;background:rgba(255,255,255,.12)}
+.tb-portal{color:rgba(255,255,255,.45);font-size:12px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.tb-badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4ADE80;background:rgba(29,185,84,.14);border:1px solid rgba(29,185,84,.3);padding:4px 10px;border-radius:20px}
+.tb-spacer{flex:1}
+.tb-back{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);border-radius:7px;padding:7px 14px;cursor:pointer;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .12s;text-decoration:none}
+.tb-back:hover{background:rgba(255,255,255,.14);color:#fff}
+
+#main{max-width:1320px;margin:0 auto;padding:32px 24px 80px}
+.page-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--cs-accent)}
+.page-title{font-size:30px;font-weight:700;color:var(--cs-navy);margin-top:6px;letter-spacing:-.5px;line-height:1.1}
+.page-sub{font-size:14px;color:var(--cs-sub);margin-top:8px;max-width:760px;line-height:1.5}
+
+/* ── INTAKE BAR ── */
+.intake{background:#fff;border:1px solid var(--cs-border);border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);margin-top:24px;overflow:hidden}
+.intake-head{background:linear-gradient(120deg,#0B1E35,#1B4F8A);padding:18px 24px;color:#fff}
+.intake-head h3{font-size:16px;font-weight:700}
+.intake-head p{font-size:12px;color:rgba(255,255,255,.65);margin-top:3px}
+.intake-body{padding:22px 24px}
+.intake-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:16px;align-items:end}
+@media(max-width:820px){.intake-grid{grid-template-columns:1fr}}
+.fg label{display:block;font-size:11px;font-weight:600;color:var(--cs-sub);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.fg input,.fg select{width:100%;padding:11px 13px;border:1.5px solid var(--cs-border);border-radius:9px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cs-text);background:#fff;outline:none;transition:border-color .15s}
+.fg input:focus,.fg select:focus{border-color:var(--cs-sky)}
+.intake-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;align-items:center}
+.btn{padding:12px 22px;border-radius:10px;font-size:13.5px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;border:none;transition:all .14s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-primary{background:var(--cs-accent);color:var(--cs-navy)}
+.btn-primary:hover{background:var(--cs-gold)}
+.btn-navy{background:var(--cs-navy);color:#fff}
+.btn-navy:hover{background:var(--cs-blue)}
+.btn-ghost{background:#fff;border:1.5px solid var(--cs-border);color:var(--cs-text)}
+.btn-ghost:hover{border-color:var(--cs-sky);color:var(--cs-sky)}
+.btn:disabled{opacity:.5;cursor:default}
+.intake-status{font-size:12px;color:var(--cs-sub);display:flex;align-items:center;gap:8px}
+.spinner{width:14px;height:14px;border:2px solid var(--cs-border);border-top-color:var(--cs-sky);border-radius:50%;animation:spin .7s linear infinite;display:none}
+.spinner.on{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* advanced toggle */
+.adv-toggle{font-size:12px;color:var(--cs-sky);font-weight:600;cursor:pointer;margin-top:14px;display:inline-block}
+.adv-panel{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--cs-border)}
+.adv-panel.open{display:block}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:820px){.adv-grid{grid-template-columns:repeat(2,1fr)}}
+.fg .with-unit{position:relative}
+.fg .with-unit input{padding-right:42px}
+.fg .with-unit .u{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--cs-sub);font-family:'DM Mono',monospace;pointer-events:none}
+.fg .hint{font-size:10px;color:var(--cs-sub);margin-top:4px;line-height:1.4}
+
+/* ── DATA-SOURCE STRIP (live query provenance) ── */
+.datasrc{display:none;margin-top:20px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:12px;padding:14px 18px}
+.datasrc.on{display:block}
+.datasrc h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--cs-accent);margin-bottom:10px}
+.ds-list{display:flex;flex-direction:column;gap:8px}
+.ds-item{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.ds-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ds-dot.ok{background:var(--cs-green)}.ds-dot.pending{background:var(--cs-amber);animation:pulse 1s infinite}.ds-dot.miss{background:var(--cs-sub)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ds-name{font-weight:600;color:var(--cs-navy);min-width:180px}
+.ds-detail{color:var(--cs-sub);flex:1}
+.ds-badge{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;padding:2px 8px;border-radius:20px}
+.ds-badge.verified{color:#137A38;background:rgba(29,185,84,.12);border:1px solid rgba(29,185,84,.25)}
+.ds-badge.estimate{color:#9A5B00;background:rgba(217,119,6,.1);border:1px solid rgba(217,119,6,.25)}
+.ds-badge.na{color:var(--cs-sub);background:rgba(107,122,141,.1);border:1px solid rgba(107,122,141,.2)}
+
+/* ── RESULTS ── */
+#report{display:none;margin-top:28px}
+#report.on{display:block}
+.report-hero{background:linear-gradient(135deg,#0B1E35,#1B4F8A);border-radius:18px;padding:30px 32px;color:#fff;position:relative;overflow:hidden;box-shadow:0 16px 40px rgba(11,30,53,.28)}
+.report-hero::before{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.16),transparent 70%)}
+.rh-top{display:flex;justify-content:space-between;align-items:flex-start;position:relative;z-index:2;flex-wrap:wrap;gap:16px}
+.rh-site{}
+.rh-site .eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--cs-gold)}
+.rh-site h2{font-size:24px;font-weight:700;margin-top:5px;letter-spacing:-.4px}
+.rh-site .loc{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px}
+.rh-flag{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:7px 16px;border-radius:22px;align-self:center}
+.rh-flag.go{background:rgba(29,185,84,.2);color:#4ADE80;border:1px solid rgba(29,185,84,.4)}
+.rh-flag.caution{background:rgba(217,119,6,.2);color:#FCD34D;border:1px solid rgba(217,119,6,.4)}
+.rh-flag.no{background:rgba(229,57,53,.2);color:#FCA5A5;border:1px solid rgba(229,57,53,.4)}
+.rh-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:26px;position:relative;z-index:2}
+@media(max-width:760px){.rh-metrics{grid-template-columns:repeat(2,1fr)}}
+.rhm-val{font-size:28px;font-weight:700;letter-spacing:-.5px;line-height:1}
+.rhm-val.pos{color:#4ADE80}.rhm-val.neg{color:#FCA5A5}
+.rhm-val .u{font-size:14px;color:rgba(255,255,255,.5);font-weight:600;margin-left:2px}
+.rhm-label{font-size:10.5px;color:rgba(255,255,255,.6);margin-top:6px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+
+.section-title{font-size:18px;font-weight:700;color:var(--cs-navy);margin:34px 0 4px}
+.section-desc{font-size:12.5px;color:var(--cs-sub);margin-bottom:16px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.grid3{grid-template-columns:1fr}}
+
+.card{background:#fff;border:1px solid var(--cs-border);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden}
+.card-head{padding:16px 20px;border-bottom:1px solid var(--cs-border)}
+.card-head h3{font-size:15px;font-weight:700;color:var(--cs-navy)}
+.card-head .sub{font-size:11px;color:var(--cs-sub);margin-top:2px}
+.card-body{padding:20px}
+
+.dl{width:100%;font-size:13px}
+.dl .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--cs-border)}
+.dl .row:last-child{border-bottom:none}
+.dl .k{color:var(--cs-sub)}
+.dl .k .s{display:block;font-size:10.5px;margin-top:1px}
+.dl .v{font-family:'DM Mono',monospace;font-weight:600;color:var(--cs-navy);text-align:right}
+.dl .v.pos{color:#137A38}.dl .v.neg{color:var(--cs-red)}
+
+/* P&L table */
+.pnl{width:100%;border-collapse:collapse;font-size:13px}
+.pnl td{padding:9px 4px;border-bottom:1px solid var(--cs-border)}
+.pnl tr:last-child td{border-bottom:none}
+.pnl .lbl .s{display:block;font-size:10.5px;color:var(--cs-sub);margin-top:1px}
+.pnl .num{text-align:right;font-family:'DM Mono',monospace;font-weight:500;white-space:nowrap}
+.pnl .num.pos{color:#137A38}.pnl .num.neg{color:var(--cs-red)}
+.pnl tr.sub-h td{padding-top:16px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--cs-accent)}
+.pnl tr.total td{border-top:2px solid var(--cs-navy);border-bottom:none;padding-top:12px;font-weight:700}
+.pnl tr.total .num{font-size:16px;color:var(--cs-navy)}
+.pnl tr.grand td{border-top:2px solid var(--cs-accent);padding-top:12px;font-weight:700}
+.pnl tr.grand .num{font-size:17px}
+
+/* stack bar */
+.stackbar{display:flex;height:36px;border-radius:8px;overflow:hidden;margin:6px 0 14px;border:1px solid var(--cs-border)}
+.stackbar .seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;overflow:hidden;white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--cs-sub)}
+.legend .li{display:flex;align-items:center;gap:6px}
+.legend .dot{width:10px;height:10px;border-radius:3px}
+
+/* capacity/power gauge */
+.gauge{margin:8px 0 4px}
+.gauge-bar{height:26px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:8px;overflow:hidden;position:relative;display:flex}
+.gauge-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#fff;white-space:nowrap}
+.gauge-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--cs-sub);margin-top:5px;font-family:'DM Mono',monospace}
+
+/* AI proposal */
+.proposal{background:#fff;border:1px solid var(--cs-border);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden}
+.proposal-head{padding:16px 20px;border-bottom:1px solid var(--cs-border);display:flex;justify-content:space-between;align-items:center}
+.proposal-head h3{font-size:15px;font-weight:700;color:var(--cs-navy);display:flex;align-items:center;gap:8px}
+.ai-chip{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--cs-purple);background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);border-radius:20px;padding:3px 9px}
+.proposal-body{padding:24px 28px;font-size:13.5px;line-height:1.7;color:var(--cs-text)}
+.proposal-body h4{font-size:14px;font-weight:700;color:var(--cs-navy);margin:18px 0 8px}
+.proposal-body h4:first-child{margin-top:0}
+.proposal-body p{margin-bottom:12px}
+.proposal-body ul{margin:8px 0 12px 20px}
+.proposal-body li{margin-bottom:5px}
+.proposal-body strong{color:var(--cs-navy)}
+.proposal-empty{padding:40px 28px;text-align:center;color:var(--cs-sub);font-size:13px}
+.proposal-empty .spinner{width:22px;height:22px;margin:0 auto 12px;display:block;border-width:3px}
+
+.chart-svg{width:100%;display:block}
+.ytable-wrap{overflow-x:auto}
+.ytable{width:100%;border-collapse:collapse;font-size:11.5px;min-width:720px}
+.ytable th{background:var(--cs-navy);color:rgba(255,255,255,.85);text-align:right;padding:9px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.ytable th:first-child{text-align:left}
+.ytable td{padding:8px 12px;border-bottom:1px solid var(--cs-border);text-align:right;font-family:'DM Mono',monospace;white-space:nowrap}
+.ytable td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-weight:600;color:var(--cs-navy)}
+.ytable tr:hover{background:#F8F9FA}
+.ytable td.neg{color:var(--cs-red)}.ytable td.pos{color:#137A38}
+
+.disclaim{font-size:11px;color:var(--cs-sub);line-height:1.6;margin-top:20px;padding:14px 18px;background:var(--cs-surface);border:1px solid var(--cs-border);border-radius:10px}
+.disclaim b{color:var(--cs-navy)}
+
+.export-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+.foot-brand{margin-top:36px;padding-top:20px;border-top:1px solid var(--cs-border);font-size:11px;color:var(--cs-sub);text-align:center;line-height:1.6}
+.foot-brand b{color:var(--cs-navy)}
+
+.err-box{display:none;margin-top:16px;padding:12px 16px;background:rgba(229,57,53,.06);border:1px solid rgba(229,57,53,.2);border-radius:9px;font-size:12.5px;color:var(--cs-red)}
+.err-box.on{display:block}
+
+@media print{
+  #topbar,.intake,.export-row,.tb-back,.adv-toggle{display:none!important}
+  body{background:#fff}
+  #report{display:block!important}
+}
+
+/* ── Investor Model panel ── */
+.iv-panel{margin-top:16px;padding:16px;border:1px solid var(--cs-border,#DDD8D0);border-radius:12px;background:var(--cs-surface,#FBFAF8)}
+.iv-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.iv-panel-title{font-weight:700;font-size:14px;color:var(--cs-navy,#1B4F8A)}
+.iv-preset-btn{background:linear-gradient(135deg,#1B4F8A,#2E86C1);color:#fff;border:none;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:inherit}
+.iv-preset-btn:hover{opacity:.9}
+.iv-row{margin-bottom:12px}
+.iv-lbl{display:block;font-size:11px;font-weight:600;color:var(--cs-sub,#6B7A8D);margin-bottom:4px}
+.iv-select{width:100%;padding:8px 10px;border:1px solid var(--cs-border,#DDD8D0);border-radius:8px;font-family:inherit;font-size:12px;background:#fff}
+.iv-modules{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px;padding:10px;background:rgba(46,134,193,.06);border-radius:8px}
+.iv-mod{font-size:12px;font-weight:600;color:var(--cs-navy,#1B4F8A);cursor:pointer;display:flex;align-items:center;gap:5px}
+.iv-sub{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--cs-sub,#6B7A8D);margin:14px 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.iv-tog{font-size:10px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--cs-navy,#1B4F8A);cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.iv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
+.iv-grid-4{grid-template-columns:repeat(4,1fr)}
+.iv-fg{display:flex;flex-direction:column;font-size:10px}
+.iv-fg label{color:var(--cs-sub,#6B7A8D);margin-bottom:3px;font-weight:600}
+.iv-fg input[type=number]{width:100%;padding:6px 8px;border:1px solid var(--cs-border,#DDD8D0);border-radius:6px;font-family:inherit;font-size:12px}
+.iv-fg span{font-size:9px;color:var(--cs-sub,#6B7A8D);margin-top:2px}
+
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a href="/" class="tb-logo"><span class="tb-logo-txt">ClearSky<span>-OMEGA</span></span></a>
+  <div class="tb-sep"></div>
+  <div class="tb-portal">EnergyOS</div>
+  <span class="tb-badge" id="tb-badge">Enterprise</span>
+  <div class="tb-spacer"></div>
+  <a href="/" class="tb-back">← Platform</a>
+</div>
+
+<div id="main">
+  <div class="page-label">Investor Underwriting</div>
+  <h1 class="page-title">Site Investment Analysis</h1>
+  <p class="page-sub">Enter an address or ZIP and the serving utility. The engine resolves the ISO market, available grid capacity, on-site generation, a right-sized BESS and data-center compute build, then stacks every revenue play against energy and install cost to produce a full site P&amp;L, IRR, and an AI-drafted investor proposal.</p>
+
+  <!-- ══════════ INTAKE ══════════ -->
+  <div class="intake">
+    <div class="intake-head">
+      <h3>Site Intake</h3>
+      <p>Live utility, ISO, and incentive data is queried where a verified source is available.</p>
+    </div>
+    <div class="intake-body">
+      <div class="intake-grid">
+        <div class="fg">
+          <label>Site address or ZIP</label>
+          <input id="i_addr" type="text" placeholder="e.g. 38315 9th St E, Palmdale, CA 93550" value="Palmdale, CA 93550" />
+        </div>
+        <div class="fg">
+          <label>Serving utility</label>
+          <select id="i_util"></select>
+        </div>
+        <div class="fg">
+          <label>Site archetype</label>
+          <select id="i_arch">
+            <option value="dcfc_edge">DCFC + Edge Compute</option>
+            <option value="datacenter">Data Center (compute-first)</option>
+            <option value="bess_arb">Standalone BESS (arbitrage/VPP)</option>
+            <option value="solar_bess">Solar + BESS</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="adv-toggle" id="adv-toggle">▸ Advanced site &amp; system inputs</div>
+      <div class="adv-panel" id="adv-panel">
+        <div class="adv-grid">
+          <div class="fg"><label>Available grid power</label><div class="with-unit"><input id="a_grid" type="number" value="5000" /><span class="u">kW</span></div><div class="hint">Interconnection capacity available to the site.</div></div>
+          <div class="fg"><label>BESS power</label><div class="with-unit"><input id="a_bkw" type="number" value="3000" /><span class="u">kW</span></div></div>
+          <div class="fg"><label>BESS energy</label><div class="with-unit"><input id="a_bkwh" type="number" value="12000" /><span class="u">kWh</span></div></div>
+          <div class="fg"><label>Compute load</label><div class="with-unit"><input id="a_compute" type="number" value="2000" /><span class="u">kW</span></div><div class="hint">IT power of the co-located data system.</div></div>
+          <div class="fg"><label>Solar DER</label><div class="with-unit"><input id="a_solar" type="number" value="0" /><span class="u">kW</span></div></div>
+          <div class="fg"><label>Wind DER</label><div class="with-unit"><input id="a_wind" type="number" value="0" /><span class="u">kW</span></div></div>
+          <div class="fg"><label>BESS $/kWh installed</label><div class="with-unit"><input id="a_bcost" type="number" value="440" /><span class="u">$/kWh</span></div></div>
+          <div class="fg"><label>Compute $/kW installed</label><div class="with-unit"><input id="a_ccost" type="number" value="9500" /><span class="u">$/kW</span></div><div class="hint">GPU racks, cooling, fit-out per IT kW.</div></div>
+          <div class="fg"><label>Solar $/W installed</label><div class="with-unit"><input id="a_scost" type="number" value="1.10" /><span class="u">$/W</span></div></div>
+          <div class="fg"><label>Compute sale price</label><div class="with-unit"><input id="a_cprice" type="number" step="0.01" value="1.85" /><span class="u">$/kWh</span></div><div class="hint">Marketplace price for compute delivered.</div></div>
+          <div class="fg"><label>Compute utilization</label><div class="with-unit"><input id="a_cutil" type="number" value="72" /><span class="u">%</span></div></div>
+          <div class="fg"><label>Discount rate</label><div class="with-unit"><input id="a_disc" type="number" step="0.5" value="10" /><span class="u">%</span></div></div>
+          <div class="fg"><label>ITC credit</label><div class="with-unit"><input id="a_itc" type="number" value="30" /><span class="u">%</span></div></div>
+          <div class="fg"><label>Project life</label><div class="with-unit"><input id="a_life" type="number" value="10" /><span class="u">yr</span></div></div>
+          <div class="fg"><label>Value-stack $/kW-yr</label><div class="with-unit"><input id="a_vstack" type="number" value="95" /><span class="u">$/kW-yr</span></div><div class="hint">Auto-set by ISO; override if you have a signed offtake.</div></div>
+          <div class="fg"><label>Land / dev cost</label><div class="with-unit"><input id="a_land" type="number" value="750000" /><span class="u">$</span></div></div>
+        </div>
+      </div>
+
+
+      <!-- ══════════ INVESTOR MODEL PANEL (Paige) ══════════ -->
+      <div class="iv-panel">
+        <div class="iv-panel-head">
+          <span class="iv-panel-title">Investor Model</span>
+          <button class="iv-preset-btn" onclick="loadClaremontPreset()" title="Load the executed Claremont 5MWh deal">★ Load Claremont deal</button>
+        </div>
+
+        <div class="iv-row">
+          <label class="iv-lbl">Ownership structure</label>
+          <select id="iv_mode" class="iv-select">
+            <option value="owner">Owner-Operator (full value stack)</option>
+            <option value="ppa">PPA / Energy Sale (contracted + grid split)</option>
+            <option value="lease">Fixed Lease (flat annuity)</option>
+          </select>
+        </div>
+
+        <div class="iv-modules">
+          <label class="iv-mod"><input type="checkbox" id="iv_mod_bess" checked onchange="syncModuleInputs()"> BESS</label>
+          <label class="iv-mod"><input type="checkbox" id="iv_mod_der" checked onchange="syncModuleInputs()"> DER (solar/wind)</label>
+          <label class="iv-mod"><input type="checkbox" id="iv_mod_compute" checked onchange="syncModuleInputs()"> Compute</label>
+          <label class="iv-mod"><input type="checkbox" id="iv_mod_ev" onchange="syncModuleInputs()"> EV Charging</label>
+        </div>
+
+        <div class="iv-sub">Capital Structure
+          <label class="iv-tog"><input type="checkbox" id="iv_cap_on"> Levered</label>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>Debt %</label><input id="iv_cap_debt" type="number" value="60"><span>%</span></div>
+          <div class="iv-fg"><label>Rate</label><input id="iv_cap_rate" type="number" step="0.1" value="7.5"><span>%</span></div>
+          <div class="iv-fg"><label>Term</label><input id="iv_cap_term" type="number" value="10"><span>yr</span></div>
+        </div>
+
+        <div class="iv-sub">EBITDA Split
+          <label class="iv-tog"><input type="checkbox" id="iv_wf_flat"> Flat %</label>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>Pref return</label><input id="iv_wf_pref" type="number" step="0.5" value="8"><span>%</span></div>
+          <div class="iv-fg"><label>Promote</label><input id="iv_wf_promote" type="number" value="20"><span>%</span></div>
+          <div class="iv-fg"><label>Flat sponsor %</label><input id="iv_wf_sponsor" type="number" value="30"><span>%</span></div>
+        </div>
+
+        <div class="iv-sub">Depreciation &amp; ITC
+          <label class="iv-tog"><input type="checkbox" id="iv_dep_on"> MACRS</label>
+          <label class="iv-tog"><input type="checkbox" id="iv_dep_monetize"> Monetize upfront</label>
+          <label class="iv-tog"><input type="checkbox" id="iv_dep_stepup"> Step-up</label>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>Tax rate</label><input id="iv_dep_tax" type="number" value="21"><span>%</span></div>
+          <div class="iv-fg"><label>Step-up %</label><input id="iv_dep_steppct" type="number" value="10"><span>%</span></div>
+        </div>
+
+        <div class="iv-sub">Per-Component ITC %</div>
+        <div class="iv-grid iv-grid-4">
+          <div class="iv-fg"><label>BESS</label><input id="iv_itc_bess" type="number" value="30"><span>%</span></div>
+          <div class="iv-fg"><label>Solar</label><input id="iv_itc_solar" type="number" value="30"><span>%</span></div>
+          <div class="iv-fg"><label>Roof</label><input id="iv_itc_roof" type="number" value="0"><span>%</span></div>
+          <div class="iv-fg"><label>Intercon.</label><input id="iv_itc_interconnect" type="number" value="30"><span>%</span></div>
+        </div>
+
+        <div class="iv-sub">BESS Value Stack (executed-deal inputs)</div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>Demand savings</label><input id="iv_demand_savings" type="number" value="0"><span>$/yr</span></div>
+          <div class="iv-fg"><label>RA / grid value</label><input id="iv_ra_value" type="number" value="0"><span>$/yr</span></div>
+          <div class="iv-fg"><label>Extra rebate</label><input id="iv_extra_rebate" type="number" value="0"><span>$</span></div>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>Roof capex</label><input id="iv_roof_capex" type="number" value="0"><span>$</span></div>
+          <div class="iv-fg"><label>Interconnect capex</label><input id="iv_interconnect_capex" type="number" value="0"><span>$</span></div>
+          <div class="iv-fg"><label>Grid split (PPA)</label><input id="iv_grid_split" type="number" value="50"><span>%</span></div>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>PPA capture</label><input id="iv_ppa_capture" type="number" value="90"><span>%</span></div>
+          <div class="iv-fg"><label>Lease $/yr</label><input id="iv_lease_annual" type="number" value="400000"><span>$</span></div>
+          <div class="iv-fg"><label>Lease esc.</label><input id="iv_lease_esc" type="number" value="0"><span>%</span></div>
+        </div>
+
+        <div class="iv-sub">EV Charging (when enabled)</div>
+        <div class="iv-grid iv-grid-4">
+          <div class="iv-fg"><label>Ports</label><input id="iv_ev_ports" type="number" value="4"><span></span></div>
+          <div class="iv-fg"><label>kW/port</label><input id="iv_ev_kw" type="number" value="150"><span>kW</span></div>
+          <div class="iv-fg"><label>Util</label><input id="iv_ev_util" type="number" value="40"><span>%</span></div>
+          <div class="iv-fg"><label>Retail</label><input id="iv_ev_retail" type="number" step="0.01" value="0.45"><span>$</span></div>
+        </div>
+        <div class="iv-grid">
+          <div class="iv-fg"><label>$/port</label><input id="iv_ev_capexport" type="number" value="140000"><span>$</span></div>
+          <div class="iv-fg"><label>O&amp;M/port</label><input id="iv_ev_omport" type="number" value="6000"><span>$/yr</span></div>
+          <div class="iv-fg"><label class="iv-tog"><input type="checkbox" id="iv_ev_lcfs" checked> LCFS credits</label></div>
+        </div>
+      </div>
+
+      <div class="intake-actions">
+        <button class="btn btn-primary" id="btn-run">Run Underwriting</button>
+        <button class="btn btn-ghost" id="btn-proposal" disabled>Generate AI Proposal</button>
+        <span class="spinner" id="run-spin"></span>
+        <span class="intake-status" id="run-status"></span>
+      </div>
+      <div class="err-box" id="err-box"></div>
+
+      <!-- data source provenance -->
+      <div class="datasrc" id="datasrc">
+        <h4>Live Data Queried</h4>
+        <div class="ds-list" id="ds-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ REPORT ══════════ -->
+  <div id="report"><!-- rendered by JS --></div>
+
+  <div class="foot-brand">
+    <b>ClearSky-OMEGA</b> · Site Investment Analysis &nbsp;·&nbsp; <span id="foot-powered">Powered by ClearSky-OMEGA</span><br>
+    © 2025 ClearSky Energy Solutions LLC · Modeled underwriting for investment screening. Verify all live data and incentives before committing capital.
+  </div>
+</div>
+
+<script src="./investment-analysis-logic.js"></script>
+<script>
+/* Route the Run button to the investor model. Falls back to legacy underwriting. */
+(function(){
+  function wire(){
+    var b=document.getElementById('btn-run');
+    if(b){ var nb=b.cloneNode(true); b.parentNode.replaceChild(nb,b);
+      nb.addEventListener('click', function(){ if(typeof ivRun==='function') ivRun(); else if(typeof runUnderwriting==='function') runUnderwriting(); }); }
+    if(typeof syncModuleInputs==='function') syncModuleInputs();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire); else wire();
+})();
+</script>
+</body>
+</html>
