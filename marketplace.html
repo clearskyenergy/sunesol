@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta name="omega-build" content="marketplace-standalone-2026-07-13">
+<title>ClearSky-OMEGA · App Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cs-navy:#08384F;--cs-dark:#052A3D;--cs-blue:#006F9A;--cs-sky:#00A9A4;
+  --cs-accent:#00A9A4;--cs-gold:#00C4BC;--cs-text:#0F2733;--cs-sub:#5A7180;
+  --cs-bg:#F4F1EC;--cs-surface:#FAFAF8;--cs-border:#DDD8D0;
+  --cs-green:#1DB954;--cs-red:#E53935;
+  --sap-blue:#0070F2;--sap-blue-hi:#1B90FF;--sap-page:#EDEFF1;--sap-card-border:#E4E8EC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+/* Repoint the page chrome onto SAP tokens, exactly like the portal index. */
+body{--cs-bg:var(--sap-page);--cs-border:var(--sap-card-border)}
+body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-text);min-height:100vh}
+
+/* ══ AUTH GATE ══ */
+#auth-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;
+  background:linear-gradient(135deg,#0B1E35 0%,#1B4F8A 50%,#0D2440 100%);position:relative;overflow:hidden}
+#auth-screen::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 800px 600px at 60% 40%, rgba(0,196,188,.12) 0%, transparent 70%);pointer-events:none}
+.auth-card{background:rgba(255,255,255,.96);border-radius:20px;padding:48px 44px;width:420px;max-width:92vw;text-align:center;
+  box-shadow:0 40px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.2);position:relative}
+.auth-omega{height:64px;width:auto;display:block;margin:0 auto 6px}
+.auth-company{font-size:22px;font-weight:700;color:var(--cs-navy);letter-spacing:-.3px;margin-top:8px}
+.auth-sub{font-size:13px;color:var(--cs-sub);margin-top:4px;margin-bottom:28px}
+.auth-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:12px;text-align:left}
+.auth-field label{display:block;font-size:11px;font-weight:600;color:var(--cs-sub);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
+.auth-field input{width:100%;padding:12px 14px;border:1.5px solid var(--cs-border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cs-text);background:#fff;outline:none;transition:border-color .15s}
+.auth-field input:focus{border-color:var(--cs-sky)}
+.btn-email{width:100%;padding:13px 20px;border:none;border-radius:10px;background:var(--cs-navy);color:#fff;cursor:pointer;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .15s}
+.btn-email:hover{background:var(--cs-blue)}
+.auth-divider{height:1px;background:var(--cs-border);margin:18px 0;position:relative}
+.auth-divider span{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:11px;color:var(--cs-sub);font-weight:500}
+.btn-google{width:100%;padding:13px 20px;border:1.5px solid var(--cs-border);border-radius:10px;background:#fff;cursor:pointer;font-size:14px;font-weight:600;color:var(--cs-text);display:flex;align-items:center;justify-content:center;gap:10px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.btn-google:hover{border-color:var(--cs-sky);background:#F8FBFF;box-shadow:0 4px 12px rgba(0,169,164,.15)}
+.auth-err{color:var(--cs-red);font-size:12px;margin-top:12px;min-height:16px}
+
+/* ══ APP CHROME ══ */
+#app{display:none}
+#topbar{display:flex;align-items:center;gap:0;background:#fff;color:var(--sap-ink);padding:0 24px;height:60px;position:sticky;top:0;z-index:40;border-bottom:1px solid var(--sap-card-border);box-shadow:0 1px 2px rgba(20,40,60,.04)}
+.tb-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tb-omega{height:22px;width:auto;display:block;background:var(--sap-blue);border-radius:5px;padding:5px 7px}
+.tb-logo-txt{color:var(--sap-ink);font-weight:700;font-size:15px;letter-spacing:-.2px}
+.tb-logo-txt span{color:var(--sap-blue)}
+.tb-sep{width:1px;height:22px;background:var(--sap-card-border);margin:0 16px}
+.tb-portal{color:var(--sap-ink-2);font-size:12px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+.tb-client{display:flex;align-items:center;gap:9px;margin-left:16px}
+.tb-client-chip{background:#fff;border:1px solid var(--sap-card-border);border-radius:7px;padding:4px 8px;display:flex;align-items:center;height:32px}
+.tb-client-chip img{height:22px;width:auto;display:block}
+.tb-client-txt{font-size:13px;font-weight:700;color:var(--cs-navy);letter-spacing:-.2px;white-space:nowrap}
+.tb-ent-badge{font-size:11px;font-weight:500;letter-spacing:.01em;color:var(--sap-ink-2);background:transparent;border:none;padding:0;white-space:nowrap}
+.tb-nav{display:flex;align-items:center;gap:2px;margin-left:20px;height:56px}
+.tb-tab{display:flex;align-items:center;gap:6px;text-decoration:none;background:transparent;border:none;border-bottom:3px solid transparent;color:var(--sap-ink);border-radius:0;padding:0 14px;height:56px;cursor:pointer;font:500 13.5px/1 'DM Sans',sans-serif;white-space:nowrap;transition:color .12s,border-color .12s}
+.tb-tab svg{width:15px;height:15px;flex:none;opacity:.7}
+.tb-tab:hover{color:var(--sap-blue)}
+.tb-tab.active{color:var(--sap-blue);border-bottom-color:var(--sap-blue-hi);font-weight:600}
+.tb-tab.active svg{opacity:1}
+.tb-spacer{flex:1}
+.tb-user{display:flex;align-items:center;gap:10px}
+.tb-avatar{width:32px;height:32px;border-radius:50%;background:var(--sap-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+.tb-name{color:var(--sap-ink);font-size:13px;font-weight:500}
+.btn-signout{background:#fff;border:1px solid var(--sap-card-border);color:var(--sap-ink-2);border-radius:6px;padding:6px 13px;cursor:pointer;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;transition:all .12s}
+.btn-signout:hover{border-color:var(--sap-blue);color:var(--sap-blue)}
+
+/* ══ MARKETPLACE PAGE (SAP Business-Data-Cloud inspired) ══ */
+#main{padding:0 0 72px}
+#main-inner{max-width:1280px;margin:0 auto;padding:0 28px}
+
+/* ── Full-bleed gradient hero with centered search ── */
+.mkt-banner{position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#08384F 0%,#006F9A 48%,#00A9A4 100%);
+  padding:56px 28px 64px;margin-bottom:0}
+.mkt-banner::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 900px 520px at 82% 26%, rgba(0,196,188,.35) 0%, transparent 62%),
+             radial-gradient(circle 260px at 90% 78%, rgba(255,255,255,.10) 0%, transparent 70%);
+  pointer-events:none}
+.mkt-banner::after{content:'';position:absolute;right:-40px;top:-60px;width:340px;height:340px;
+  border:38px solid rgba(255,255,255,.06);border-radius:50%;pointer-events:none}
+.mkt-banner-inner{position:relative;max-width:1280px;margin:0 auto;text-align:center}
+.mkt-banner h1{font-size:38px;font-weight:800;color:#fff;letter-spacing:-.9px;line-height:1.05}
+.mkt-banner p{font-size:15px;color:rgba(255,255,255,.85);margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.55}
+.mkt-search-wrap{position:relative;max-width:720px;margin:30px auto 0}
+.mkt-search-ico{position:absolute;left:22px;top:50%;transform:translateY(-50%);pointer-events:none}
+#mkt-search{width:100%;padding:17px 56px 17px 52px;border:1px solid rgba(255,255,255,.5);border-radius:40px;
+  font:400 16px/1.2 'DM Sans',sans-serif;color:var(--cs-text);background:rgba(255,255,255,.98);outline:none;
+  box-shadow:0 18px 40px rgba(3,42,61,.28);transition:box-shadow .15s,border-color .15s}
+#mkt-search::placeholder{color:#8A93A0}
+#mkt-search:focus{border-color:#fff;box-shadow:0 18px 44px rgba(3,42,61,.34)}
+.mkt-search-go{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--cs-blue);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* ── Filter / tab strip under the banner ── */
+.mkt-tabbar{position:sticky;top:60px;z-index:30;background:var(--cs-surface);border-bottom:1px solid var(--cs-border)}
+.mkt-tabbar-inner{max-width:1280px;margin:0 auto;padding:0 28px;display:flex;align-items:center;gap:4px;overflow-x:auto}
+.mkt-chip{position:relative;background:transparent;border:none;color:var(--cs-sub);
+  padding:16px 16px 14px;font:600 13.5px/1 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:color .12s}
+.mkt-chip:hover{color:var(--cs-navy)}
+.mkt-chip.on{color:var(--cs-navy)}
+.mkt-chip.on::after{content:'';position:absolute;left:12px;right:12px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--cs-blue)}
+.mkt-chip .cnt{display:inline-block;margin-left:7px;background:var(--cs-border);color:var(--cs-sub);border-radius:20px;font-size:11px;font-weight:700;padding:1px 8px}
+.mkt-chip.on .cnt{background:#E1F0EF;color:var(--cs-blue)}
+
+/* ── Category section ── */
+.mkt-section{padding-top:34px}
+.mkt-cat-head{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;color:var(--cs-navy);letter-spacing:-.2px;margin:0 0 18px}
+.mkt-cat-head .cnt{color:var(--cs-sub);font-weight:600;font-size:14px}
+.mkt-cat-head .rule{flex:1;height:1px;background:var(--cs-border)}
+
+/* ── Cards: image/gradient cover + body (SAP style) ── */
+.mkt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px}
+.mkt-card{background:#fff;border:1px solid var(--cs-border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;
+  transition:box-shadow .16s,border-color .16s,transform .16s}
+.mkt-card:hover{box-shadow:0 14px 34px rgba(8,56,79,.13);border-color:#BFD6D5;transform:translateY(-3px)}
+.mkt-cover{position:relative;height:118px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mkt-cover::after{content:'';position:absolute;inset:0;background:
+  radial-gradient(circle 120px at 78% 30%, rgba(255,255,255,.18) 0%, transparent 70%);pointer-events:none}
+.mkt-cover svg{width:44px;height:44px;position:relative;z-index:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.25))}
+.mkt-cover-badge{position:absolute;top:12px;right:12px;z-index:2}
+.mkt-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.mkt-card-cat{font-size:9.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--cs-accent);margin-bottom:6px}
+.mkt-card-name{font-size:16.5px;font-weight:700;color:var(--cs-navy);letter-spacing:-.2px;line-height:1.25}
+.mkt-card-desc{font-size:12.5px;line-height:1.5;color:var(--cs-sub);margin-top:8px;flex:1}
+.mkt-card-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--cs-border);
+  font-size:11px;color:var(--cs-sub)}
+.mkt-card-meta b{color:var(--cs-text);font-weight:600}
+.mkt-actions{display:flex;gap:8px;margin-top:14px}
+.mkt-act{flex:1;text-align:center;padding:10px 12px;border-radius:9px;font:600 13px/1.1 'DM Sans',sans-serif;cursor:pointer;border:1.5px solid;transition:all .12s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.mkt-act.primary{background:var(--cs-navy);border-color:var(--cs-navy);color:#fff}
+.mkt-act.primary:hover{background:#0A2C3E}
+.mkt-act.ghost{flex:0 0 auto;background:#fff;border-color:var(--cs-border);color:var(--cs-sub)}
+.mkt-act.ghost:hover{border-color:var(--cs-red);color:#B71C1C}
+.mkt-act.disabled{background:#F6F6F4;border-color:var(--cs-border);color:#9AA6B4;cursor:default}
+.mkt-pill{font-size:9px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:20px;border:1px solid;white-space:nowrap;backdrop-filter:blur(4px)}
+.mkt-pill.inc{color:#0E6E32;background:rgba(241,251,244,.92);border-color:#BCE7C9}
+.mkt-pill.added{color:#0E6E32;background:rgba(241,251,244,.92);border-color:#BCE7C9}
+.mkt-pill.invest{color:#0E6E32;background:rgba(241,251,244,.92);border-color:#BCE7C9}
+.mkt-pill.new{color:#006F9A;background:rgba(234,244,248,.92);border-color:#B9DBE8}
+.mkt-pill.soon{color:#8A6D1F;background:rgba(251,246,230,.92);border-color:#E6D9AE}
+.mkt-empty{padding:60px 24px;text-align:center;color:var(--cs-sub);font-size:14px}
+.mkt-loading{padding:60px 24px;text-align:center;color:var(--cs-sub)}
+.spin{display:inline-block;width:22px;height:22px;border:3px solid var(--cs-border);border-top-color:var(--cs-sky);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--cs-navy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:all .25s;z-index:80}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.footer{border-top:1px solid var(--cs-border);margin-top:50px;padding-top:22px;font-size:11px;color:var(--cs-sub);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:640px){.mkt-banner h1{font-size:30px}.mkt-banner{padding:44px 20px 52px}#mkt-search{padding:15px 50px 15px 46px}}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ AUTH SCREEN ══════════════════ -->
+<div id="auth-screen">
+  <div class="auth-card">
+    <img src="/clearsky-omega-mark-navy.png" alt="OMEGA" class="auth-omega" onerror="this.style.display='none'">
+    <div class="auth-company">ClearSky-OMEGA</div>
+    <div class="auth-sub">App Marketplace · sign in to browse and add tools</div>
+    <div class="auth-fields">
+      <div class="auth-field"><label>Email</label><input id="auth-email" type="email" autocomplete="username" placeholder="you@yourcompany.com"></div>
+      <div class="auth-field"><label>Password</label><input id="auth-pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
+    </div>
+    <button class="btn-email" id="email-signin-btn" onclick="signInEmail()">Sign In</button>
+    <div class="auth-divider"><span>or</span></div>
+    <button class="btn-google" id="google-signin-btn" onclick="signInGoogle()">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 0 1 0-4.18V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+      Continue with Google
+    </button>
+    <div class="auth-err" id="auth-err"></div>
+  </div>
+</div>
+
+<!-- ══════════════════ APP ══════════════════ -->
+<div id="app">
+  <div id="topbar">
+    <a href="/" class="tb-logo">
+      <img src="/clearsky-omega-mark-white.png" alt="OMEGA" class="tb-omega" onerror="this.style.display='none'">
+      <span class="tb-logo-txt">Clear<span>Sky</span> OMEGA</span>
+    </a>
+    <div class="tb-sep"></div>
+    <span class="tb-portal">EnergyOS</span>
+    <div class="tb-client">
+      <span class="tb-client-chip" id="tb-client-chip"></span>
+      <span class="tb-ent-badge" id="tb-ent-badge">Account</span>
+    </div>
+    <div class="tb-nav">
+      <a class="tb-tab" href="/" id="tab-portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Portal
+      </a>
+      <a class="tb-tab active" href="/marketplace.html" id="tab-marketplace">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 22V12h6v10"/></svg>
+        Marketplace
+      </a>
+      <a class="tb-tab" href="/projects.html" id="tab-projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        Projects
+      </a>
+      <a class="tb-tab" href="/?view=improve" id="tab-improve">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
+        Tool Improvement
+      </a>
+    </div>
+    <div class="tb-spacer"></div>
+    <div class="tb-user">
+      <div class="tb-avatar" id="tb-avatar">–</div>
+      <span class="tb-name" id="tb-name"></span>
+      <button class="btn-signout" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+
+  <div id="main">
+
+    <!-- Full-bleed gradient hero -->
+    <div class="mkt-banner">
+      <div class="mkt-banner-inner">
+        <h1>App Marketplace</h1>
+        <p id="mkt-sub">Your energy platform at your fingertips — a central hub of BESS, EV, and financial tools you can add to your dashboard.</p>
+        <div class="mkt-search-wrap">
+          <svg class="mkt-search-ico" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8A93A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="mkt-search" type="text" placeholder="Search applications…" oninput="paintMarket()" autocomplete="off">
+          <span class="mkt-search-go" onclick="paintMarket()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#006F9A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sticky category tab bar -->
+    <div class="mkt-tabbar">
+      <div class="mkt-tabbar-inner" id="mkt-filters"></div>
+    </div>
+
+    <div id="main-inner">
+      <div id="market-grid">
+        <div class="mkt-loading"><span class="spin"></span> Loading applications…</div>
+      </div>
+
+      <div class="footer">
+        <span>ClearSky-OMEGA · App Marketplace</span>
+        <span>© 2025 ClearSky Energy Solutions LLC · Proprietary</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase + shared config + catalog (same sources as the portal) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script src="https://tools.csebuilders.com/omega-tools.js?v=8"></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   ClearSky-OMEGA — standalone App Marketplace (ES5, no build step).
+   Same catalog (OMEGATools), same workspace resolution, same Firebase as the
+   portal. This page renders ONLY the marketplace — nothing else can appear.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Workspace map (mirror of the portal). Keep in sync when adding tenants. ── */
+var WORKSPACES = {
+  'sunesol.com':   { type:'developer', orgId:'sunesol.com',   clientName:'SUN Energy Solutions',     accountTier:'Enterprise', tierLevel:3, allowedDomain:'sunesol.com', requiredTools:['editor','investment'], logo:'/sunesol-logo-color.png' },
+  'nextnrg.com':   { type:'developer', orgId:'nextnrg.com',   clientName:'NextNRG',                  accountTier:'Enterprise', tierLevel:3, allowedDomain:'nextnrg.com', requiredTools:['editor','sandbox','investment','sales'], logo:'/nextnrg-logo.png' },
+  'spatco.com':    { type:'developer', orgId:'spatco.com',    clientName:'SPATCO Energy Solutions',  accountTier:'Enterprise', tierLevel:3, allowedDomain:'spatco.com',  requiredTools:['editor','spatco_ev'], logo:'/spatco-logo.jpg' },
+  'chileasing.com':{ type:'developer', orgId:'chileasing.com',clientName:'Solela LLC',              accountTier:'Enterprise', tierLevel:3, allowedDomain:'chileasing.com', requiredTools:['editor','investment'] },
+  'csebuilders.com':{type:'developer', orgId:'csebuilders.com',clientName:'ClearSky Energy Solutions',accountTier:'Internal',  tierLevel:3, allowedDomain:'csebuilders.com', logo:'/clearsky-logo.png' },
+  'amperagecapital.com':{ type:'partner', orgId:'amperagecapital.com', clientName:'Amperage Capital', accountTier:'Partner', allowedDomain:'amperagecapital.com', portfolioOrgs:['nextnrg.com'] },
+  'voltus.co':     { type:'partner', orgId:'voltus.co', clientName:'Voltus', accountTier:'Partner', allowedDomain:'voltus.co', portfolioOrgs:['nextnrg.com'] }
+};
+function domainOf(email){ return (email||'').split('@')[1] ? email.split('@')[1].toLowerCase() : ''; }
+function resolveWorkspace(email){ var d=domainOf(email); return (d && WORKSPACES.hasOwnProperty(d)) ? WORKSPACES[d] : null; }
+
+var CFG, auth, db, currentUser=null, currentOrg=null, WORKSPACE=null;
+var _PINNED=[];
+
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function el(id){ return document.getElementById(id); }
+function setHTML(id,h){ var e=el(id); if(e) e.innerHTML=h; }
+function setText(id,t){ var e=el(id); if(e) e.textContent=t; }
+function toast(msg){ var t=el('toast'); if(!t) return; t.innerHTML=msg; t.className='toast show'; setTimeout(function(){ t.className='toast'; },2200); }
+
+/* ── Firebase init (waits for compat SDK + config.js) ── */
+function initFirebase(){
+  if (typeof firebase==='undefined' || !window.CLEARSKY_CONFIG){ setTimeout(initFirebase,120); return; }
+  CFG = window.CLEARSKY_CONFIG;
+  try{ firebase.initializeApp(CFG.firebase); }catch(e){ if(!/already exists/.test(e.message)) console.error('FB init',e); }
+  auth = firebase.auth();
+  db = firebase.firestore();
+  auth.onAuthStateChanged(onAuth);
+}
+initFirebase();
+
+function onAuth(user){
+  if (!user){ el('auth-screen').style.display='flex'; el('app').style.display='none'; return; }
+  var ws = resolveWorkspace(user.email);
+  if (!ws){
+    // unknown domain — reject
+    setText('auth-err','This account domain is not provisioned. Contact dev@clearsky-usa.com.');
+    auth.signOut(); return;
+  }
+  currentUser = user; WORKSPACE = ws; currentOrg = ws.orgId;
+  window.OMEGA_WORKSPACE = ws; window.CS_BRAND = ws.clientName;
+  el('auth-screen').style.display='none'; el('app').style.display='block';
+  applyChrome(ws, user);
+  loadCatalog(ws);
+}
+
+function applyChrome(ws, user){
+  var chip = el('tb-client-chip');
+  if (chip){ chip.innerHTML = ws.logo ? '<img src="'+esc(ws.logo)+'" alt="" onerror="this.style.display=\'none\'">' : '<span class="tb-client-txt">'+esc(ws.clientName||'')+'</span>'; }
+  setText('tb-ent-badge', (ws.accountTier||'Account')+' Account');
+  // Show displayName/email immediately, then upgrade to the saved profile name.
+  setText('tb-name', (user.displayName||user.email||''));
+  var av = el('tb-avatar'); if(av) av.textContent = (user.email||'?').charAt(0).toUpperCase();
+  setText('mkt-sub', 'Browse the ClearSky-OMEGA catalog and add tools to your '+(ws.clientName||'')+' dashboard.');
+  _resolveDisplayName(ws, user);
+}
+
+/* Look up the display name saved in the team_members profile
+   (doc id = "<orgId>__<email>"), matching how the portal index resolves it.
+   Falls back to Firebase displayName, then email. */
+function _resolveDisplayName(ws, user){
+  if (!user || !db) return;
+  try {
+    var id = ws.orgId + '__' + (user.email||'').toLowerCase();
+    db.collection('team_members').doc(id).get().then(function(doc){
+      var nm = (doc && doc.exists && doc.data() && doc.data().name) ? doc.data().name : '';
+      if (!nm) nm = user.displayName || user.email || '';
+      setText('tb-name', nm);
+      var av = el('tb-avatar'); if (av && nm) av.textContent = nm.charAt(0).toUpperCase();
+    })['catch'](function(){ /* keep the email fallback */ });
+  } catch(e){ /* ignore */ }
+}
+
+/* ── Catalog: hydrate the shared OMEGATools registry, load pins, render. ── */
+function loadCatalog(ws){
+  var tries=0;
+  (function wait(){
+    if (typeof OMEGATools==='undefined'){ if(++tries<60){ setTimeout(wait,100); } else { setHTML('market-grid','<div class="mkt-empty">Catalog unavailable. Check omega-tools.js.</div>'); } return; }
+    var afterHydrate = function(){
+      loadPins(ws.orgId, function(keys){ _PINNED = keys||[]; paintFilters(); paintMarket(); });
+    };
+    if (typeof OMEGATools.hydrate==='function'){ OMEGATools.hydrate(db, afterHydrate); }
+    else { afterHydrate(); }
+  })();
+}
+function loadPins(org, cb){
+  if (OMEGATools && typeof OMEGATools.loadPinned==='function'){
+    OMEGATools.loadPinned(db, org).then(function(keys){ cb(keys); })['catch'](function(){ cb([]); });
+  } else { cb([]); }
+}
+
+/* ── Which tools this tenant may see (workspace unlock gate). ── */
+function qualifying(){
+  var all = OMEGATools.all(), out=[];
+  for (var i=0;i<all.length;i++){
+    var t = all[i];
+    if (OMEGATools && typeof OMEGATools.isUnlocked==='function'){ if (OMEGATools.isUnlocked(t, WORKSPACE)) out.push(t); }
+    else out.push(t);
+  }
+  return out;
+}
+function isPinned(k){ return _PINNED.indexOf(k)>=0; }
+function isRequired(t){
+  if (WORKSPACE && WORKSPACE.requiredTools && WORKSPACE.requiredTools.indexOf(t.key)>=0) return true;
+  if (OMEGATools && typeof OMEGATools.isRequired==='function') return OMEGATools.isRequired(t, WORKSPACE);
+  return false;
+}
+function catLabel(key){
+  if (OMEGATools && OMEGATools.CATEGORIES){
+    for (var i=0;i<OMEGATools.CATEGORIES.length;i++){ if(OMEGATools.CATEGORIES[i].key===key) return OMEGATools.CATEGORIES[i].label; }
+  }
+  var fb={design:'Design & Engineering',finance:'Finance & Modeling',sales:'Sales & Proposals',permitting:'Permitting & AHJ',marketplace:'Infrastructure'};
+  return fb[key]||key;
+}
+function hrefFor(t){
+  if (OMEGATools && typeof OMEGATools.hrefFor==='function') return OMEGATools.hrefFor(t, WORKSPACE);
+  return t.file || t.href || '#';
+}
+
+/* ── Category filter chips ── */
+var MKT_CAT='all';
+function activeCategories(){
+  var order=['design','finance','sales','permitting','marketplace'];
+  var tools=qualifying(), present={}, out=[];
+  for (var i=0;i<tools.length;i++){ present[tools[i].category]=true; }
+  for (var c=0;c<order.length;c++){ if(present[order[c]]) out.push(order[c]); }
+  for (var j=0;j<tools.length;j++){ if(order.indexOf(tools[j].category)<0 && out.indexOf(tools[j].category)<0) out.push(tools[j].category); }
+  return out;
+}
+function countInCat(cat){
+  var tools=qualifying(), n=0;
+  for (var i=0;i<tools.length;i++){ if(tools[i].category===cat) n++; }
+  return n;
+}
+function paintFilters(){
+  var box=el('mkt-filters'); if(!box) return;
+  var cats=activeCategories(), total=qualifying().length;
+  var h='<button class="mkt-chip'+(MKT_CAT==='all'?' on':'')+'" onclick="setCat(&quot;all&quot;)">All<span class="cnt">'+total+'</span></button>';
+  for (var i=0;i<cats.length;i++){
+    h+='<button class="mkt-chip'+(MKT_CAT===cats[i]?' on':'')+'" onclick="setCat(&quot;'+esc(cats[i])+'&quot;)">'
+      +esc(catLabel(cats[i]))+'<span class="cnt">'+countInCat(cats[i])+'</span></button>';
+  }
+  box.innerHTML=h;
+}
+function setCat(c){ MKT_CAT=c; paintFilters(); paintMarket(); }
+
+/* ── Render the marketplace (Autodesk-style product cards) ── */
+function paintMarket(){
+  var grid=el('market-grid'); if(!grid) return;
+  var tools=qualifying();
+  var q=''; var sb=el('mkt-search'); if(sb&&sb.value) q=sb.value.toLowerCase();
+  function match(t){ if(!q) return true;
+    return (t.name&&t.name.toLowerCase().indexOf(q)>=0) || (t.desc&&t.desc.toLowerCase().indexOf(q)>=0) || (catLabel(t.category).toLowerCase().indexOf(q)>=0); }
+  var order=activeCategories(), html='', any=false;
+  for (var c=0;c<order.length;c++){
+    var cat=order[c];
+    if (MKT_CAT!=='all' && MKT_CAT!==cat) continue;
+    var cards='', n=0;
+    for (var i=0;i<tools.length;i++){ var t=tools[i]; if(t.category!==cat) continue; if(!match(t)) continue; cards+=card(t); n++; }
+    if (cards){ any=true;
+      html+='<div class="mkt-section"><div class="mkt-cat-head">'+esc(catLabel(cat))
+          +'<span class="cnt">('+n+')</span><span class="rule"></span></div>'
+          +'<div class="mkt-grid">'+cards+'</div></div>';
+    }
+  }
+  grid.innerHTML = any ? html : '<div class="mkt-empty">No applications match your search.</div>';
+}
+
+/* Per-category cover gradients — gives each card a branded "photo" band. */
+function coverGradient(cat){
+  var g={
+    design:     'linear-gradient(135deg,#08384F 0%,#006F9A 100%)',
+    finance:    'linear-gradient(135deg,#053A45 0%,#00A9A4 100%)',
+    sales:      'linear-gradient(135deg,#0B2F52 0%,#1B4F8A 100%)',
+    permitting: 'linear-gradient(135deg,#243B53 0%,#3E6E8E 100%)',
+    marketplace:'linear-gradient(135deg,#08384F 0%,#00807C 100%)'
+  };
+  return g[cat] || 'linear-gradient(135deg,#08384F 0%,#006F9A 100%)';
+}
+function card(t){
+  var req=isRequired(t), pinned=isPinned(t.key);
+  var open;
+  if (t.soon) open='onclick="pmSoon(&quot;'+esc(t.name)+'&quot;)"';
+  else if (t.action) open='href="/"';   // action tools live on the portal
+  else open='href="'+esc(hrefFor(t))+'"';
+
+  var pill='';
+  if (t.soon) pill='<span class="mkt-pill soon">Soon</span>';
+  else if (req) pill='<span class="mkt-pill inc">Included</span>';
+  else if (pinned) pill='<span class="mkt-pill added">Added</span>';
+  else if (t.badge==='invest') pill='<span class="mkt-pill invest">Investors</span>';
+  else if (t.badge==='new') pill='<span class="mkt-pill new">New</span>';
+
+  var action;
+  if (t.soon){ action='<div class="mkt-actions"><div class="mkt-act disabled">Coming soon</div></div>'; }
+  else if (req || pinned){
+    var openBtn='<a class="mkt-act primary" '+open+'>Open</a>';
+    var rm = req ? '' : '<button class="mkt-act ghost" onclick="toggle(&quot;'+esc(t.key)+'&quot;)">Remove</button>';
+    action='<div class="mkt-actions">'+openBtn+rm+'</div>';
+  } else {
+    action='<div class="mkt-actions"><button class="mkt-act primary" onclick="toggle(&quot;'+esc(t.key)+'&quot;)">+ Add to dashboard</button></div>';
+  }
+
+  var stroke = t.soon ? 'rgba(255,255,255,.55)' : '#ffffff';
+  var cover = t.soon ? 'linear-gradient(135deg,#5A7180 0%,#8A93A0 100%)' : coverGradient(t.category);
+  var ver = t.version || '1.0.0';
+  var status = req ? 'Included' : (pinned ? 'On dashboard' : 'Available');
+
+  return '<div class="mkt-card">'
+    + '<div class="mkt-cover" style="background:'+cover+'">'
+    +   (pill?'<span class="mkt-cover-badge">'+pill+'</span>':'')
+    +   '<svg viewBox="0 0 24 24" fill="none" stroke="'+stroke+'" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="'+t.icon+'"/></svg>'
+    + '</div>'
+    + '<div class="mkt-card-body">'
+    +   '<div class="mkt-card-cat">'+esc(catLabel(t.category))+'</div>'
+    +   '<div class="mkt-card-name">'+esc(t.name)+'</div>'
+    +   '<div class="mkt-card-desc">'+esc(t.desc||'')+'</div>'
+    +   '<div class="mkt-card-meta"><span>Version: <b>'+esc(ver)+'</b></span><span>'+esc(status)+'</span></div>'
+    +   action
+    + '</div></div>';
+}
+
+function pmSoon(name){ toast('<b>'+esc(name)+'</b> is coming online soon.'); }
+
+/* ── Add / remove from dashboard (shared pin store) ── */
+function toggle(key){
+  if (!currentOrg || !db){ toast('Sign in first.'); return; }
+  var op;
+  if (isPinned(key)){
+    op = (OMEGATools.unpinTool) ? OMEGATools.unpinTool(db, firebase, currentOrg, key) : Promise.resolve(_PINNED);
+  } else {
+    op = (OMEGATools.pinTool) ? OMEGATools.pinTool(db, firebase, currentOrg, key) : Promise.resolve(_PINNED.concat([key]));
+  }
+  op.then(function(keys){ _PINNED = keys||_PINNED; paintMarket(); toast(isPinned(key)?'Added to your dashboard':'Removed from dashboard'); })
+    ['catch'](function(){ toast('Could not update. Try again.'); });
+}
+
+/* ── Auth actions ── */
+function signInEmail(){
+  var e=(el('auth-email').value||'').trim(), p=el('auth-pass').value||'';
+  if(!e||!p){ setText('auth-err','Enter your email and password.'); return; }
+  setText('auth-err','');
+  el('email-signin-btn').disabled=true; el('email-signin-btn').textContent='Signing in…';
+  auth.signInWithEmailAndPassword(e,p)['catch'](function(err){
+    setText('auth-err', err.message||'Sign-in failed.');
+    el('email-signin-btn').disabled=false; el('email-signin-btn').textContent='Sign In';
+  });
+}
+function signInGoogle(){
+  var provider=new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)['catch'](function(err){ setText('auth-err', err.message||'Sign-in failed.'); });
+}
+function signOut(){ auth.signOut(); }
+</script>
+</body>
+</html>
