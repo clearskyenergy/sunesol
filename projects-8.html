@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Projects — SUN Energy Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cs-navy:#08384F;--cs-dark:#052A3D;--cs-blue:#006F9A;--cs-sky:#00A9A4;
+  --cs-accent:#00A9A4;--cs-gold:#00C4BC;--cs-text:#0F2733;--cs-sub:#5A7180;
+  --cs-bg:#F4F1EC;--cs-surface:#FAFAF8;--cs-border:#DDD8D0;--cs-red:#E53935;
+  --sap-blue:#0070F2;--sap-blue-hi:#1B90FF;--sap-page:#EDEFF1;--sap-card-border:#E4E8EC;
+}
+/* Repoint the page chrome onto SAP tokens, exactly like the portal index. */
+body{--cs-bg:var(--sap-page);--cs-border:var(--sap-card-border)}
+body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-text);min-height:100vh}
+#topbar{height:60px;background:var(--cs-navy);display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,.08)}
+.tb-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.tb-logo svg{height:32px}
+.tb-logo-txt{color:#fff;font-weight:700;font-size:15px}
+.tb-logo-txt span{color:var(--cs-gold)}
+.tb-sep{width:1px;height:24px;background:rgba(255,255,255,.12)}
+.tb-portal{color:rgba(255,255,255,.45);font-size:12px;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.tb-spacer{flex:1}
+.btn-home{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);border-radius:7px;padding:6px 13px;cursor:pointer;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none}
+.btn-home:hover{background:rgba(255,255,255,.14)}
+.btn-new{background:var(--cs-accent);border:none;color:var(--cs-navy);border-radius:7px;padding:6px 14px;cursor:pointer;font-size:12px;font-weight:700;font-family:'DM Sans',sans-serif}
+#main{max-width:1000px;margin:0 auto;padding:40px 24px}
+.page-title{font-size:28px;font-weight:700;color:var(--cs-navy);letter-spacing:-.3px}
+.page-sub{font-size:14px;color:var(--cs-sub);margin-top:4px}
+.toolbar{display:flex;gap:10px;margin:24px 0;align-items:center}
+.search-wrap{flex:1;position:relative}
+.search-wrap input{width:100%;border:1.5px solid var(--cs-border);border-radius:9px;padding:9px 12px 9px 36px;font-size:13px;font-family:'DM Sans',sans-serif;background:#fff;color:var(--cs-text);outline:none}
+.search-wrap input:focus{border-color:var(--cs-sky)}
+.search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%)}
+select.sort-sel{border:1.5px solid var(--cs-border);border-radius:9px;padding:9px 12px;font-size:13px;font-family:'DM Sans',sans-serif;background:#fff;color:var(--cs-text);outline:none;cursor:pointer}
+.proj-table{background:#fff;border:1px solid var(--cs-border);border-radius:12px;overflow:hidden}
+.pt-head{display:grid;grid-template-columns:1fr 190px 100px 90px 60px;padding:12px 16px;border-bottom:1px solid var(--cs-border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--cs-sub)}
+.pt-row{display:grid;grid-template-columns:1fr 190px 100px 90px 60px;padding:14px 16px;border-bottom:1px solid rgba(0,0,0,.04);align-items:center;cursor:pointer;transition:background .1s}
+.pt-row:hover{background:#F8F9FA}
+.pt-row:last-child{border-bottom:none}
+.pt-name{font-size:14px;font-weight:600;color:var(--cs-navy)}
+.pt-addr{font-size:11px;color:var(--cs-sub);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt-type{font-size:11px;font-weight:600;padding:2px 8px;border-radius:8px;background:rgba(0,111,154,.1);color:var(--cs-blue);display:inline-block}
+.pt-date{font-size:12px;color:var(--cs-sub)}
+.pt-del{background:none;border:none;cursor:pointer;color:var(--cs-border);font-size:16px;padding:4px}
+.pt-del:hover{color:var(--cs-red)}
+.pt-owner{display:flex;align-items:center;gap:8px;min-width:0}
+.owner-chip{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#EEF1F4;color:var(--cs-sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+.owner-chip.owner-me{background:rgba(0,169,164,.14);color:#00736F}
+.owner-chip.owner-none{background:rgba(217,119,6,.12);color:#B45309}
+.pt-owner-link{color:var(--cs-sub);display:inline-flex;align-items:center}
+.pt-owner-link svg{width:14px;height:14px}
+.pt-owner-link:hover{color:var(--sap-blue)}
+.empty{text-align:center;padding:60px;color:var(--cs-sub)}
+.empty svg{opacity:.3;margin-bottom:12px}
+.loading{display:flex;align-items:center;justify-content:center;padding:60px;gap:10px;color:var(--cs-sub)}
+.spin{width:18px;height:18px;border:2px solid var(--cs-border);border-top-color:var(--cs-sky);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:600px){.pt-head,.pt-row{grid-template-columns:1fr 110px 40px}.pt-head span:nth-child(3),.pt-head span:nth-child(4),.pt-row>div:nth-child(3),.pt-row>div:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+<div id="topbar">
+  <a href="/" class="tb-logo">
+    <img src="/sunesol-logo-white.png" alt="SUN Energy Solutions" style="height:26px;width:auto;display:block">
+  </a>
+  <div class="tb-sep"></div>
+  <span class="tb-portal">Projects · Powered by ClearSky-OMEGA</span>
+  <div class="tb-spacer"></div>
+  <a href="/marketplace.html" class="btn-home">Marketplace</a>
+  <a href="/?view=improve" class="btn-home">Tool Improvement</a>
+  <a href="/" class="btn-home">← Dashboard</a>
+  <button class="btn-new" onclick="window.location.href='/'">+ New Project</button>
+</div>
+
+<div id="main">
+  <div class="page-title">Projects</div>
+  <div class="page-sub" id="proj-sub">Loading…</div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="search" placeholder="Search projects…" oninput="filterProjects()">
+    </div>
+    <select class="sort-sel" id="sort" onchange="renderTable()">
+      <option value="updated">Recently Updated</option>
+      <option value="created">Date Created</option>
+      <option value="name">Name A–Z</option>
+      <option value="mine">My projects only</option>
+    </select>
+  </div>
+
+  <div class="proj-table" id="proj-table">
+    <div class="loading"><div class="spin"></div> Loading projects…</div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="/config.js"></script>
+<script>
+const CFG = window.CLEARSKY_CONFIG;
+firebase.initializeApp(CFG.firebase);
+const auth = firebase.auth();
+const db = firebase.firestore();
+let allProjects = [];
+let myEmail = '';
+
+// Chileasing (Solela) workspace: data is scoped by orgId (enforced by Firestore rules),
+// NOT by uid — so the whole company sees its shared project portfolio.
+const WS = window.OMEGA_WORKSPACE || { orgId:'sunesol.com', allowedDomain:'sunesol.com' };
+function domainOf(email){ return (email||'').split('@')[1] || ''; }
+
+auth.onAuthStateChanged(user => {
+  if (!user) { window.location.href = '/'; return; }
+  myEmail = (user.email || '').toLowerCase();
+  // Only accounts on this workspace's domain may view its projects.
+  if (WS.allowedDomain && domainOf(user.email) !== WS.allowedDomain) {
+    document.getElementById('proj-table').innerHTML =
+      '<div class="empty"><p>This is the SUN Energy Solutions workspace. Sign in with your @' +
+      WS.allowedDomain + ' account to view projects.</p></div>';
+    document.getElementById('proj-sub').textContent = 'Access restricted to @' + WS.allowedDomain;
+    return;
+  }
+  loadProjects();
+});
+
+async function loadProjects() {
+  try {
+    // Scope by orgId → matches Firestore security rules and the dashboard.
+    const snap = await db.collection('projects').where('orgId','==',WS.orgId).get();
+    allProjects = snap.docs.map(d => ({id:d.id,...d.data()}));
+    // Sort newest-first client-side (avoids needing a composite index).
+    allProjects.sort((a,b)=>{
+      const ta = a.updatedAt?.toDate?.()?.getTime() || 0;
+      const tb = b.updatedAt?.toDate?.()?.getTime() || 0;
+      return tb - ta;
+    });
+    document.getElementById('proj-sub').textContent = allProjects.length + ' project(s) total';
+    renderTable();
+  } catch(e) {
+    document.getElementById('proj-table').innerHTML = `<div class="empty"><p>Error: ${e.message}</p></div>`;
+  }
+}
+
+function filterProjects() {
+  renderTable();
+}
+
+function renderTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const sort = document.getElementById('sort').value;
+  let filtered = allProjects.filter(p => {
+    if (!q) return true;
+    const owner = ((p.ownerName||'') + ' ' + (p.ownerEmail||p.createdBy||'')).toLowerCase();
+    return (p.name||'').toLowerCase().includes(q)
+        || (p.address||'').toLowerCase().includes(q)
+        || owner.includes(q);
+  });
+  if (sort === 'mine') filtered = filtered.filter(p => (p.ownerEmail||p.createdBy||'').toLowerCase() === myEmail);
+
+  if (sort === 'name') filtered.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
+  else if (sort === 'created') filtered.sort((a,b)=>{
+    const ta = a.createdAt?.toDate?.()?.getTime()|| 0;
+    const tb = b.createdAt?.toDate?.()?.getTime()|| 0;
+    return tb - ta;
+  });
+
+  const table = document.getElementById('proj-table');
+  if (!filtered.length) {
+    table.innerHTML = `<div class="empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><p>No projects found.</p></div>`;
+    return;
+  }
+
+  table.innerHTML = `
+    <div class="pt-head"><span>Project</span><span>Owner</span><span>Type</span><span>Updated</span><span></span></div>
+    ${filtered.map(p => {
+      const date = p.updatedAt?.toDate ? p.updatedAt.toDate().toLocaleDateString() : '—';
+      return `<div class="pt-row" onclick="openProject('${p.id}')">
+        <div><div class="pt-name">${esc(p.name||'Untitled')}</div><div class="pt-addr">${esc(p.address||'—')}</div></div>
+        <div>${ownerCell(p)}</div>
+        <div><span class="pt-type">${esc(p.type||'BESS')}</span></div>
+        <div class="pt-date">${date}</div>
+        <div><button class="pt-del" onclick="event.stopPropagation();deleteProject('${p.id}','${esc(p.name||'Untitled')}')">🗑</button></div>
+      </div>`;
+    }).join('')}`;
+}
+
+/* Resolve the person tied to a project: ownerEmail/ownerName on newer docs,
+   or the legacy `createdBy`/`ownerName`. Renders an owner chip matching the
+   portal index (teal = you, amber = unassigned) plus a mailto link so the row
+   links to whoever created/owns it. */
+function ownerCell(p) {
+  const email = (p.ownerEmail || p.createdBy || '').toLowerCase();
+  const name  = p.ownerName || (email ? email.split('@')[0] : '');
+  if (!email && !name) {
+    return `<span class="owner-chip owner-none">Unassigned</span>`;
+  }
+  const isMe = email && email === myEmail;
+  const cls  = isMe ? 'owner-chip owner-me' : 'owner-chip';
+  const label = esc(name || '—') + (isMe ? ' (you)' : '');
+  const chip = `<span class="${cls}" title="${esc(email||name)}">${label}</span>`;
+  const link = email
+    ? `<a class="pt-owner-link" href="mailto:${esc(email)}" title="Email ${esc(email)}" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></a>`
+    : '';
+  return `<div class="pt-owner">${chip}${link}</div>`;
+}
+
+function openProject(id) { window.location.href = '/editor.html?id='+id; }
+
+async function deleteProject(id, name) {
+  if (!confirm(`Delete "${name}"? This cannot be undone.`)) return;
+  try {
+    await db.collection('projects').doc(id).delete();
+    allProjects = allProjects.filter(p => p.id !== id);
+    renderTable();
+  } catch (err) {
+    console.error('Delete failed:', err);
+    var code = (err && err.code) ? err.code : '';
+    if (code === 'permission-denied') {
+      alert('Delete blocked by Firestore security rules.\n\nThis usually means the project is missing an "orgId" field (older projects) or its orgId does not match your account. Open + re-save the project to stamp orgId, or update the delete rule.\n\nTechnical: ' + err.message);
+    } else {
+      alert('Could not delete "' + name + '".\n\n' + (err && err.message ? err.message : err));
+    }
+  }
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
