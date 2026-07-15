@@ -1829,6 +1829,21 @@ function showApp(user) {
     applyDeveloperChrome(ws);
     renderDashboard();  // developer: single-org roll-up (existing behavior)
   }
+
+  // STANDARD: if we arrived from the Projects page "+ New Project" button
+  // (which navigates to /?new=1 because the create-project modal lives on this
+  // page), auto-open the new-project modal. Developer tenants only. We clear the
+  // query param so a refresh won't re-open it.
+  try {
+    if (!isPartner && /[?&]new=1(&|$)/.test(window.location.search)) {
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      if (typeof openNewProjectModal === 'function') {
+        setTimeout(function(){ openNewProjectModal('bess'); }, 60);
+      }
+    }
+  } catch(e){ /* non-fatal: just skip auto-open */ }
   // Warm the shared engineering log so the Tool Improvement tab is instant.
   if (typeof _prefetchImprovements === 'function') _prefetchImprovements();
 }

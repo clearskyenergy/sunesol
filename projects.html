@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Projects — SPATCO Energy Solutions</title>
+<title>My Projects — SUN Energy Solutions</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -152,8 +152,8 @@ let myEmail = '';
 // window.OMEGA_WORKSPACE is present it overrides these. Per-tenant: swap the
 // fallback values below to match the tenant (same as the index WORKSPACES entry).
 const WS = window.OMEGA_WORKSPACE || {
-  orgId:'spatco.com', allowedDomain:'spatco.com',
-  clientName:'SPATCO Energy Solutions', accountTier:'Enterprise'
+  orgId:'sunesol.com', allowedDomain:'sunesol.com',
+  clientName:'SUN Energy Solutions', accountTier:'Enterprise'
 };
 function domainOf(email){ return (email||'').split('@')[1] || ''; }
 
@@ -204,7 +204,7 @@ auth.onAuthStateChanged(user => {
   // Only accounts on this workspace's domain may view its projects.
   if (WS.allowedDomain && domainOf(user.email) !== WS.allowedDomain) {
     document.getElementById('proj-table').innerHTML =
-      '<div class="empty"><p>This is the SPATCO workspace. Sign in with your @' +
+      '<div class="empty"><p>This is the SUN Energy Solutions workspace. Sign in with your @' +
       WS.allowedDomain + ' account to view projects.</p></div>';
     document.getElementById('proj-sub').textContent = 'Access restricted to @' + WS.allowedDomain;
     return;
