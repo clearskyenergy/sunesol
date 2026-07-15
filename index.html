@@ -1579,6 +1579,7 @@ var WORKSPACES = {
     tierLevel: 3,                              // Enterprise — every tool unlocked
     allowedDomain: 'sunesol.com',
     requiredTools: ['editor','investment'],    // pinned/non-removable defaults
+    logo: '/sunesol-logo-color.png',           // client chip logo (topbar) — matches marketplace
     exportBrand: {
       logo: '/sunesol-logo-color.png',
       name: 'SUN Energy Solutions',
@@ -1788,11 +1789,15 @@ function showApp(user) {
   var isPartner = ws.type === 'partner';
 
   // ── Brand the platform chrome from the resolved workspace ──
-  var chip = document.getElementById('tb-client-logo');
-  if (chip){
-    var logo = (ws.exportBrand && ws.exportBrand.logo) || '';
-    if (logo && chip.tagName === 'IMG'){ chip.src = logo; chip.alt = ws.clientName || ''; chip.style.display=''; }
-    else { chip.textContent = ws.clientName || ''; chip.style.display=''; }
+  // Match the marketplace: render the client LOGO image in the chip when the
+  // workspace has one (falling back to the client name as text). We set the
+  // chip container's innerHTML rather than requiring a pre-existing <img>.
+  var chipBox = document.getElementById('tb-client-chip');
+  if (chipBox){
+    var wsLogo = ws.logo || (ws.exportBrand && ws.exportBrand.logo) || '';
+    chipBox.innerHTML = wsLogo
+      ? '<img src="' + wsLogo + '" alt="' + (ws.clientName || '') + '" onerror="this.parentNode.innerHTML=\'<span id=&quot;tb-client-logo&quot; class=&quot;tb-client-txt&quot;>' + (ws.clientName || '') + '</span>\'">'
+      : '<span id="tb-client-logo" class="tb-client-txt">' + (ws.clientName || '') + '</span>';
   }
   var badge = document.getElementById('tb-ent-badge');
   if (badge){
