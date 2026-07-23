@@ -820,17 +820,16 @@ body{overflow-x:hidden}
     margin:0;padding:64px 0 20px;
     box-shadow:-8px 0 30px rgba(0,0,0,.28);
     transform:translateX(100%);transition:transform .24s ease;
-    z-index:100000;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    z-index:100000 !important;overflow-y:auto;-webkit-overflow-scrolling:touch;
   }
   body > .tb-nav.open{transform:translateX(0)}
   body > .tb-scrim{z-index:99999}
-  /* Opaque panel sits directly behind the drawer */
-  .tb-panel{position:fixed;top:0;right:0;bottom:0;left:auto;
-    width:270px;max-width:82vw;height:100vh;height:100dvh;
-    background:#fff;z-index:99999;
-    transform:translateX(100%);transition:transform .24s ease;
-    pointer-events:none;display:block}
-  .tb-panel.open{transform:translateX(0)}
+  /* Opaque fill painted inside the drawer, behind its own content.
+     Immune to whatever was making the element background composite oddly. */
+  body > .tb-nav::before{
+    content:'';position:absolute;inset:0;
+    background:#fff;z-index:0;pointer-events:none}
+  body > .tb-nav > *{position:relative;z-index:1}
 }
 </style>
 </head>
@@ -4149,13 +4148,6 @@ function togglePin(ev, key){
     // sticky parent's stacking context (cause of the see-through drawer).
     if (nav.parentNode !== document.body) document.body.appendChild(nav);
 
-    // Opaque backing panel. Some mobile browsers composite the drawer's own
-    // background against the page beneath it; a solid sibling behind the nav
-    // is immune to that, so the drawer always reads as solid white.
-    var panel = document.createElement('div');
-    panel.id = 'tb-panel'; panel.className = 'tb-panel';
-    document.body.appendChild(panel);
-
     // Inline styles win over any stylesheet, cached or otherwise.
     function paint(){
       var on = window.innerWidth <= 900;
@@ -4189,7 +4181,6 @@ function togglePin(ev, key){
     if(!n) return;
     var open = n.classList.toggle('open');
     if(s) s.classList.toggle('open', open);
-    var p=document.getElementById('tb-panel'); if(p) p.classList.toggle('open', open);
     if(b) b.setAttribute('aria-expanded', open?'true':'false');
     document.body.style.overflow = open ? 'hidden' : '';
     var who=document.getElementById('tb-drawer-who'), tn=document.getElementById('tb-name');
@@ -4200,7 +4191,6 @@ function togglePin(ev, key){
         b=document.getElementById('tb-burger');
     if(n) n.classList.remove('open');
     if(s) s.classList.remove('open');
-    var p=document.getElementById('tb-panel'); if(p) p.classList.remove('open');
     if(b) b.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
   };
