@@ -230,6 +230,13 @@ body{overflow-x:hidden}
   }
   body > .tb-nav.open{transform:translateX(0)}
   body > .tb-scrim{z-index:99999}
+  /* Opaque panel sits directly behind the drawer */
+  .tb-panel{position:fixed;top:0;right:0;bottom:0;left:auto;
+    width:270px;max-width:82vw;height:100vh;height:100dvh;
+    background:#fff;z-index:99999;
+    transform:translateX(100%);transition:transform .24s ease;
+    pointer-events:none;display:block}
+  .tb-panel.open{transform:translateX(0)}
 }
 </style>
 </head>
@@ -623,6 +630,22 @@ function signOut(){ auth.signOut(); }
     // sticky parent's stacking context (cause of the see-through drawer).
     if (nav.parentNode !== document.body) document.body.appendChild(nav);
 
+    // Opaque backing panel. Some mobile browsers composite the drawer's own
+    // background against the page beneath it; a solid sibling behind the nav
+    // is immune to that, so the drawer always reads as solid white.
+    var panel = document.createElement('div');
+    panel.id = 'tb-panel'; panel.className = 'tb-panel';
+    document.body.appendChild(panel);
+
+    // Inline styles win over any stylesheet, cached or otherwise.
+    function paint(){
+      var on = window.innerWidth <= 900;
+      nav.style.backgroundColor = on ? '#ffffff' : '';
+      nav.style.opacity = on ? '1' : '';
+    }
+    paint();
+    window.addEventListener('resize', paint);
+
     var who = document.createElement('div');
     who.className = 'tb-drawer-who'; who.id = 'tb-drawer-who';
     var acts = document.createElement('div');
@@ -651,6 +674,7 @@ function signOut(){ auth.signOut(); }
     if(!n) return;
     var open = n.classList.toggle('open');
     if(s) s.classList.toggle('open', open);
+    var p=document.getElementById('tb-panel'); if(p) p.classList.toggle('open', open);
     if(b) b.setAttribute('aria-expanded', open?'true':'false');
     document.body.style.overflow = open ? 'hidden' : '';
     var who=document.getElementById('tb-drawer-who'), tn=document.getElementById('tb-name');
@@ -661,6 +685,7 @@ function signOut(){ auth.signOut(); }
         b=document.getElementById('tb-burger');
     if(n) n.classList.remove('open');
     if(s) s.classList.remove('open');
+    var p=document.getElementById('tb-panel'); if(p) p.classList.remove('open');
     if(b) b.setAttribute('aria-expanded','false');
     document.body.style.overflow='';
   };
