@@ -152,6 +152,69 @@ body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-tex
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .footer{border-top:1px solid var(--cs-border);margin-top:50px;padding-top:22px;font-size:11px;color:var(--cs-sub);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 @media(max-width:640px){.mkt-banner h1{font-size:30px}.mkt-banner{padding:44px 20px 52px}#mkt-search{padding:15px 50px 15px 46px}}
+
+/* ══════════════════════ MOBILE ══════════════════════ */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+
+.tb-burger{display:none;background:#fff;border:1px solid var(--sap-card-border,#E4E8EC);border-radius:8px;
+  width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;flex:none;padding:0}
+.tb-burger svg{width:20px;height:20px;stroke:var(--sap-ink,#1D2D3E);stroke-width:2;fill:none;stroke-linecap:round}
+.tb-scrim{position:fixed;inset:0;background:rgba(8,25,40,.5);z-index:999;opacity:0;pointer-events:none;
+  transition:opacity .2s}
+.tb-scrim.open{opacity:1;pointer-events:auto}
+
+@media (max-width:900px){
+  #topbar{height:54px;padding:0 12px;gap:8px}
+  .tb-burger{display:flex}
+  .tb-sep,.tb-portal,.tb-ent-badge{display:none}
+  .tb-client{margin-left:0;min-width:0}
+  .tb-client-chip{height:30px;padding:3px 7px;max-width:150px;overflow:hidden}
+  .tb-client-chip img{height:20px}
+  .tb-client-txt{font-size:12px;overflow:hidden;text-overflow:ellipsis}
+  .tb-name{display:none}
+
+  .tb-nav{position:fixed !important;top:0 !important;right:0;bottom:0;left:auto;
+    width:270px;max-width:82vw;height:100vh;height:100dvh;
+    background:#ffffff !important;background-color:#ffffff !important;
+    flex-direction:column;align-items:stretch;gap:0;margin:0;padding:64px 0 20px;
+    box-shadow:-8px 0 30px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .24s ease;
+    z-index:1000 !important;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    opacity:1 !important;backdrop-filter:none}
+  .tb-nav.open{transform:translateX(0)}
+  .tb-tab{height:auto;padding:15px 22px;border-bottom:1px solid var(--sap-card-border,#E4E8EC);
+    border-left:3px solid transparent;font-size:15px;justify-content:flex-start;gap:12px}
+  .tb-tab.active{border-bottom-color:var(--sap-card-border,#E4E8EC);border-left-color:var(--sap-blue,#0070F2);
+    background:rgba(0,112,242,.06)}
+  .tb-tab svg{width:18px;height:18px}
+  .tb-nav .tb-drawer-actions{padding:16px 22px;display:flex;flex-direction:column;gap:10px}
+  .tb-nav .tb-drawer-actions button{width:100%;padding:12px;font-size:14px;border-radius:9px}
+  .tb-nav .tb-drawer-who{padding:0 22px 12px;font-size:12px;color:var(--sap-ink-2,#556B82);
+    word-break:break-all;border-bottom:1px solid var(--sap-card-border,#E4E8EC);margin-bottom:14px}
+  .tb-user .btn-signout{display:none}
+  .tb-spacer{flex:1}
+}
+
+@media (max-width:900px){
+  #main-inner{padding:0 14px}
+  .mkt-banner{padding:40px 16px 46px}
+  .mkt-banner h1{font-size:27px;letter-spacing:-.5px}
+  .mkt-banner p{font-size:13.5px;margin-top:10px}
+  .mkt-search-wrap{margin-top:22px}
+  #mkt-search{font-size:16px;padding:14px 48px 14px 46px}
+  .mkt-tabbar{top:54px}
+  .mkt-tabbar-inner{padding:0 14px;-webkit-overflow-scrolling:touch}
+  .mkt-chip{padding:14px 12px 12px;font-size:13px}
+  .mkt-section{padding-top:26px}
+  .mkt-cat-head{font-size:15px;margin-bottom:14px}
+  .mkt-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+}
+@media (max-width:600px){
+  .mkt-banner h1{font-size:23px}
+  .mkt-banner p{font-size:12.5px}
+  .mkt-grid{grid-template-columns:1fr;gap:12px}
+  .mkt-cover{height:96px}
+}
 </style>
 </head>
 <body>
@@ -519,6 +582,72 @@ function signInGoogle(){
   auth.signInWithPopup(provider)['catch'](function(err){ setText('auth-err', err.message||'Sign-in failed.'); });
 }
 function signOut(){ auth.signOut(); }
+</script>
+
+<script>
+/* ══ MOBILE NAV DRAWER ══ */
+(function(){
+  function build(){
+    var bar = document.getElementById('topbar'),
+        nav = document.querySelector('.tb-nav');
+    if(!bar || !nav || document.getElementById('tb-burger')) return;
+
+    var b = document.createElement('button');
+    b.id = 'tb-burger'; b.className = 'tb-burger';
+    b.setAttribute('aria-label','Menu'); b.setAttribute('aria-expanded','false');
+    b.innerHTML = '<svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/>'+
+                  '<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+    bar.appendChild(b);
+
+    var s = document.createElement('div');
+    s.className = 'tb-scrim'; s.id = 'tb-scrim';
+    document.body.appendChild(s);
+
+    var who = document.createElement('div');
+    who.className = 'tb-drawer-who'; who.id = 'tb-drawer-who';
+    var acts = document.createElement('div');
+    acts.className = 'tb-drawer-actions';
+    var html = '';
+    if (typeof openAccount === 'function'){
+      html += '<button class="btn-signout" onclick="closeNav();openAccount()">Account settings</button>';
+    }
+    html += '<button class="btn-signout" onclick="closeNav();signOut()">Sign out</button>';
+    acts.innerHTML = html;
+    nav.insertBefore(who, nav.firstChild);
+    nav.appendChild(acts);
+
+    b.addEventListener('click', toggleNav);
+    s.addEventListener('click', closeNav);
+    nav.addEventListener('click', function(e){
+      if(e.target.closest && e.target.closest('.tb-tab')) closeNav();
+    });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
+    window.addEventListener('resize', function(){ if(window.innerWidth>900) closeNav(); });
+  }
+
+  window.toggleNav = function(){
+    var n=document.querySelector('.tb-nav'), s=document.getElementById('tb-scrim'),
+        b=document.getElementById('tb-burger');
+    if(!n) return;
+    var open = n.classList.toggle('open');
+    if(s) s.classList.toggle('open', open);
+    if(b) b.setAttribute('aria-expanded', open?'true':'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+    var who=document.getElementById('tb-drawer-who'), tn=document.getElementById('tb-name');
+    if(who && tn) who.textContent = tn.textContent || '';
+  };
+  window.closeNav = function(){
+    var n=document.querySelector('.tb-nav'), s=document.getElementById('tb-scrim'),
+        b=document.getElementById('tb-burger');
+    if(n) n.classList.remove('open');
+    if(s) s.classList.remove('open');
+    if(b) b.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  };
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', build);
+  else build();
+})();
 </script>
 </body>
 </html>
