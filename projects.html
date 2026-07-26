@@ -161,6 +161,41 @@ body{overflow-x:hidden}
 </style>
 </head>
 <body>
+<!-- ══ BOOT LOADER (prevents auth flash on navigation) ══ -->
+<style>
+#omega-boot{position:fixed;inset:0;z-index:2147483000;background:#0B1E35;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  transition:opacity .28s ease}
+#omega-boot.hide{opacity:0;pointer-events:none}
+#omega-boot .ob-mark{width:60px;height:60px;border-radius:16px;
+  background:linear-gradient(135deg,#006F9A,#00A9A4);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font:700 30px/1 'DM Sans',sans-serif;
+  box-shadow:0 12px 30px rgba(0,169,164,.35)}
+#omega-boot .ob-spin{width:26px;height:26px;border:3px solid rgba(255,255,255,.25);
+  border-top-color:#00C4BC;border-radius:50%;animation:ob-spin .7s linear infinite}
+#omega-boot .ob-txt{color:#8CA3BE;font:500 13px/1 'DM Sans',sans-serif;letter-spacing:.3px}
+@keyframes ob-spin{to{transform:rotate(360deg)}}
+/* Failsafe: never let the loader trap the user if JS fails to dismiss it. */
+#omega-boot{animation:ob-failsafe 0s linear 8s forwards}
+@keyframes ob-failsafe{to{opacity:0;pointer-events:none;visibility:hidden}}
+</style>
+<div id="omega-boot" role="status" aria-label="Loading">
+  <div class="ob-mark">&Omega;</div>
+  <div class="ob-spin"></div>
+  <div class="ob-txt">Loading your workspace…</div>
+</div>
+<script>
+/* Dismiss the boot loader. Called once auth state is known (from the first
+   onAuthStateChanged callback), so the screen underneath is already the
+   correct one — app, login, or a pending redirect — and never flashes. */
+window._omegaReady = function(){
+  var el = document.getElementById('omega-boot');
+  if (!el || el.classList.contains('hide')) return;
+  el.classList.add('hide');
+  setTimeout(function(){ if (el && el.parentNode) el.parentNode.removeChild(el); }, 320);
+};
+</script>
 <div id="topbar">
   <a href="/" class="tb-logo">
     <img src="/clearsky-omega-mark-white.png" alt="OMEGA" class="tb-omega" onerror="this.style.display='none'">
@@ -286,6 +321,7 @@ function _resolveDisplayName(user){
 
 auth.onAuthStateChanged(user => {
   if (!user) { window.location.href = '/'; return; }
+  if (window._omegaReady) window._omegaReady();
   myEmail = (user.email || '').toLowerCase();
   paintTopbar(user);
   // Only accounts on this workspace's domain may view its projects.
