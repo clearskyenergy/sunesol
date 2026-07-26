@@ -4144,18 +4144,32 @@ function togglePin(ev, key){
     s.className = 'tb-scrim'; s.id = 'tb-scrim';
     document.body.appendChild(s);
 
-    // Move the nav out of #topbar so position:fixed isn't trapped by the
-    // sticky parent's stacking context (cause of the see-through drawer).
-    if (nav.parentNode !== document.body) document.body.appendChild(nav);
+    // Remember the nav's original home + position inside #topbar so we can
+    // restore it exactly on desktop. On mobile we move it onto document.body so its
+    // position:fixed isn't trapped by the sticky topbar's stacking context.
+    var navHome = nav.parentNode, navNext = nav.nextSibling;
 
-    // Inline styles win over any stylesheet, cached or otherwise.
-    function paint(){
-      var on = window.innerWidth <= 900;
-      nav.style.backgroundColor = on ? '#ffffff' : '';
-      nav.style.opacity = on ? '1' : '';
+    // Reparent + inline background depending on viewport width.
+    //  ≤900px  → drawer: fixed, on document.body, solid white
+    //  >900px  → inline nav row: back in #topbar, in its original slot
+    function place(){
+      var mobile = window.innerWidth <= 900;
+      if (mobile){
+        if (nav.parentNode !== document.body) document.body.appendChild(nav);
+        nav.style.backgroundColor = '#ffffff';
+        nav.style.opacity = '1';
+      } else {
+        closeNav();
+        if (nav.parentNode !== navHome){
+          if (navNext && navNext.parentNode === navHome) navHome.insertBefore(nav, navNext);
+          else navHome.appendChild(nav);
+        }
+        nav.style.backgroundColor = '';
+        nav.style.opacity = '';
+      }
     }
-    paint();
-    window.addEventListener('resize', paint);
+    place();
+    window.addEventListener('resize', place);
 
     var who = document.createElement('div');
     who.className = 'tb-drawer-who'; who.id = 'tb-drawer-who';
@@ -4172,7 +4186,6 @@ function togglePin(ev, key){
       if(e.target.closest && e.target.closest('.tb-tab')) closeNav();
     });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeNav(); });
-    window.addEventListener('resize', function(){ if(window.innerWidth>900) closeNav(); });
   }
 
   window.toggleNav = function(){
