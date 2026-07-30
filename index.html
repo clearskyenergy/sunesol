@@ -833,6 +833,83 @@ body{overflow-x:hidden}
     background:#fff;z-index:0;pointer-events:none}
   body > .tb-nav > *{position:relative;z-index:1}
 }
+
+#app{display:flex;align-items:stretch;min-height:100vh}
+#side-nav{width:212px;flex:none;background:#0B2A3D;color:#C9D6E2;display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow:hidden;z-index:60}
+#app-body{flex:1;min-width:0;display:flex;flex-direction:column}
+/* topbar no longer needs the horizontal nav tabs on desktop */
+#app-body #topbar{position:sticky;top:0;z-index:50}
+@media (min-width:901px){ #app-body .tb-nav{display:none !important} }  /* nav moved to sidebar */
+
+.sn-head{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sn-logo-txt{display:block;font:700 16px/1.1 'DM Sans',sans-serif;color:#fff}
+.sn-sub{display:block;font-size:11px;color:#7E93A6;margin-top:3px;letter-spacing:.3px}
+.sn-scroll{flex:1;overflow-y:auto;padding:10px 8px 20px}
+.sn-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;
+  color:#C9D6E2;font:500 13.5px/1 'DM Sans',sans-serif;border-radius:8px;text-align:left;text-decoration:none;
+  transition:background .1s,color .1s;margin-bottom:2px}
+.sn-item svg{width:17px;height:17px;flex:none;opacity:.85}
+.sn-item span{flex:1}
+.sn-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.sn-item.active{background:#1264A3;color:#fff}
+.sn-item.active svg{opacity:1}
+.sn-caret{width:14px !important;height:14px !important;transition:transform .18s}
+.sn-toggle[aria-expanded="true"] .sn-caret{transform:rotate(180deg)}
+.sn-subnav{max-height:0;overflow:hidden;transition:max-height .22s ease;padding-left:8px}
+.sn-subnav.open{max-height:420px}
+.sn-app{display:flex;align-items:center;gap:9px;padding:7px 12px 7px 26px;color:#A9BCCC;text-decoration:none;
+  font:500 12.5px/1.2 'DM Sans',sans-serif;border-radius:7px;transition:background .1s,color .1s}
+.sn-app:hover{background:rgba(255,255,255,.07);color:#fff}
+.sn-app .sn-app-dot{width:6px;height:6px;border-radius:50%;background:#00A9A4;flex:none}
+.sn-divider{height:1px;background:rgba(255,255,255,.08);margin:12px 8px}
+.sn-section-label{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,214,226,.5);padding:2px 12px 8px}
+
+/* Kill wasted space: developer-view no longer a 2-col grid with a floating rail */
+#developer-view{display:block !important}
+#developer-view > .sw{margin-top:20px}
+#dev-main{width:auto}
+
+/* Dense content: tighten main padding */
+#app-body #main{max-width:none;padding:28px 32px 56px}
+
+/* Mobile: sidebar collapses; the existing hamburger drawer handles nav */
+@media (max-width:900px){
+  #app{flex-direction:column}
+  #side-nav{display:none}   /* mobile uses the top hamburger drawer instead */
+  #app-body #main{padding:20px 14px 48px}
+}
+.sn-head{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sn-logo-txt{display:block;font:700 16px/1.1 'DM Sans',sans-serif;color:#fff}
+.sn-sub{display:block;font-size:11px;color:#7E93A6;margin-top:3px;letter-spacing:.3px}
+.sn-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;
+.sn-item svg{width:17px;height:17px;flex:none;opacity:.85}
+.sn-item span{flex:1}
+.sn-item:hover{background:rgba(255,255,255,.08);color:#fff}
+.sn-item.active{background:#1264A3;color:#fff}
+.sn-item.active svg{opacity:1}
+.sn-caret{width:14px !important;height:14px !important;transition:transform .18s}
+.sn-toggle[aria-expanded="true"] .sn-caret{transform:rotate(180deg)}
+.sn-subnav{max-height:0;overflow:hidden;transition:max-height .22s ease;padding-left:8px}
+.sn-subnav.open{max-height:420px}
+.sn-app{display:flex;align-items:center;gap:9px;padding:7px 12px 7px 26px;color:#A9BCCC;text-decoration:none;
+.sn-app:hover{background:rgba(255,255,255,.07);color:#fff}
+.sn-app .sn-app-dot{width:6px;height:6px;border-radius:50%;background:#00A9A4;flex:none}
+.sn-section-label{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,214,226,.5);padding:2px 12px 8px}
+.sn-dm-list{padding:2px 8px 0}
+.sn-dm-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 26px;color:#A9BCCC;text-decoration:none;
+.sn-dm-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.sn-dm-item.active{background:#1264A3;color:#fff}
+.sn-dm-item .dm-ava{width:20px;height:20px;border-radius:5px;background:#2C5D82;color:#fff;font:700 10px/20px sans-serif;text-align:center;flex:none}
+.sn-subnav.sn-dm-list{padding-left:8px}
+.sn-subnav.sn-dm-list.open{max-height:400px;overflow-y:auto}
+    var it = e.target && e.target.closest ? e.target.closest('.sn-dm-item') : null;
+  var items=document.querySelectorAll('#side-nav .sn-item');
+  var dms=document.querySelectorAll('#sn-dm-list .sn-dm-item');
+  var items=document.querySelectorAll('#side-nav .sn-item');
+#app{display:flex !important}
+@media (min-width:901px){ #app-body .tb-nav{display:none !important} }
+#app-body #main{max-width:none}
 </style>
 </head>
 <body>
@@ -914,6 +991,32 @@ window._omegaReady = function(){
 
 <!-- ══════════════ PORTAL APP ══════════════ -->
 <div id="app">
+  <nav id="side-nav">
+    <div class="sn-head">
+      <span class="sn-logo-txt">SUN Energy Solutions</span>
+      <span class="sn-sub">EnergyOS</span>
+    </div>
+    <div class="sn-scroll">
+      <a class="sn-item active" data-sn="dashboard" href="/" onclick="if(typeof exitImproveView==='function'){}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a class="sn-item" data-sn="projects" href="/projects.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <span>Projects</span>
+      </a>
+      <a class="sn-item" data-sn="marketplace" href="/marketplace.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 22V12h6v10"/></svg>
+        <span>Marketplace</span>
+      </a>
+      <a class="sn-item" data-sn="improve" href="#" onclick="if(typeof showImproveView==='function'){showImproveView();}return false;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
+        <span>Tool Improvement</span>
+      </a>
+    </div>
+  </nav>
+
+  <div id="app-body">
   <!-- TOPBAR (UNCHANGED — logo, user, sign out) -->
   <div id="topbar">
     <a href="/" class="tb-logo">
@@ -1494,6 +1597,7 @@ window._omegaReady = function(){
       <span id="footer-ws-label">Powered by <strong style="color:var(--cs-navy)">ClearSky-OMEGA</strong></span>
       <span>© 2025 ClearSky Energy Solutions LLC · Platform &amp; software authored by Tommy Gilmer · Proprietary</span>
     </div>
+  </div><!-- /#app-body -->
   </div>
 </div>
 
@@ -1978,7 +2082,7 @@ function refreshGreeting(user) {
 
 function showApp(user) {
   document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'block';
+  document.getElementById('app').style.display = 'flex';
 
   var ws = WORKSPACE || {};
   var isPartner = ws.type === 'partner';
