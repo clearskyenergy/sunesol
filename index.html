@@ -2,7 +2,7 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
   ClearSky-OMEGA · EnergyOS Platform
-  SUN Energy Solutions Workspace
+  NextNRG Enterprise Workspace
 
   © 2025 ClearSky Energy Solutions LLC. All rights reserved.
   Proprietary and Confidential. Author: Tommy Gilmer.
@@ -19,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Platform: ClearSky-OMEGA · Client workspace: SUN Energy Solutions (Enterprise) -->
+<!-- Platform: ClearSky-OMEGA · Client workspace: NextNRG (Enterprise) -->
 <meta name="author" content="Tommy Gilmer · ClearSky Energy Solutions LLC">
 <meta name="copyright" content="© 2025 ClearSky Energy Solutions LLC. Proprietary.">
 <title>SUN Energy Solutions · Site Development Platform</title>
@@ -372,37 +372,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-tex
 .pp-dev-foot .online{color:#137A38;font-weight:600}
 .pp-dev-empty{grid-column:1/-1;background:#fff;border:1px dashed var(--cs-border);border-radius:14px;padding:34px;text-align:center;color:var(--cs-sub);font-size:13px}
 
-/* ── TOOL IMPROVEMENT BOARD ── */
-.imp-count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 7px;border-radius:11px;background:var(--cs-accent);color:#fff;font-size:12px;font-weight:700;vertical-align:middle;margin-left:6px}
-.imp-new-btn{border:none;background:var(--cs-navy);color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 18px;border-radius:9px;cursor:pointer;transition:background .12s}
-.imp-new-btn:hover{background:var(--cs-blue)}
-.imp-filters{display:flex;flex-wrap:wrap;gap:8px}
-.fpill{border:1px solid var(--cs-border);background:#fff;color:var(--cs-sub);font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:600;padding:7px 16px;border-radius:20px;cursor:pointer;transition:all .12s}
-.fpill:hover{border-color:var(--sap-blue);color:var(--cs-navy)}
-.fpill.on{background:var(--cs-navy);color:#fff;border-color:var(--cs-navy)}
-.imp-table tbody tr{cursor:pointer}
-.imp-table tbody tr:hover{background:#F6F8FA}
-.imp-table .imp-title-cell{font-weight:600;color:var(--cs-navy)}
-.imp-table .imp-detail{font-size:11.5px;color:var(--cs-sub);font-weight:400;margin-top:2px}
-.imp-sub{font-size:12.5px;color:var(--cs-sub)}
-.chip{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px}
-.chip.red2{background:rgba(229,57,53,.12);color:#C62828}
-.chip.blue2{background:rgba(0,112,242,.12);color:#0057C7}
-.chip.gold2{background:rgba(217,119,6,.14);color:#B45309}
-.chip.gray{background:#EEF1F4;color:var(--cs-sub)}
-.chip.pri-red{background:rgba(229,57,53,.12);color:#C62828}
-.chip.pri-gold{background:rgba(217,119,6,.14);color:#B45309}
-.chip.pri-blue{background:rgba(0,112,242,.12);color:#0057C7}
-.chip.pri-gray{background:#EEF1F4;color:var(--cs-sub)}
-.sdot{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--cs-text)}
-.sdot i{width:8px;height:8px;border-radius:50%;background:var(--cs-sub);display:inline-block}
-.sdot.up i{background:var(--cs-green)}
-.sdot.building i{background:#0070F2}
-.sdot.degraded i{background:#D97706}
-.sdot.paused i{background:var(--cs-sub)}
-.imp-cmt{background:#F6F8FA;border:1px solid var(--cs-border);border-radius:8px;padding:8px 11px;margin-bottom:6px;font-size:12.5px;color:var(--cs-text)}
-.imp-cmt .by{font-weight:700;color:var(--cs-navy)}
-.imp-cmt .when{color:var(--cs-sub);font-size:11px;margin-left:6px}
 
 /* ── PORTFOLIO TABLE OWNER CHIP ── */
 .owner-chip{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:#EEF1F4;color:var(--cs-sub);white-space:nowrap}
@@ -618,7 +587,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-tex
 .th-bubble-when{font-size:9.5px;opacity:.6;margin-top:3px}
 
 /* New-conversation modal */
-.convo-modal-overlay{position:fixed;inset:0;background:rgba(8,25,40,.55);z-index:210;display:none;align-items:center;justify-content:center;padding:20px}
+.convo-modal-overlay{position:fixed;inset:0;background:rgba(8,25,40,.55);z-index:2147483600;display:none;align-items:center;justify-content:center;padding:20px}
 .convo-modal-overlay.show{display:flex}
 .convo-modal{background:#fff;border-radius:18px;width:440px;max-width:94vw;max-height:90vh;overflow-y:auto;box-shadow:0 30px 70px rgba(0,0,0,.3)}
 .convo-modal-head{padding:20px 24px 14px;border-bottom:1px solid var(--cs-border);display:flex;align-items:center;justify-content:space-between}
@@ -679,6 +648,90 @@ body{font-family:'DM Sans',sans-serif;background:var(--cs-bg);color:var(--cs-tex
 .acct-av-btn.ghost{background:#fff;border:1.5px solid var(--cs-border);color:var(--cs-sub)}
 .acct-av-btn.ghost:hover{border-color:var(--cs-red);color:var(--cs-red)}
 
+/* ═══════════════════ DASHBOARD POLISH v2 — tighter · brighter · crisp ═══════════════════ */
+:root{
+  --pol-border:#E1E6EC;
+  --pol-border-strong:#CFD7E0;
+  --pol-shadow:0 1px 2px rgba(16,40,64,.04), 0 3px 10px rgba(16,40,64,.05);
+  --pol-shadow-hover:0 2px 6px rgba(16,40,64,.06), 0 12px 26px rgba(16,40,64,.12);
+  --pol-blue:#0070F2;
+  --pol-teal:#00A9A4;
+}
+
+/* Brighter page — a cleaner near-white instead of flat gray */
+body{background:#F4F6F8}
+
+/* ── Section rhythm & headers ── */
+#developer-view .block-head,#developer-view .widgets-head,#developer-view .sec-head{margin-top:32px}
+#developer-view > .block-head:first-of-type{margin-top:22px}
+.block-title{letter-spacing:-.2px;position:relative;padding-left:12px}
+.block-title::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:4px;height:15px;border-radius:3px;background:linear-gradient(180deg,var(--pol-blue),var(--pol-teal))}
+.block-sub{color:var(--sap-ink-2)}
+.block-head .view-all{align-self:center;white-space:nowrap;font-weight:600}
+.dash-welcome{letter-spacing:-.6px}
+
+/* ── Applications: grouped card, tighter ── */
+#developer-view .platform-map{margin-top:12px}
+.pm-col.wide{background:#fff;border:1px solid var(--pol-border);border-radius:16px;padding:18px;
+  box-shadow:var(--pol-shadow)}
+.pm-col.wide .pm-grid{margin:0;gap:14px}
+
+/* ── Overview strip (Sites Under Control row): tighter, brighter numbers ── */
+.ov-strip{border:1px solid var(--pol-border) !important;box-shadow:var(--pol-shadow) !important;
+  border-radius:16px !important;padding:20px 8px !important}
+.ov-val{font-size:34px !important;font-weight:600 !important;letter-spacing:-1.2px;
+  background:linear-gradient(180deg,#0F2733,#33475B);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.ov-label{font-size:12px;margin-top:6px}
+
+/* ── KPI cards: tighter, crisper, subtle color accent, hover lift ── */
+.kpi-grid{gap:14px}
+.kpi{border:1px solid var(--pol-border) !important;border-radius:14px !important;
+  padding:15px 16px !important;box-shadow:var(--pol-shadow) !important;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.kpi:hover{transform:translateY(-2px);box-shadow:var(--pol-shadow-hover) !important;
+  border-color:var(--pol-border-strong) !important}
+.kpi::before{width:3px !important;opacity:1 !important;border-radius:14px 0 0 14px}
+.kpi-label{font-size:10.5px !important;letter-spacing:.5px;min-height:24px !important;color:var(--sap-ink-2) !important}
+.kpi-val{font-size:23px !important;letter-spacing:-.6px;margin-top:4px !important}
+
+/* ── Widget cards + pipeline + tables: unified soft depth + hover ── */
+.wg-card,.pipeline,.table-wrap,.th-card,.pp-dev-card,.actions-panel{
+  border:1px solid var(--pol-border) !important;box-shadow:var(--pol-shadow) !important}
+.wg-card,.pp-dev-card{transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.wg-card:hover,.pp-dev-card:hover{transform:translateY(-2px);
+  box-shadow:var(--pol-shadow-hover) !important;border-color:var(--pol-border-strong) !important}
+.wg-card{min-height:280px !important}
+
+/* Pipeline: a touch tighter */
+.pipeline{padding:20px !important}
+.pipe-stage.filled .pipe-dot,.pipe-stage.submitted .pipe-dot,.pipe-stage.online .pipe-dot{
+  box-shadow:0 0 0 4px rgba(0,112,242,.12),0 1px 3px rgba(16,40,64,.18)}
+
+/* ── Quick Access tiles: brighter, crisp, hover ── */
+.quick-link{border:1px solid var(--pol-border) !important;box-shadow:var(--pol-shadow) !important;
+  transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.quick-link:hover{transform:translateY(-2px);box-shadow:var(--pol-shadow-hover) !important;
+  border-color:var(--pol-blue) !important}
+.ql-icon{color:var(--pol-blue)}
+
+/* ── Portfolio table: cleaner rows ── */
+.ptable thead th{background:#F6F8FA !important;letter-spacing:.4px;color:var(--sap-ink-2) !important}
+.ptable tbody tr{transition:background .12s ease}
+.ptable tbody tr:hover{background:#F2F7FF !important}
+.ptable tbody td{border-bottom:1px solid #EDF0F4 !important}
+
+/* Application tiles inside the dashboard grid: crisp + hover lift */
+.pm-tile{transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+.pm-tile:hover{transform:translateY(-2px);box-shadow:var(--pol-shadow-hover) !important}
+
+/* Ownership banner ("5 projects have no owner"): softer, brighter */
+.owner-banner,.assign-banner{border-radius:12px !important}
+
+/* Toggle buttons crisper */
+.block-toggle{box-shadow:var(--pol-shadow) !important;border-color:var(--pol-border) !important}
+.block-toggle:hover{border-color:var(--pol-blue) !important}
 /* ══════════════════════ MOBILE ══════════════════════ */
 html{-webkit-text-size-adjust:100%}
 body{overflow-x:hidden}
@@ -694,6 +747,9 @@ body{overflow-x:hidden}
   .btn-email,.btn-google{padding:15px 18px;font-size:15px}
   .auth-note{font-size:10.5px}
 }
+
+/* Drawer-only controls (name + Account/Sign-out) hidden on desktop; shown inside the mobile drawer via the max-width:900px block below. */
+.tb-drawer-who,.tb-drawer-actions{display:none}
 
 /* ── TOPBAR + HAMBURGER ── */
 .tb-burger{display:none;background:#fff;border:1px solid var(--sap-bar-border);border-radius:8px;
@@ -729,7 +785,7 @@ body{overflow-x:hidden}
   .tb-tab svg{width:18px;height:18px}
   .tb-nav .tb-drawer-actions{padding:16px 22px;display:flex;flex-direction:column;gap:10px}
   .tb-nav .tb-drawer-actions button{width:100%;padding:12px;font-size:14px;border-radius:9px}
-  .tb-nav .tb-drawer-who{padding:0 22px 12px;font-size:12px;color:var(--sap-ink-2);
+  .tb-nav .tb-drawer-who{display:block;padding:0 22px 12px;font-size:12px;color:var(--sap-ink-2);
     word-break:break-all;border-bottom:1px solid var(--sap-bar-border);margin-bottom:14px}
   .tb-user .btn-signout{display:none}
   .tb-spacer{flex:1}
@@ -834,6 +890,137 @@ body{overflow-x:hidden}
   body > .tb-nav > *{position:relative;z-index:1}
 }
 
+/* ═══════════ MY APPLICATIONS — uniform grid (cap 6) ═══════════ */
+/* Fixed 3-across grid; equal-height rows so pinned & removable cards align. */
+.pm-col.wide .pm-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:16px}
+@media (max-width:1100px){ .pm-col.wide .pm-grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:620px){ .pm-col.wide .pm-grid{grid-template-columns:1fr} }
+
+/* Every app tile is the same height; content top-aligned, action pinned to bottom. */
+.pm-col.wide .pm-tile{
+  height:100%;min-height:210px;display:flex;flex-direction:column;
+  border:1px solid var(--pol-border,#E1E6EC);border-radius:14px;padding:18px;
+  box-shadow:var(--pol-shadow);background:#fff}
+.pm-col.wide .pm-tile .pm-open{flex:1 1 auto;display:flex;flex-direction:column}
+.pm-col.wide .pm-tile .pm-desc{flex:1 1 auto}          /* description absorbs slack */
+.pm-col.wide .pm-tile .pin-btn{margin-top:14px}        /* button always at the bottom edge */
+
+/* Cap toast (reuses pm-toast) */
+.pm-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(12px);
+  background:#0F2733;color:#fff;padding:11px 18px;border-radius:10px;font:600 13px/1.3 'DM Sans',sans-serif;
+  box-shadow:0 10px 30px rgba(16,40,64,.3);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:600;max-width:90vw}
+.pm-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ═══════════════ TEAM & MESSAGES LEFT RAIL ═══════════════ */
+/* Two-column shell: narrow sticky rail on the left, dashboard fills the right. */
+#developer-view{display:grid;grid-template-columns:minmax(420px,520px) minmax(0,1fr);gap:28px;align-items:start}
+#developer-view > .sw{grid-column:1;grid-row:1}
+#dev-main{grid-column:2;grid-row:1;min-width:0}
+
+.tm-rail{position:sticky;top:78px;align-self:start}
+.tm-panel{background:#fff;border:1px solid var(--pol-border,#E1E6EC);border-radius:16px;
+  box-shadow:var(--pol-shadow);overflow:hidden;display:flex;flex-direction:column;
+  max-height:calc(100vh - 100px)}
+.tm-panel-head{padding:14px 16px 10px;border-bottom:1px solid var(--pol-border,#E1E6EC)}
+.tm-panel-title{font:700 14px/1 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);letter-spacing:-.2px}
+.tm-tabs{display:flex;gap:2px;padding:8px 8px 0;background:#FAFBFC;border-bottom:1px solid var(--pol-border,#E1E6EC)}
+.tm-tab{flex:1;padding:9px 6px;border:none;background:none;cursor:pointer;
+  font:600 12px/1 'DM Sans',sans-serif;color:var(--sap-ink-2,#556B82);border-radius:8px 8px 0 0;
+  border-bottom:2px solid transparent;transition:color .12s,border-color .12s}
+.tm-tab:hover{color:var(--cs-navy,#08384F)}
+.tm-tab.active{color:var(--sap-blue,#0070F2);border-bottom-color:var(--sap-blue,#0070F2);background:#fff}
+.tm-body{flex:1;overflow-y:auto;padding:14px;-webkit-overflow-scrolling:touch}
+.tm-pane{display:none}
+.tm-pane.active{display:block}
+
+/* Panes: strip the inner card chrome since the rail IS the card now */
+.tm-pane .th-card{border:none !important;box-shadow:none !important;padding:0 !important;background:none !important;min-height:0 !important}
+.tm-pane .th-head{padding:0 0 10px !important}
+.tm-pane .th-body{max-height:none !important}
+.tm-pane .convo-card .convo-wrap{flex-direction:column}
+.tm-pane .convo-list{width:auto !important;border-right:none !important;border-bottom:1px solid var(--cs-border,#DDD8D0);max-height:200px}
+.tm-pane .convo-thread{min-height:220px}
+.tm-pane .th-users .th-body{max-height:none}
+
+/* Messages pane: stack the two panes vertically inside the narrow rail */
+.tm-pane[data-tm-pane="msgs"] .convo-wrap{display:flex;flex-direction:column;gap:12px}
+
+/* On narrower screens, drop the rail below the content (full width) */
+@media (max-width:1080px){
+  #developer-view{grid-template-columns:1fr}
+  #developer-view > .sw{grid-column:1;grid-row:2}
+  #dev-main{grid-column:1;grid-row:1}
+  .tm-panel{max-height:none}
+  .tm-body{max-height:560px}
+}
+
+/* ═══════════════ TEAM WORKSPACE (Slack-style) ═══════════════ */
+/* Sits in the left grid column of #developer-view; dashboard fills the right. */
+.sw{display:flex;background:#fff;border:1px solid var(--pol-border,#E1E6EC);border-radius:16px;
+  box-shadow:var(--pol-shadow);overflow:hidden;height:calc(100vh - 100px);min-height:520px}
+.tm-rail{}  /* legacy — unused now */
+
+/* Left nav strip (Slack sidebar) */
+.sw-nav{width:200px;flex:none;background:#0B2A3D;color:#C9D6E2;display:flex;flex-direction:column;overflow-y:auto}
+.sw-nav-head{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sw-workspace{display:block;font:700 15px/1.1 'DM Sans',sans-serif;color:#fff}
+.sw-workspace-sub{display:block;font-size:11px;color:#7E93A6;margin-top:3px}
+.sw-section{padding:12px 8px 4px}
+.sw-section-label{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:#6E85999;color:rgba(201,214,226,.55);padding:0 8px 6px}
+.sw-item{display:flex;align-items:center;gap:9px;width:100%;padding:7px 10px;border:none;background:none;cursor:pointer;
+  color:#C9D6E2;font:500 13.5px/1 'DM Sans',sans-serif;border-radius:7px;text-align:left;transition:background .1s,color .1s}
+.sw-item svg{width:16px;height:16px;flex:none;opacity:.85}
+.sw-item span{flex:1}
+.sw-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.sw-item.active{background:#1264A3;color:#fff}
+.sw-item.active svg{opacity:1}
+.sw-badge{flex:none;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:#E53935;color:#fff;
+  font:700 11px/18px 'DM Sans',sans-serif;text-align:center;display:none}
+.sw-badge.show{display:inline-block}
+
+/* Conversation rows in the nav reuse the existing convo-list markup */
+.sw-nav .convo-list{width:auto !important;border:none !important;background:none !important;flex:none}
+.sw-nav .convo-list-head{padding:0 8px 6px !important;border:none !important}
+.sw-nav .convo-list-title{display:none}   /* section label already says "Direct Messages" */
+.sw-nav .convo-list-body{max-height:none !important;overflow:visible !important}
+.sw-nav .convo-item{color:#C9D6E2 !important;border-radius:7px;padding:7px 10px !important}
+.sw-nav .convo-item:hover{background:rgba(255,255,255,.07) !important}
+.sw-nav .convo-item.active{background:#1264A3 !important;color:#fff !important}
+.sw-nav .convo-new-btn,.sw-nav .convo-list-head button{color:#fff !important;border-color:rgba(255,255,255,.25) !important;background:rgba(255,255,255,.08) !important}
+
+/* Right reading pane */
+.sw-main{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
+.sw-view{display:none;flex:1;min-height:0;overflow-y:auto;padding:20px}
+.sw-view.active{display:flex;flex-direction:column}
+/* strip inner card chrome — the module IS the frame */
+.sw-view .th-card{border:none !important;box-shadow:none !important;padding:0 !important;background:none !important;min-height:0 !important;flex:1;display:flex;flex-direction:column}
+.sw-view .th-head{padding:0 0 14px !important;border-bottom:1px solid var(--pol-border,#E1E6EC);margin-bottom:14px}
+.sw-view .th-body{max-height:none !important;flex:1}
+.sw-view .convo-thread-pane{border:none !important}
+.sw-view .convo-thread{max-height:none !important;flex:1}
+
+@media (max-width:1080px){
+  .sw{height:auto;min-height:0;flex-direction:column}
+  .sw-nav{width:auto;flex-direction:row;overflow-x:auto;gap:4px}
+  .sw-nav .sw-dms{display:none}   /* on mobile, DMs open via a toggle instead */
+  .sw-view{max-height:520px}
+}
+
+/* ═══════════ PORTFOLIO ANALYTICS (Coupler-style) ═══════════ */
+.an-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:14px}
+.an-card{background:#fff;border:1px solid var(--pol-border,#E1E6EC);border-radius:16px;padding:18px 18px 14px;
+  box-shadow:var(--pol-shadow);display:flex;flex-direction:column}
+.an-card.an-full{grid-column:1 / -1}
+.an-head{margin-bottom:12px}
+.an-title{font:700 14px/1 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);letter-spacing:-.2px}
+.an-chartwrap{position:relative;height:220px}
+.an-chartwrap.tall{height:260px}
+.an-legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:12px;justify-content:center}
+.an-leg{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--sap-ink-2,#556B82);font-weight:600}
+.an-leg .dot{width:9px;height:9px;border-radius:50%;flex:none}
+@media (max-width:900px){ .an-grid{grid-template-columns:1fr} .an-card.an-full{grid-column:1} }
+
+/* ═══════════════ APP SHELL — left sidebar + content (Coupler-dense) ═══════════════ */
 #app{display:flex;align-items:stretch;min-height:100vh}
 #side-nav{width:212px;flex:none;background:#0B2A3D;color:#C9D6E2;display:flex;flex-direction:column;
   position:sticky;top:0;height:100vh;overflow:hidden;z-index:60}
@@ -879,37 +1066,241 @@ body{overflow-x:hidden}
   #side-nav{display:none}   /* mobile uses the top hamburger drawer instead */
   #app-body #main{padding:20px 14px 48px}
 }
-.sn-head{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
-.sn-logo-txt{display:block;font:700 16px/1.1 'DM Sans',sans-serif;color:#fff}
-.sn-sub{display:block;font-size:11px;color:#7E93A6;margin-top:3px;letter-spacing:.3px}
-.sn-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;
-.sn-item svg{width:17px;height:17px;flex:none;opacity:.85}
-.sn-item span{flex:1}
-.sn-item:hover{background:rgba(255,255,255,.08);color:#fff}
-.sn-item.active{background:#1264A3;color:#fff}
-.sn-item.active svg{opacity:1}
-.sn-caret{width:14px !important;height:14px !important;transition:transform .18s}
-.sn-toggle[aria-expanded="true"] .sn-caret{transform:rotate(180deg)}
-.sn-subnav{max-height:0;overflow:hidden;transition:max-height .22s ease;padding-left:8px}
-.sn-subnav.open{max-height:420px}
-.sn-app{display:flex;align-items:center;gap:9px;padding:7px 12px 7px 26px;color:#A9BCCC;text-decoration:none;
-.sn-app:hover{background:rgba(255,255,255,.07);color:#fff}
-.sn-app .sn-app-dot{width:6px;height:6px;border-radius:50%;background:#00A9A4;flex:none}
-.sn-section-label{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,214,226,.5);padding:2px 12px 8px}
+
+/* ═══════════════ DASHBOARD BUILDER (edit mode) ═══════════════ */
+.edit-toggle{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;border-radius:8px;
+  border:1px solid var(--pol-border,#E1E6EC);background:#fff;color:var(--sap-ink-2,#556B82);
+  font:600 13px/1 'DM Sans',sans-serif;cursor:pointer;transition:all .12s}
+.edit-toggle:hover{border-color:var(--sap-blue,#0070F2);color:var(--sap-blue,#0070F2)}
+.edit-toggle svg{width:15px;height:15px}
+.edit-toggle.on{background:var(--sap-blue,#0070F2);color:#fff;border-color:var(--sap-blue,#0070F2)}
+
+/* When editing: dim the fixed dashboard, show builder overlay */
+body.dash-editing #dev-main > *:not(#bld-overlay):not(#edit-bar):not(#bld-config){opacity:.15;pointer-events:none;filter:grayscale(.4)}
+#bld-overlay{display:none}
+body.dash-editing #bld-overlay{display:flex;position:relative;z-index:5}
+
+#bld-overlay{gap:18px;margin-top:8px}
+.bld-palette{width:210px;flex:none;background:var(--nav,#0B2A3D);color:#C9D6E2;border-radius:14px;padding:12px 10px;
+  align-self:flex-start;position:sticky;top:74px;max-height:calc(100vh - 96px);overflow-y:auto}
+.bld-pal-title{font:700 13px/1 'DM Sans',sans-serif;color:#fff;padding:6px 8px 4px}
+.bld-pal-sub{font-size:10.5px;color:#7E93A6;padding:0 8px 10px}
+.bld-pal-group-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,214,226,.5);padding:8px 8px 5px}
+.bld-pal-item{display:flex;align-items:center;gap:8px;padding:8px 9px;border-radius:7px;cursor:grab;
+  color:#C9D6E2;font:500 12.5px/1 'DM Sans',sans-serif;margin-bottom:2px;user-select:none;transition:background .1s}
+.bld-pal-item:hover{background:rgba(255,255,255,.09);color:#fff}
+.bld-pal-item:active{cursor:grabbing}
+.bld-pal-item.dragging{opacity:.4}
+.bld-pal-item .bi{width:22px;height:22px;border-radius:6px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex:none}
+.bld-pal-item .bi svg{width:13px;height:13px;stroke:#9FB4C7;fill:none;stroke-width:2}
+
+.bld-canvas-wrap{flex:1;min-width:0}
+.bld-canvas{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:64px;gap:12px;min-height:400px;
+  border:2px dashed transparent;border-radius:12px;transition:border-color .12s}
+.bld-canvas.empty{place-content:start;border-color:var(--pol-border,#E1E6EC);background:#FAFBFC}
+.bld-canvas.drag-over{border-color:var(--sap-blue,#0070F2);background:rgba(0,112,242,.03)}
+.bld-empty-msg{grid-column:1/-1;text-align:center;color:var(--sub,#556B82);padding:70px 20px}
+.bld-empty-msg h3{font-size:16px;color:var(--ink,#0F2733);margin-bottom:6px}
+
+.bld-card{background:#fff;border:1px solid var(--pol-border,#E1E6EC);border-radius:12px;box-shadow:var(--pol-shadow);
+  display:flex;flex-direction:column;overflow:hidden;position:relative}
+.bld-card.dragging{opacity:.55}
+.bld-card-head{display:flex;align-items:center;gap:6px;padding:8px 10px;border-bottom:1px solid var(--pol-border,#E1E6EC);cursor:move;flex:none;background:#FBFCFD}
+.bld-card-title{font:700 11.5px/1 'DM Sans',sans-serif;color:var(--ink,#0F2733);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bld-card-btn{width:20px;height:20px;border:none;background:none;cursor:pointer;border-radius:4px;color:var(--sub,#556B82);display:flex;align-items:center;justify-content:center}
+.bld-card-btn:hover{background:#F0F3F6}
+.bld-card-btn.del:hover{background:#FDECEC;color:#E53935}
+.bld-card-body{flex:1;overflow:auto;padding:10px}
+.bld-resize{position:absolute;right:2px;bottom:2px;width:15px;height:15px;cursor:nwse-resize;opacity:0}
+.bld-card:hover .bld-resize{opacity:.5}
+.bld-resize svg{width:15px;height:15px;stroke:var(--sub,#556B82);stroke-width:2;fill:none}
+.bld-editing-hint{background:#EAF3FF;border:1px solid #BBD9FF;border-radius:10px;padding:10px 14px;font-size:12.5px;color:#0B4F9E;margin-bottom:12px}
+
+/* ── Builder: config panel (#2) + view-mode canvas (#4) ── */
+#bld-config{position:fixed;top:0;right:-360px;width:340px;height:100vh;background:#fff;z-index:2147483600;
+  box-shadow:-8px 0 30px rgba(16,40,64,.16);transition:right .24s ease;display:flex;flex-direction:column}
+#bld-config.open{right:0}
+.cfg-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--pol-border,#E1E6EC);font:700 15px/1 'DM Sans',sans-serif;color:var(--cs-navy,#08384F)}
+.cfg-x{border:none;background:none;font-size:22px;cursor:pointer;color:var(--sub,#556B82);line-height:1}
+.cfg-body{flex:1;overflow-y:auto;padding:20px}
+.cfg-row{margin-bottom:16px}
+.cfg-row label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--sub,#556B82);margin-bottom:6px}
+.cfg-row input{width:100%;padding:9px 12px;border:1.5px solid var(--pol-border,#E1E6EC);border-radius:8px;font:400 14px/1 'DM Sans',sans-serif;color:var(--ink,#0F2733);outline:none}
+.cfg-row input:focus{border-color:var(--sap-blue,#0070F2)}
+.cfg-note{font-size:12px;color:var(--sub,#556B82);margin-top:4px}
+.cfg-actions{display:flex;gap:8px;justify-content:flex-end;padding:16px 20px;border-top:1px solid var(--pol-border,#E1E6EC)}
+.cfg-cancel{background:#F4F1EC;border:1px solid var(--pol-border,#E1E6EC);color:var(--sub,#556B82);border-radius:8px;padding:9px 18px;cursor:pointer;font:600 13px/1 'DM Sans',sans-serif}
+.cfg-apply{background:var(--sap-blue,#0070F2);color:#fff;border:none;border-radius:8px;padding:9px 22px;cursor:pointer;font:600 13px/1 'DM Sans',sans-serif}
+/* view-mode custom board */
+#bld-view .bld-view-canvas{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:64px;gap:14px}
+#bld-view .bld-card{box-shadow:var(--pol-shadow)}
+.bld-ph{color:var(--sub,#556B82);font-size:13px;text-align:center;padding:20px}
+
+/* ── Merge Team Workspace into the sidebar: hide the module's own nav strip ── */
+.sw .sw-nav{display:none !important}
+.sw{height:auto;min-height:480px}
+.sw .sw-main{border-radius:16px}
+/* Sidebar DM list styling */
 .sn-dm-list{padding:2px 8px 0}
 .sn-dm-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 26px;color:#A9BCCC;text-decoration:none;
+  font:500 12.5px/1.2 'DM Sans',sans-serif;border-radius:7px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sn-dm-item:hover{background:rgba(255,255,255,.07);color:#fff}
 .sn-dm-item.active{background:#1264A3;color:#fff}
 .sn-dm-item .dm-ava{width:20px;height:20px;border-radius:5px;background:#2C5D82;color:#fff;font:700 10px/20px sans-serif;text-align:center;flex:none}
+
+/* In edit mode, hide the view host and fixed dashboard entirely (only the builder shows) */
+body.dash-editing #bld-view, body.dash-editing #dev-fixed{display:none !important}
+/* Make sure the edit bar and config panel stay fully interactive while editing */
+body.dash-editing #edit-bar{opacity:1 !important;pointer-events:auto !important;filter:none !important;position:relative;z-index:10}
+
+/* Team Workspace hidden until a Workspace sidebar item is clicked (not a permanent dashboard block) */
+/* Team Workspace as a right-edge slide-in drawer (dashboard stays behind) */
+#sw{position:fixed;top:0;right:0;height:100vh;width:min(760px,92vw);max-width:760px;
+  background:#fff;z-index:2147483500;box-shadow:-12px 0 40px rgba(16,40,64,.22);
+  transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;border-radius:0}
+#sw.sw-open{transform:translateX(0)}
+#sw-scrim{position:fixed;inset:0;background:rgba(8,25,40,.42);z-index:2147483499;
+  opacity:0;pointer-events:none;transition:opacity .28s ease}
+#sw-scrim.on{opacity:1;pointer-events:auto}
+.sw-drawer-head{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--pol-border,#E1E6EC);flex:none}
+.sw-drawer-title{font:700 16px/1 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);flex:1}
+.sw-drawer-x{width:30px;height:30px;border:none;background:#F4F6F8;border-radius:8px;cursor:pointer;color:var(--sub,#556B82);font-size:18px;display:flex;align-items:center;justify-content:center}
+.sw-drawer-x:hover{background:#E9EDF1;color:var(--ink,#0F2733)}
+/* the workspace body fills the drawer; its old rounded card look is dropped */
+#sw .sw-main{flex:1;min-height:0}
+@media (max-width:640px){ #sw{width:100vw} }
+
+/* Chat DMs collapse under the Chat toggle (like My Applications) */
 .sn-subnav.sn-dm-list{padding-left:8px}
 .sn-subnav.sn-dm-list.open{max-height:400px;overflow-y:auto}
-    var it = e.target && e.target.closest ? e.target.closest('.sn-dm-item') : null;
-  var items=document.querySelectorAll('#side-nav .sn-item');
-  var dms=document.querySelectorAll('#sn-dm-list .sn-dm-item');
-  var items=document.querySelectorAll('#side-nav .sn-item');
-#app{display:flex !important}
-@media (min-width:901px){ #app-body .tb-nav{display:none !important} }
-#app-body #main{max-width:none}
+
+/* ═══════════ IN-PLACE DASHBOARD EDIT ═══════════ */
+body.dash-edit-on .dash-block{position:relative;outline:1.5px dashed transparent;border-radius:12px;transition:outline-color .12s}
+body.dash-edit-on .dash-block{outline-color:#CFD9E4;padding:6px;margin-bottom:6px;cursor:default}
+body.dash-edit-on .dash-block:hover{outline-color:var(--sap-blue,#0070F2)}
+.dash-block.db-dragging{opacity:.5;outline-color:var(--sap-blue,#0070F2) !important}
+.dash-block.db-hidden{opacity:.4}
+.db-bar{display:none}
+body.dash-edit-on .db-bar{display:flex;align-items:center;gap:10px;padding:5px 8px;margin-bottom:6px;
+  background:#0B2A3D;color:#C9D6E2;border-radius:8px;font:600 12px/1 'DM Sans',sans-serif}
+.db-handle{cursor:grab;font-size:15px;color:#7E93A6;user-select:none}
+.db-handle:active{cursor:grabbing}
+.db-key{flex:1;text-transform:capitalize;opacity:.85}
+.db-hide{background:rgba(255,255,255,.12);color:#fff;border:none;border-radius:6px;padding:4px 10px;cursor:pointer;font:600 11px/1 'DM Sans',sans-serif}
+.db-hide:hover{background:rgba(255,255,255,.22)}
+/* palette */
+#dash-palette{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:#fff;z-index:2147483600;
+  box-shadow:-10px 0 30px rgba(16,40,64,.18);transition:right .24s ease;display:flex;flex-direction:column}
+#dash-palette.open{right:0}
+.dp-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--pol-border,#E1E6EC);font:700 15px/1 'DM Sans',sans-serif;color:var(--cs-navy,#08384F)}
+.dp-x{border:none;background:none;font-size:22px;cursor:pointer;color:var(--sub,#556B82)}
+.dp-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px}
+.dp-item{text-align:left;padding:12px 14px;border:1px solid var(--pol-border,#E1E6EC);border-radius:10px;background:#fff;cursor:pointer;font:600 13px/1 'DM Sans',sans-serif;color:var(--ink,#0F2733)}
+.dp-item:hover:not([disabled]){border-color:var(--sap-blue,#0070F2);color:var(--sap-blue,#0070F2)}
+.dp-item[disabled]{opacity:.5;cursor:default}
+
+/* Slack-style Messages drawer: conversation list + thread side by side */
+.msgs-wrap{display:flex;height:100%;min-height:0}
+.msgs-wrap .convo-list{width:260px;flex:none;border-right:1px solid var(--cs-border,#E1E6EC);display:flex;flex-direction:column;min-height:0}
+.msgs-wrap .convo-thread-pane{flex:1;min-width:0;display:flex;flex-direction:column}
+.msgs-wrap .convo-list-body{flex:1;overflow-y:auto;max-height:none}
+@media (max-width:760px){
+  .msgs-wrap{flex-direction:column}
+  .msgs-wrap .convo-list{width:auto;border-right:none;border-bottom:1px solid var(--cs-border,#E1E6EC);max-height:34%}
+}
+
+/* ═══════════ PROJECT TASK FLOW WIDGET ═══════════ */
+.tf-picker-wrap{display:flex;align-items:center}
+.tf-project-select{padding:8px 12px;border:1.5px solid var(--cs-border,#E1E6EC);border-radius:9px;font:600 13px 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);background:#fff;cursor:pointer;min-width:220px}
+.tf-progress{display:flex;align-items:center;gap:12px;margin:6px 0 16px}
+.tf-progress-track{flex:1;height:8px;background:#EAEef2;border-radius:5px;overflow:hidden}
+.tf-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00A9A4,#0070F2);border-radius:5px;transition:width .3s ease}
+.tf-progress-lbl{font:600 12px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);white-space:nowrap;min-width:110px;text-align:right}
+.tf-empty{padding:28px;text-align:center;color:var(--cs-sub,#5A7180);font-size:13px}
+.tf-phase{border:1px solid var(--pol-border,#E1E6EC);border-radius:12px;margin-bottom:12px;overflow:hidden;background:#fff}
+.tf-phase.done{border-color:#9FD9C9}
+.tf-phase-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#F7F9FB;border-bottom:1px solid var(--pol-border,#E1E6EC)}
+.tf-phase.done .tf-phase-head{background:rgba(0,169,164,.07)}
+.tf-phase-badge{width:24px;height:24px;flex:none;border-radius:50%;background:var(--cs-navy,#08384F);color:#fff;font:700 12px 'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center}
+.tf-phase.done .tf-phase-badge{background:#00A9A4}
+.tf-phase-name{flex:1;font:700 14px 'DM Sans',sans-serif;color:var(--cs-navy,#08384F)}
+.tf-phase-dept{font:600 11px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);background:#EEF2F6;padding:3px 9px;border-radius:20px}
+.tf-phase-count{font:700 12px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);min-width:34px;text-align:right}
+.tf-tasks{padding:6px 10px}
+.tf-task{display:flex;align-items:center;gap:10px;padding:8px 8px;border-bottom:1px solid rgba(225,230,236,.6)}
+.tf-task:last-child{border-bottom:none}
+.tf-status-dot{width:10px;height:10px;flex:none;border-radius:50%;background:#CFD9E4}
+.tf-status-dot.st-todo{background:#CFD9E4}
+.tf-status-dot.st-active{background:#0070F2}
+.tf-status-dot.st-passed{background:#00A9A4}
+.tf-status-dot.st-failed{background:#E0574F}
+.tf-status-dot.st-skipped{background:#9AA7B4}
+.tf-status-dot.st-hold{background:#F0A030}
+.tf-task-txt-input{flex:1;min-width:120px;font-size:13px;color:var(--cs-text,#0F2733);border:1px solid transparent;background:transparent;border-radius:6px;padding:5px 7px}
+.tf-task-txt-input:hover{border-color:var(--cs-border,#E1E6EC)}
+.tf-task-txt-input:focus{border-color:var(--cs-sky,#00A9A4);background:#fff;outline:none}
+.tf-task.st-passed .tf-task-txt-input,.tf-task.st-skipped .tf-task-txt-input{text-decoration:line-through;color:var(--cs-sub,#8A97A6)}
+.tf-status-sel{padding:5px 8px;border:1px solid var(--cs-border,#E1E6EC);border-radius:7px;font:600 11.5px 'DM Sans',sans-serif;cursor:pointer;min-width:104px;background:#fff}
+.tf-status-sel.st-active{color:#0070F2;border-color:#0070F2}
+.tf-status-sel.st-passed{color:#00857F;border-color:#00A9A4;background:rgba(0,169,164,.06)}
+.tf-status-sel.st-failed{color:#C23B34;border-color:#E0574F;background:rgba(224,87,79,.06)}
+.tf-status-sel.st-skipped{color:#6B7885}
+.tf-status-sel.st-hold{color:#B37516;border-color:#F0A030;background:rgba(240,160,48,.08)}
+.tf-task-del,.tf-phase-del{flex:none;width:24px;height:24px;border:none;background:none;color:#B8C2CC;font-size:17px;cursor:pointer;border-radius:6px;line-height:1}
+.tf-task-del:hover,.tf-phase-del:hover{background:rgba(224,87,79,.12);color:#E0574F}
+.tf-phase-name-input{flex:1;font:700 14px 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);border:1px solid transparent;background:transparent;border-radius:6px;padding:4px 7px}
+.tf-phase-name-input:hover{border-color:var(--pol-border,#E1E6EC)}
+.tf-phase-name-input:focus{border-color:var(--cs-sky,#00A9A4);background:#fff;outline:none}
+.tf-phase-dept{padding:5px 8px;border:1px solid var(--cs-border,#E1E6EC);border-radius:7px;font:600 11px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);background:#fff;cursor:pointer}
+.tf-add-task{margin:6px 8px 4px;padding:7px 12px;border:1px dashed var(--cs-border,#CFD9E4);background:none;border-radius:8px;font:600 12px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);cursor:pointer}
+.tf-add-task:hover{border-color:var(--cs-sky,#00A9A4);color:var(--cs-sky,#00A9A4)}
+.tf-add-phase{display:block;width:100%;margin-top:8px;padding:11px;border:1.5px dashed var(--cs-border,#CFD9E4);background:none;border-radius:12px;font:700 13px 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);cursor:pointer}
+.tf-add-phase:hover{border-color:var(--cs-sky,#00A9A4);color:var(--cs-sky,#00A9A4);background:rgba(0,169,164,.04)}
+.tf-assign-dept,.tf-assign-who{padding:6px 8px;border:1px solid var(--cs-border,#E1E6EC);border-radius:7px;font:500 11.5px 'DM Sans',sans-serif;color:var(--cs-text,#0F2733);background:#fff;cursor:pointer;max-width:150px}
+.tf-assign-dept{min-width:120px}
+.tf-assign-who{min-width:110px}
+@media (max-width:760px){
+  .tf-task{flex-wrap:wrap}
+  .tf-assign-dept,.tf-assign-who{max-width:none;flex:1}
+}
+
+.tf-assign-btn{margin-left:8px;padding:2px 9px;border:1px solid var(--cs-border,#E1E6EC);background:#fff;border-radius:20px;font:600 10.5px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);cursor:pointer;vertical-align:middle}
+.tf-assign-btn:hover{border-color:var(--cs-sky,#00A9A4);color:var(--cs-sky,#00A9A4)}
+
+/* ═══════ TASK FLOW — compact horizontal stepper ═══════ */
+.dash-block[data-block="taskflow"]{max-width:100%}
+.tf-stepper-wrap{display:flex;align-items:center;gap:6px;margin:4px 0 14px}
+.tf-nav{flex:none;width:28px;height:28px;border:1px solid var(--pol-border,#E1E6EC);background:#fff;border-radius:8px;cursor:pointer;color:var(--cs-sub,#5A7180);font-size:16px;line-height:1;display:flex;align-items:center;justify-content:center}
+.tf-nav:hover{border-color:var(--cs-sky,#00A9A4);color:var(--cs-sky,#00A9A4)}
+.tf-stepper{flex:1;display:flex;align-items:center;gap:0;overflow-x:auto;scroll-behavior:smooth;padding:4px 2px}
+.tf-stepper::-webkit-scrollbar{height:5px}
+.tf-stepper::-webkit-scrollbar-thumb{background:#CFD9E4;border-radius:3px}
+.tf-step{flex:none;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;padding:2px 4px;min-width:78px;max-width:110px}
+.tf-step-badge{width:30px;height:30px;border-radius:50%;background:#EAEEF2;color:var(--cs-sub,#5A7180);font:700 13px 'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;border:2px solid transparent;transition:all .15s}
+.tf-step-badge svg{width:15px;height:15px}
+.tf-step.done .tf-step-badge{background:#00A9A4;color:#fff}
+.tf-step.active .tf-step-badge{background:#fff;color:var(--cs-navy,#08384F);border-color:#0070F2;box-shadow:0 0 0 3px rgba(0,112,242,.15)}
+.tf-step.viewing .tf-step-badge{border-color:var(--cs-navy,#08384F)}
+.tf-step-name{font:600 10.5px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);text-align:center;line-height:1.2;max-height:26px;overflow:hidden}
+.tf-step.viewing .tf-step-name{color:var(--cs-navy,#08384F)}
+.tf-step-line{flex:1;min-width:14px;height:2px;background:#E1E6EC;margin-top:-20px}
+.tf-step-line.done{background:#00A9A4}
+/* panel (single phase) */
+.tf-panel{border:1px solid var(--pol-border,#E1E6EC);border-radius:12px;background:#fff;overflow:hidden}
+.tf-panel.done{border-color:#9FD9C9}
+.tf-panel-head{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#F7F9FB;border-bottom:1px solid var(--pol-border,#E1E6EC)}
+.tf-panel.done .tf-panel-head{background:rgba(0,169,164,.07)}
+.tf-panel-badge{width:24px;height:24px;flex:none;border-radius:50%;background:var(--cs-navy,#08384F);color:#fff;font:700 12px 'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center}
+.tf-panel.done .tf-panel-badge{background:#00A9A4}
+.tf-mark{flex:none;padding:5px 12px;border:1px solid var(--cs-border,#E1E6EC);background:#fff;border-radius:20px;font:600 11px 'DM Sans',sans-serif;color:var(--cs-sub,#5A7180);cursor:pointer}
+.tf-mark:hover{border-color:#00A9A4;color:#00857F}
+.tf-mark.on{background:#00A9A4;border-color:#00A9A4;color:#fff}
+.tf-panel-actions{display:flex;align-items:center;justify-content:space-between;padding:4px 8px 10px}
+.tf-step-move{display:flex;gap:8px}
+.tf-step-btn{padding:7px 14px;border:1px solid var(--cs-border,#E1E6EC);background:#fff;border-radius:9px;font:600 12px 'DM Sans',sans-serif;color:var(--cs-navy,#08384F);cursor:pointer}
+.tf-step-btn:hover:not([disabled]){border-color:#00A9A4;color:#00857F}
+.tf-step-btn[disabled]{opacity:.4;cursor:default}
 </style>
 </head>
 <body>
@@ -953,17 +1344,17 @@ window._omegaReady = function(){
 <div id="auth-screen">
   <div class="auth-card">
     <div class="auth-logo">
-      <!-- Client login: SUN Energy Solutions brand, on the ClearSky-OMEGA platform -->
-      <img src="/sunesol-logo-color.png" alt="SUN Energy Solutions" style="height:56px;width:auto;display:block;margin:0 auto">
+      <!-- Client login: NextNRG brand, on the ClearSky-OMEGA platform -->
+      <img src="/sunesol-logo-color.png" alt="SUN Energy Solutions" style="height:88px;width:auto;display:block;margin:0 auto" onerror="this.style.display='none'">
     </div>
-    <div class="auth-company">SUN Energy Solutions</div>
+    <div class="auth-company">NextNRG Workspace</div>
     <div class="auth-sub" id="auth-sub">Enterprise energy project &amp; asset management</div>
 
-    <!-- EMAIL / PASSWORD (Chileasing team) -->
+    <!-- EMAIL / PASSWORD (ClearSky sales reps) -->
     <div class="auth-fields">
       <div class="auth-field">
         <label for="auth-email">Work email</label>
-        <input id="auth-email" type="email" placeholder="you@sunesol.com" autocomplete="email">
+        <input id="auth-email" type="email" placeholder="you@nextnrg.com" autocomplete="email">
       </div>
       <div class="auth-field">
         <label for="auth-pass">Password</label>
@@ -980,10 +1371,10 @@ window._omegaReady = function(){
       <a onclick="sendPasswordReset()" id="auth-forgot-link">Forgot password?</a>
     </div>
     <div class="auth-toggle" id="auth-toggle-wrap">
-      New to the SUN Energy Solutions workspace? <a onclick="toggleAuthMode()" id="auth-toggle-link">Create an account</a>
+      New to the NextNRG workspace? <a onclick="toggleAuthMode()" id="auth-toggle-link">Create an account</a>
     </div>
 
-    <p class="auth-note" style="margin-top:22px">Access restricted to <strong>@sunesol.com</strong> accounts · Powered by ClearSky-OMEGA</p>
+    <p class="auth-note" style="margin-top:22px">Access restricted to <strong>@nextnrg.com</strong> accounts · Powered by ClearSky-OMEGA</p>
     <div id="auth-err"></div>
     <div id="auth-ok"></div>
   </div>
@@ -991,16 +1382,25 @@ window._omegaReady = function(){
 
 <!-- ══════════════ PORTAL APP ══════════════ -->
 <div id="app">
+  <!-- ══ LEFT SIDEBAR NAV (Coupler-style app shell) ══ -->
   <nav id="side-nav">
     <div class="sn-head">
       <span class="sn-logo-txt">SUN Energy Solutions</span>
       <span class="sn-sub">EnergyOS</span>
     </div>
     <div class="sn-scroll">
-      <a class="sn-item active" data-sn="dashboard" href="/" onclick="if(typeof exitImproveView==='function'){}">
+      <a class="sn-item active" data-sn="dashboard" href="#" onclick="snGo(event,'dashboard')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         <span>Dashboard</span>
       </a>
+
+      <button class="sn-item sn-toggle" data-sn="apps" onclick="snToggleApps(event)" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        <span>My Applications</span>
+        <svg class="sn-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="sn-subnav" id="sn-apps-list"><!-- pinned apps injected by _paintSideApps() --></div>
+
       <a class="sn-item" data-sn="projects" href="/projects.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         <span>Projects</span>
@@ -1009,26 +1409,44 @@ window._omegaReady = function(){
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 22V12h6v10"/></svg>
         <span>Marketplace</span>
       </a>
-      <a class="sn-item" data-sn="improve" href="#" onclick="if(typeof showImproveView==='function'){showImproveView();}return false;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
-        <span>Tool Improvement</span>
+
+      <div class="sn-divider"></div>
+      <div class="sn-section-label">Workspace</div>
+
+      <a class="sn-item" data-sn="todos" href="#" onclick="snWork(event,'todos')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <span>To-Dos</span>
       </a>
+      <a class="sn-item" data-sn="team" href="#" onclick="snWork(event,'team')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        <span>Team</span>
+      </a>
+      <a class="sn-item" data-sn="feed" href="#" onclick="snWork(event,'feed')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Company Feed</span>
+      </a>
+      <button class="sn-item sn-toggle" data-sn="chat" onclick="snToggleChat(event)" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 10h8M8 14h5M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></svg>
+        <span>Chat</span>
+        <svg class="sn-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="sn-subnav sn-dm-list" id="sn-dm-list"><!-- DM conversations injected here --></div>
     </div>
   </nav>
-
   <div id="app-body">
   <!-- TOPBAR (UNCHANGED — logo, user, sign out) -->
   <div id="topbar">
     <a href="/" class="tb-logo">
       <!-- Platform identity stays ClearSky-OMEGA (like Salesforce shows Salesforce) -->
-      <img src="/clearsky-omega-mark-white.png" alt="OMEGA" class="tb-omega" onerror="this.style.display='none'">
-      <img src="/sunesol-logo-white.png" alt="SUN Energy Solutions" style="height:26px;width:auto;display:block" onerror="this.style.display='none'">
+      <img src="/clearsky-omega-mark-white.png" alt="OMEGA" class="tb-omega">
+      <span class="tb-logo-txt">NextNRG</span>
     </a>
     <div class="tb-sep"></div>
     <span class="tb-portal">EnergyOS</span>
     <!-- Client identity: resolved per workspace (developer client or partner) -->
+    <div class="tb-sep"></div>
     <div class="tb-client">
-      <span class="tb-client-chip" id="tb-client-chip"><span id="tb-client-logo" class="tb-client-txt">SUN Energy Solutions</span></span>
+      <span class="tb-client-chip" id="tb-client-chip"><img src="/sunesol-logo-color.png" alt="" id="tb-client-logo"></span>
       <span class="tb-ent-badge" id="tb-ent-badge">Enterprise Account</span>
     </div>
     <div class="tb-nav">
@@ -1044,10 +1462,6 @@ window._omegaReady = function(){
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Projects
       </a>
-      <a class="tb-tab" id="tab-improve" onclick="showImproveView()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
-        Tool Improvement
-      </a>
     </div>
     <div class="tb-spacer"></div>
     <div class="tb-user">
@@ -1062,7 +1476,6 @@ window._omegaReady = function(){
   <div id="main">
 
     <!-- ══ HERO / INTRO (populated per tenant in showApp) ══ -->
-    <div id="dash-hero">
     <div class="dash-label" id="dash-label">PORTFOLIO COMMAND CENTER</div>
     <div class="dash-welcome" id="welcome-name">Welcome back</div>
     <div class="dash-date" id="dash-date" style="font-size:13px;color:var(--cs-sub);margin-top:4px;font-weight:600"></div>
@@ -1077,13 +1490,186 @@ window._omegaReady = function(){
 
     <div class="dash-sub" id="dash-sub">This is your workspace for managing every site in your portfolio. Build site maps and one-line diagrams, run BESS pro formas and site investment analysis, generate customer-facing sales proposals, produce permit-ready exports, and track each project from origination through interconnection, permitting, financing, construction, and commissioning.</div>
     <div class="dash-positioning" id="dash-positioning">Engineering &amp; permit-set generation for BESS and EV infrastructure, powered by ClearSky-OMEGA. Questions or to unlock additional modules, email <a href="mailto:dev@clearsky-usa.com" style="color:var(--cs-accent);font-weight:600">dev@clearsky-usa.com</a>.</div>
-    </div><!-- /#dash-hero -->
 
     <!-- ════════════════════════════════════════════════════════════════════
          DEVELOPER VIEW — single-org command center (default for client tenants)
          Wrapped so partner tenants can hide it entirely.
          ════════════════════════════════════════════════════════════════════ -->
     <div id="developer-view">
+    <!-- ══ TEAM & MESSAGES — combined tabbed left-rail panel ══ -->
+        <!-- ══ TEAM WORKSPACE — Slack-style: nav list (left) + reading pane (right) ══ -->
+    <div id="sw-scrim" onclick="closeWorkspace()"></div>
+    <aside class="sw" id="sw">
+      <div class="sw-drawer-head">
+        <span class="sw-drawer-title" id="sw-drawer-title">Team Workspace</span>
+        <button class="sw-drawer-x" onclick="closeWorkspace()" aria-label="Close">&times;</button>
+      </div>
+      <!-- Nav strip (hidden — sidebar drives nav) -->
+      <div class="sw-nav">
+        <div class="sw-nav-head">
+          <span class="sw-workspace">NextNRG</span>
+          <span class="sw-workspace-sub">Team Workspace</span>
+        </div>
+
+        <div class="sw-section">
+          <div class="sw-section-label">Workspace</div>
+          <button class="sw-item active" data-sw="todos" onclick="swSelect('todos')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <span>To-Dos</span><span class="sw-badge" id="sw-todo-badge"></span>
+          </button>
+          <button class="sw-item" data-sw="team" onclick="swSelect('team')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            <span>Team</span><span class="sw-badge" id="sw-team-badge"></span>
+          </button>
+          <button class="sw-item" data-sw="feed" onclick="swSelect('feed')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Company Feed</span>
+          </button>
+        </div>
+
+        <div class="sw-section sw-dms">
+          <div class="sw-section-label">Direct Messages</div>
+          <div class="convo-list">
+                      <div class="convo-list-head">
+                        <span class="convo-list-title">Conversations</span>
+                        <button class="convo-new-btn" onclick="openNewConvo()">+ New</button>
+                      </div>
+                      <div class="convo-list-body" id="convo-list-body-nav">
+                        <div class="th-empty" style="padding:20px 12px">No conversations yet. Start one with “+ New”.</div>
+                      </div>
+                    </div>
+        </div>
+      </div>
+
+      <!-- Reading pane -->
+      <div class="sw-main">
+        <div class="sw-view active" data-sw-view="todos">
+          <div class="th-card">
+                              <div class="th-head">
+                                <div class="th-head-l">
+                                  <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+                                  <span class="th-title">Team To-Dos</span>
+                                </div>
+                                <span class="th-count" id="th-todo-count">0</span>
+                              </div>
+                              <div class="th-body" id="th-todo-list">
+                                <div class="th-empty">No to-dos yet. Add one and assign a teammate.</div>
+                              </div>
+                              <div class="th-compose">
+                                <input class="th-input" id="th-todo-text" type="text" placeholder="What needs doing?" maxlength="240" onkeydown="if(event.key==='Enter'){event.preventDefault();addTodo();}">
+                                <div class="th-compose-row">
+                                  <select class="th-select" id="th-todo-assignee"><option value="">Assign to…</option></select>
+                                  <input class="th-date" id="th-todo-due" type="date" title="Due date (optional)">
+                                  <button class="th-send" id="th-todo-btn" onclick="addTodo()">Add</button>
+                                </div>
+                              </div>
+                            </div>
+        </div>
+        <div class="sw-view" data-sw-view="team">
+          <div class="th-card th-users">
+                              <div class="th-head">
+                                <div class="th-head-l">
+                                  <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+                                  <span class="th-title">Team</span>
+                                </div>
+                                <span class="th-count" id="th-users-count">0</span>
+                              </div>
+                              <div class="th-body" id="th-users-list">
+                                <div class="th-empty">Loading team…</div>
+                              </div>
+                            </div>
+        </div>
+        <div class="sw-view" data-sw-view="feed">
+          <div class="th-card">
+                              <div class="th-head">
+                                <div class="th-head-l">
+                                  <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                                  <span class="th-title">Company Messages</span>
+                                </div>
+                                <span class="th-count" id="th-msg-count">0</span>
+                              </div>
+                              <div class="th-body" id="th-msg-list">
+                                <div class="th-empty">No messages yet. Post an update for the team.</div>
+                              </div>
+                              <div class="th-compose">
+                                <textarea class="th-input" id="th-msg-text" rows="2" placeholder="Post a message to your team…" maxlength="600"></textarea>
+                                <div class="th-compose-row" style="justify-content:flex-end">
+                                  <button class="th-send" id="th-msg-btn" onclick="postMessage()">Post</button>
+                                </div>
+                              </div>
+                            </div>
+        </div>
+        <div class="sw-view" data-sw-view="msgs">
+          <div class="msgs-wrap">
+            <div class="convo-list">
+              <div class="convo-list-head">
+                <span class="convo-list-title">Messages</span>
+                <button class="convo-new-btn" onclick="openNewConvo()">+ New</button>
+              </div>
+              <div class="convo-list-body" id="convo-list-body">
+                <div class="th-empty" style="padding:16px">No conversations yet. Start one with the + New button.</div>
+              </div>
+            </div>
+            <div class="convo-thread-pane">
+              <div class="convo-thread-head" id="convo-thread-head">
+                <span class="convo-thread-title" id="convo-thread-title">Select a conversation</span>
+                <span class="convo-thread-sub" id="convo-thread-sub"></span>
+              </div>
+              <div class="convo-thread" id="convo-thread">
+                <div class="th-empty">Pick a conversation on the left, or start a new one.</div>
+              </div>
+              <div class="th-compose">
+                <div class="th-compose-row">
+                  <input class="th-input" id="convo-text" type="text" placeholder="Type a message" maxlength="1000" disabled onkeydown="if(event.key===&#39;Enter&#39;){event.preventDefault();sendConvoMessage();}">
+                  <button class="th-send" id="convo-send" onclick="sendConvoMessage()" disabled>Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- New conversation / group modal (Slack-style) -->
+    <div class="convo-modal-overlay" id="convo-modal">
+      <div class="convo-modal">
+        <div class="convo-modal-head">
+          <h3 id="convo-modal-title">New conversation</h3>
+          <button class="sw-drawer-x" onclick="closeNewConvo()" aria-label="Close">&times;</button>
+        </div>
+        <div class="convo-modal-body">
+          <div class="convo-tabs">
+            <button class="convo-tab on" id="convo-tab-dm" onclick="convoTab('dm')">Direct message</button>
+            <button class="convo-tab" id="convo-tab-group" onclick="convoTab('group')">Group</button>
+          </div>
+          <div id="convo-group-name-field" style="display:none;margin-bottom:14px">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--cs-sub);margin-bottom:6px">Group name</label>
+            <input type="text" id="convo-group-name" placeholder="e.g. Engineering" maxlength="60" style="width:100%;padding:9px 11px;border:1px solid var(--cs-border);border-radius:8px;font-size:13px">
+          </div>
+          <label id="convo-pick-label" style="display:block;font-size:12px;font-weight:600;color:var(--cs-sub);margin-bottom:8px">Choose a teammate</label>
+          <div class="convo-member-picker" id="convo-member-picker"></div>
+          <div class="acct-msg" id="convo-modal-msg" style="margin-top:10px"></div>
+          <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:18px">
+            <button class="btn-secondary" onclick="closeNewConvo()" style="padding:9px 16px;border:1px solid var(--cs-border);background:#fff;border-radius:9px;font:600 13px 'DM Sans',sans-serif;cursor:pointer">Cancel</button>
+            <button class="btn-primary" id="convo-create-btn" onclick="createConvo()" style="padding:9px 18px;border:none;background:var(--cs-navy);color:#fff;border-radius:9px;font:600 13px 'DM Sans',sans-serif;cursor:pointer">Start conversation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dev-main">
+
+    <!-- ══ IN-PLACE DASHBOARD EDIT ══ -->
+    <div id="edit-bar" style="display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-bottom:6px">
+      <button class="edit-toggle" id="edit-add-btn" onclick="DASH.togglePalette()" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Add Widget</span>
+      </button>
+      <button class="edit-toggle" id="edit-toggle-btn" onclick="DASH.toggle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+        <span class="et-label">Edit Dashboard</span>
+      </button>
+    </div>
+    <div id="dash-hint" class="bld-editing-hint" style="display:none">Editing your dashboard — drag any block by its handle to reorder, use <b>Add Widget</b> to insert more, and click a block's ✕ to hide it. Changes save automatically. Click <b>Done Editing</b> when finished.</div>
 
     <!--
       ═══════════════════════════════════════════════════════════════════════
@@ -1168,6 +1754,68 @@ window._omegaReady = function(){
       var ONLINE_INDEX         = STAGE_KEYS.indexOf('online');    // 7
     </script>
 
+    <!-- Config / properties panel (#2) -->
+
+
+    <div id="dev-fixed">
+    <div class="dash-block" data-block="apps">
+    <!-- ══ MY APPLICATIONS ══ -->
+    <div class="block-head">
+      <div>
+        <div class="block-title">My Applications</div>
+        <div class="block-sub">The tools you use most — launch straight into your workspace.</div>
+      </div>
+      <a class="view-all" href="/marketplace.html">Browse Marketplace ›</a>
+    </div>
+
+    <div class="platform-map">
+
+      <!-- ───────────── MY APPLICATIONS (dashboard) ───────────── -->
+      <div class="pm-col wide">
+        <div class="pm-grid" id="dash-grid"></div>
+      </div>
+
+    </div>
+
+    <!-- Toast for placeholder tiles -->
+    <div class="pm-toast" id="pm-toast"></div>
+
+    </div><!-- /.dash-block apps -->
+    <div class="dash-block" data-block="quick">
+    <!-- ══ QUICK LINKS (Open Project Portal / Site Map / Compute / How It Works) ══ -->
+    </div><!-- /.dash-block quick -->
+    <div class="dash-block" data-block="command">
+    <div class="block-head">
+      <div><div class="block-title">Quick Access</div></div>
+    </div>
+    <div class="quick-row">
+      <!-- Open Project Portal → existing projects.html -->
+      <a class="quick-link" onclick="goToProjects()">
+        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+        <div class="ql-title">Open Project Portal</div>
+        <div class="ql-desc">All saved projects &amp; pipeline</div>
+      </a>
+      <!-- Open Site Map Tool → existing BESS create flow (same as tool card) -->
+      <a class="quick-link" onclick="openNewProjectModal('bess')" data-tool="editor">
+        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
+        <div class="ql-title">Open Site Map Tool</div>
+        <div class="ql-desc">Start a new BESS site map</div>
+      </a>
+      <!-- Build a Sales Proposal → sales-proposal.html -->
+      <a class="quick-link" href="sales-proposal.html" target="_blank" rel="noopener" data-tool="sales">
+        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
+        <div class="ql-title">Build a Sales Proposal</div>
+        <div class="ql-desc">Customer-facing proposal</div>
+      </a>
+      <!-- Site Investment Analysis → investment-analysis.html -->
+      <a class="quick-link" href="investment-analysis.html" target="_blank" rel="noopener" data-tool="investment">
+        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div>
+        <div class="ql-title">Site Investment Analysis</div>
+        <div class="ql-desc">Investor-grade returns &amp; risk</div>
+      </a>
+    </div>
+
+
     <!-- ══ KPI DASHBOARD (Portfolio Command Center) ══ -->
     <div class="block-head">
       <div>
@@ -1182,6 +1830,9 @@ window._omegaReady = function(){
     <div class="ov-strip" id="ov-strip"><!-- rendered by renderKpis() --></div>
     <div class="kpi-grid" id="kpi-grid" style="margin-top:12px"><!-- rendered by renderKpis() --></div>
 
+
+    </div><!-- /.dash-block command -->
+    <div class="dash-block" data-block="pipeline">
     <!-- ══ PIPELINE STAGE BAR ══ -->
     <div class="block-head">
       <div>
@@ -1193,7 +1844,65 @@ window._omegaReady = function(){
       <div class="pipe-track" id="pipe-track"><!-- rendered by renderPipeline() --></div>
     </div>
 
+    <!-- ══ PORTFOLIO ANALYTICS (Coupler-style charts, real Firestore data) ══ -->
+    </div><!-- /.dash-block pipeline -->
+    <div class="dash-block" data-block="taskflow">
+      <div class="block-head">
+        <div>
+          <div class="block-title">Project Task Flow</div>
+          <div class="block-sub">Take a project from origination to interconnection & permitting — assign by department and teammate.</div>
+        </div>
+        <div class="tf-picker-wrap">
+          <select id="tf-project" class="tf-project-select" onchange="TASKFLOW.onPick(this.value)">
+            <option value="">Select a project…</option>
+          </select>
+        </div>
+      </div>
+      <div class="tf-progress">
+        <div class="tf-progress-track"><div class="tf-progress-fill" id="tf-progress-bar"></div></div>
+        <span class="tf-progress-lbl" id="tf-progress-lbl">—</span>
+      </div>
+      <div class="tf-body" id="tf-body">
+        <div class="tf-empty">Select a project above to see its task flow.</div>
+      </div>
+    </div><!-- /.dash-block taskflow -->
+    <div class="dash-block" data-block="analytics">
+    <div class="block-head">
+      <div>
+        <div class="block-title">Portfolio Analytics</div>
+        <div class="block-sub">Live breakdowns across your projects &mdash; capital, storage, revenue, and stage.</div>
+      </div>
+    </div>
+    <div class="an-grid">
+      <div class="an-card">
+        <div class="an-head"><span class="an-title">Projects by Stage</span></div>
+        <div class="an-chartwrap"><canvas id="an-stage"></canvas></div>
+        <div class="an-legend" id="an-stage-legend"></div>
+      </div>
+      <div class="an-card">
+        <div class="an-head"><span class="an-title">Projects by Type</span></div>
+        <div class="an-chartwrap"><canvas id="an-type"></canvas></div>
+        <div class="an-legend" id="an-type-legend"></div>
+      </div>
+      <div class="an-card an-wide">
+        <div class="an-head"><span class="an-title">Top Projects by CapEx</span></div>
+        <div class="an-chartwrap tall"><canvas id="an-capex"></canvas></div>
+      </div>
+      <div class="an-card an-wide">
+        <div class="an-head"><span class="an-title">Projected Revenue by Owner</span></div>
+        <div class="an-chartwrap tall"><canvas id="an-owner"></canvas></div>
+      </div>
+      <div class="an-card an-full">
+        <div class="an-head"><span class="an-title">Storage Capacity by Stage (MWh)</span></div>
+        <div class="an-chartwrap"><canvas id="an-storage"></canvas></div>
+      </div>
+    </div>
+
+
+
     <!-- ══ MY WIDGETS (SAP-style widget row) ══ -->
+    </div><!-- /.dash-block analytics -->
+    <div class="dash-block" data-block="widgets">
     <div class="widgets-head">
       <div class="block-title">My widgets</div>
     </div>
@@ -1241,6 +1950,9 @@ window._omegaReady = function(){
 
     </div>
 
+
+    </div><!-- /.dash-block widgets -->
+    <div class="dash-block" data-block="company">
     <!-- ══════════ COMPANY OVERVIEW (opt-in, company-wide performance) ══════════
          Separate from the personal Command Center above. Shows the WHOLE
          company's rollup so anyone can see how SUN is doing overall, without
@@ -1250,7 +1962,7 @@ window._omegaReady = function(){
     <div class="block-head">
       <div>
         <div class="block-title">Company Overview <span class="co-badge">Company-wide</span></div>
-        <div class="block-sub">Aggregate performance across every SUN Energy Solutions project</div>
+        <div class="block-sub">Aggregate performance across every NextNRG project</div>
       </div>
       <button class="block-toggle" id="co-toggle" onclick="toggleCompanyOverview()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1263,138 +1975,9 @@ window._omegaReady = function(){
       <div class="co-foot" id="co-foot"></div>
     </div>
 
-    <!-- ═══════════════════ TEAM HUB ═══════════════════ -->
-    <div class="sec-head">
-      <div><span class="sec-title">Team Hub</span></div>
-    </div>
-    <div class="team-grid">
 
-      <!-- To-Dos -->
-      <div class="th-card">
-        <div class="th-head">
-          <div class="th-head-l">
-            <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
-            <span class="th-title">Team To-Dos</span>
-          </div>
-          <span class="th-count" id="th-todo-count">0</span>
-        </div>
-        <div class="th-body" id="th-todo-list">
-          <div class="th-empty">No to-dos yet. Add one and assign a teammate.</div>
-        </div>
-        <div class="th-compose">
-          <input class="th-input" id="th-todo-text" type="text" placeholder="What needs doing?" maxlength="240" onkeydown="if(event.key==='Enter'){event.preventDefault();addTodo();}">
-          <div class="th-compose-row">
-            <select class="th-select" id="th-todo-assignee"><option value="">Assign to…</option></select>
-            <input class="th-date" id="th-todo-due" type="date" title="Due date (optional)">
-            <button class="th-send" id="th-todo-btn" onclick="addTodo()">Add</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Company Messages -->
-      <div class="th-card">
-        <div class="th-head">
-          <div class="th-head-l">
-            <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <span class="th-title">Company Messages</span>
-          </div>
-          <span class="th-count" id="th-msg-count">0</span>
-        </div>
-        <div class="th-body" id="th-msg-list">
-          <div class="th-empty">No messages yet. Post an update for the team.</div>
-        </div>
-        <div class="th-compose">
-          <textarea class="th-input" id="th-msg-text" rows="2" placeholder="Post a message to your team…" maxlength="600"></textarea>
-          <div class="th-compose-row" style="justify-content:flex-end">
-            <button class="th-send" id="th-msg-btn" onclick="postMessage()">Post</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Current Users -->
-      <div class="th-card th-users">
-        <div class="th-head">
-          <div class="th-head-l">
-            <span class="th-head-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-            <span class="th-title">Team</span>
-          </div>
-          <span class="th-count" id="th-users-count">0</span>
-        </div>
-        <div class="th-body" id="th-users-list">
-          <div class="th-empty">Loading team…</div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Messages (1:1 + groups) -->
-    <div class="sec-head" style="margin-top:26px">
-      <div><span class="sec-title">Messages</span></div>
-    </div>
-    <div class="th-card convo-card">
-      <div class="convo-wrap">
-
-        <!-- Left: conversation list -->
-        <div class="convo-list">
-          <div class="convo-list-head">
-            <span class="convo-list-title">Conversations</span>
-            <button class="convo-new-btn" onclick="openNewConvo()">+ New</button>
-          </div>
-          <div class="convo-list-body" id="convo-list-body">
-            <div class="th-empty" style="padding:20px 12px">No conversations yet. Start one with “+ New”.</div>
-          </div>
-        </div>
-
-        <!-- Right: open thread -->
-        <div class="convo-thread-pane">
-          <div class="convo-thread-head" id="convo-thread-head">
-            <span class="convo-thread-title" id="convo-thread-title">Select a conversation</span>
-            <span class="convo-thread-sub" id="convo-thread-sub"></span>
-          </div>
-          <div class="convo-thread" id="convo-thread">
-            <div class="th-empty">Pick a conversation on the left, or start a new one.</div>
-          </div>
-          <div class="th-compose">
-            <div class="th-compose-row">
-              <input class="th-input" id="convo-text" type="text" placeholder="Type a message…" maxlength="1000" disabled onkeydown="if(event.key==='Enter'){event.preventDefault();sendConvoMessage();}">
-              <button class="th-send" id="convo-send" onclick="sendConvoMessage()" disabled>Send</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- New conversation / group modal -->
-    <div class="convo-modal-overlay" id="convo-modal" onclick="if(event.target===this)closeNewConvo()">
-      <div class="convo-modal">
-        <div class="convo-modal-head">
-          <h3 id="convo-modal-title">New conversation</h3>
-          <button class="acct-close" onclick="closeNewConvo()">&times;</button>
-        </div>
-        <div class="convo-modal-body">
-          <div class="convo-tabs">
-            <button class="convo-tab on" id="convo-tab-dm" onclick="convoTab('dm')">Direct message</button>
-            <button class="convo-tab" id="convo-tab-group" onclick="convoTab('group')">New group</button>
-          </div>
-
-          <!-- Group name (groups only) -->
-          <div class="acct-field" id="convo-group-name-field" style="display:none">
-            <label>Group name</label>
-            <input id="convo-group-name" type="text" maxlength="60" placeholder="e.g. Prairie Ave team">
-          </div>
-
-          <div class="acct-field">
-            <label id="convo-pick-label">Choose a teammate</label>
-            <div class="convo-member-picker" id="convo-member-picker"></div>
-          </div>
-
-          <button class="acct-btn" id="convo-create-btn" onclick="createConvo()">Start conversation</button>
-          <div class="acct-msg" id="convo-modal-msg"></div>
-        </div>
-      </div>
-    </div>
-
+    </div><!-- /.dash-block company -->
+    <div class="dash-block" data-block="portfolio">
     <!-- ══ PORTFOLIO TABLE + NEXT ACTIONS ══ -->
     <div class="block-head">
       <div>
@@ -1432,37 +2015,9 @@ window._omegaReady = function(){
       </div>
     </div>
 
-    <!-- ══ QUICK LINKS (Open Project Portal / Site Map / Compute / How It Works) ══ -->
-    <div class="block-head">
-      <div><div class="block-title">Quick Access</div></div>
-    </div>
-    <div class="quick-row">
-      <!-- Open Project Portal → existing projects.html -->
-      <a class="quick-link" onclick="goToProjects()">
-        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
-        <div class="ql-title">Open Project Portal</div>
-        <div class="ql-desc">All saved projects &amp; pipeline</div>
-      </a>
-      <!-- Open Site Map Tool → existing BESS create flow (same as tool card) -->
-      <a class="quick-link" onclick="openNewProjectModal('bess')" data-tool="editor">
-        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
-        <div class="ql-title">Open Site Map Tool</div>
-        <div class="ql-desc">Start a new BESS site map</div>
-      </a>
-      <!-- Build a Sales Proposal → sales-proposal.html -->
-      <a class="quick-link" href="sales-proposal.html" target="_blank" rel="noopener" data-tool="sales">
-        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
-        <div class="ql-title">Build a Sales Proposal</div>
-        <div class="ql-desc">Customer-facing proposal</div>
-      </a>
-      <!-- Site Investment Analysis → investment-analysis.html -->
-      <a class="quick-link" href="investment-analysis.html" target="_blank" rel="noopener" data-tool="investment">
-        <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div>
-        <div class="ql-title">Site Investment Analysis</div>
-        <div class="ql-desc">Investor-grade returns &amp; risk</div>
-      </a>
-    </div>
 
+    </div><!-- /.dash-block portfolio -->
+    <div class="dash-block" data-block="guides">
     <!-- ══ GUIDES & TRAINING (tutorial PDF + video walkthrough) ══ -->
     <div class="block-head" style="margin-top:26px">
       <div><div class="block-title">Guides &amp; Training</div></div>
@@ -1478,7 +2033,7 @@ window._omegaReady = function(){
       <a class="quick-link" href="guided-build-walkthrough.pdf" download>
         <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
         <div class="ql-title">Download Tutorial (PDF)</div>
-        <div class="ql-desc">SUN Energy Solutions walkthrough</div>
+        <div class="ql-desc">NextNRG-branded walkthrough</div>
       </a>
       <!-- Guided Build video tutorial -->
       <a class="quick-link" onclick="openVideoTutorial()">
@@ -1487,25 +2042,11 @@ window._omegaReady = function(){
         <div class="ql-desc">Watch the guided build video</div>
       </a>
     </div>
-      <div>
-        <div class="block-title">Dashboard</div>
-        <div class="block-sub">Your applications and recent projects. Browse the full catalog in the <a href="/marketplace.html" style="color:var(--cs-accent);font-weight:600">Marketplace</a>.</div>
-      </div>
-    </div>
 
-    <div class="platform-map" id="dash-apps">
+    </div><!-- /.dash-block guides -->
+    </div><!-- /#dev-fixed -->
+    </div><!-- /#dev-main -->
 
-      <!-- ───────────── MY APPLICATIONS (dashboard) ───────────── -->
-      <div class="pm-col wide">
-        <div class="pm-cat">My Applications</div>
-        <div class="pm-cat-sub">The tools you use most. Add more from the <a href="/marketplace.html" style="color:var(--cs-accent);font-weight:600">App Marketplace</a>.</div>
-        <div class="pm-grid" id="dash-grid"></div>
-      </div>
-
-    </div>
-
-    <!-- Toast for placeholder tiles -->
-    <div class="pm-toast" id="pm-toast"></div>
 
     </div><!-- /#developer-view -->
 
@@ -1559,38 +2100,6 @@ window._omegaReady = function(){
 
     </div><!-- /#partner-view -->
 
-    <!-- ════════════════════════════════════════════════════════════════════
-         TOOL IMPROVEMENT VIEW — live shared bug/feature board.
-         Reads & writes the SAME Firestore doc as the ClearSky admin console
-         (admin/improvements), so anything filed here appears in Tommy's
-         master log at tools.csebuilders.com instantly.
-         ════════════════════════════════════════════════════════════════════ -->
-    <div id="improve-view" style="display:none">
-      <div class="block-head">
-        <div>
-          <div class="block-title">Tool Improvement <span class="imp-count-badge" id="imp-count">0</span></div>
-          <div class="block-sub">File bugs, request features, and track what's shipped. Every entry is attributed to you and syncs to the ClearSky-OMEGA engineering log.</div>
-        </div>
-        <button class="imp-new-btn" onclick="openImproveModal()">+ New Item</button>
-      </div>
-
-      <div class="kpi-grid" id="imp-kpis" style="margin-top:12px"><!-- rendered by renderImprove() --></div>
-
-      <div class="imp-filters" id="imp-filters" style="margin:18px 0 10px"><!-- filter pills --></div>
-
-      <div class="table-wrap">
-        <table class="ptable imp-table">
-          <thead>
-            <tr>
-              <th>Item</th><th>Tool</th><th>Type</th><th>Priority</th>
-              <th>Status</th><th>Reporter</th><th>Assignee</th><th>Updated</th>
-            </tr>
-          </thead>
-          <tbody id="imp-body"><!-- rendered by renderImprove() --></tbody>
-        </table>
-        <div class="table-foot">Click a row to update status, priority, or assignee. Shared with the ClearSky engineering team.</div>
-      </div>
-    </div><!-- /#improve-view -->
 
     <!-- Platform footer: client workspace + ClearSky-OMEGA IP attribution -->
     <div style="margin-top:48px;padding-top:20px;border-top:1px solid var(--cs-border);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;font-size:11.5px;color:var(--cs-sub)">
@@ -1633,107 +2142,7 @@ window._omegaReady = function(){
   </div>
 </div>
 
-<!-- ══ TOOL IMPROVEMENT · FILE NEW ITEM MODAL ══ -->
-<div class="modal-bg" id="improve-modal">
-  <div class="modal" style="width:560px;max-width:94vw">
-    <h3>File a Tool Improvement</h3>
-    <div class="mrow">
-      <label>Title</label>
-      <input id="im-title" placeholder="e.g. Export button greys out on large sites">
-    </div>
-    <div class="mrow" style="display:flex;gap:12px">
-      <div style="flex:1">
-        <label>Tool</label>
-        <select id="im-tool">
-          <option>Editor / SiteMap Designer</option>
-          <option>Site Investment Analysis</option>
-          <option>BESS Pro Forma</option>
-          <option>Sales Proposal</option>
-          <option>Marketplace</option>
-          <option>Projects / Portal</option>
-          <option>Platform / Other</option>
-        </select>
-      </div>
-      <div style="flex:1">
-        <label>Type</label>
-        <select id="im-type">
-          <option value="bug">Bug</option>
-          <option value="feature">Feature</option>
-          <option value="improve">Improvement</option>
-          <option value="idea">Idea</option>
-        </select>
-      </div>
-    </div>
-    <div class="mrow" style="display:flex;gap:12px">
-      <div style="flex:1">
-        <label>Priority</label>
-        <select id="im-priority">
-          <option value="p1">P1 — Urgent</option>
-          <option value="p2" selected>P2 — High</option>
-          <option value="p3">P3 — Normal</option>
-          <option value="p4">P4 — Low</option>
-        </select>
-      </div>
-      <div style="flex:1">
-        <label>Assignee (optional)</label>
-        <input id="im-assignee" placeholder="e.g. Tommy">
-      </div>
-    </div>
-    <div class="mrow">
-      <label>Details</label>
-      <textarea id="im-detail" rows="4" placeholder="What happened, steps to reproduce, or what you'd like added…" style="width:100%;padding:12px 14px;border:1.5px solid var(--cs-border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cs-text);resize:vertical"></textarea>
-    </div>
-    <div class="mbtns">
-      <button class="mb-cancel" onclick="closeModalById('improve-modal')">Cancel</button>
-      <button class="mb-create" onclick="saveImprove()">File Item →</button>
-    </div>
-  </div>
-</div>
 
-<!-- ══ TOOL IMPROVEMENT · EDIT ITEM MODAL ══ -->
-<div class="modal-bg" id="improve-edit-modal">
-  <div class="modal" style="width:560px;max-width:94vw">
-    <h3>Update Item</h3>
-    <div id="ie-sub" style="font-size:12.5px;color:var(--cs-sub);margin:-4px 0 14px"></div>
-    <div class="mrow" style="display:flex;gap:12px">
-      <div style="flex:1">
-        <label>Status</label>
-        <select id="ie-status">
-          <option value="open">Open</option>
-          <option value="progress">In Progress</option>
-          <option value="review">In Review</option>
-          <option value="shipped">Shipped</option>
-          <option value="wontfix">Won't Fix</option>
-        </select>
-      </div>
-      <div style="flex:1">
-        <label>Priority</label>
-        <select id="ie-priority">
-          <option value="p1">P1 — Urgent</option>
-          <option value="p2">P2 — High</option>
-          <option value="p3">P3 — Normal</option>
-          <option value="p4">P4 — Low</option>
-        </select>
-      </div>
-    </div>
-    <div class="mrow">
-      <label>Assignee</label>
-      <input id="ie-assignee" placeholder="e.g. Tommy">
-    </div>
-    <div class="mrow">
-      <label>Add a comment (optional)</label>
-      <textarea id="ie-comment" rows="3" placeholder="Progress note, question, or resolution…" style="width:100%;padding:12px 14px;border:1.5px solid var(--cs-border);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cs-text);resize:vertical"></textarea>
-    </div>
-    <div id="ie-comments" style="margin-top:6px"></div>
-    <div class="mbtns" style="justify-content:space-between">
-      <button class="mb-cancel" onclick="deleteImprove()" style="color:var(--cs-red)">Delete</button>
-      <div style="display:flex;gap:10px">
-        <button class="mb-cancel" onclick="closeModalById('improve-edit-modal')">Cancel</button>
-        <button class="mb-create" onclick="saveImproveEdit()">Save →</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ══ CLAIM / ASSIGN OWNERSHIP MODAL ══ -->
 <div class="modal-bg" id="claim-modal">
@@ -1793,6 +2202,17 @@ window._omegaReady = function(){
         <div class="acct-field" style="margin-top:14px">
           <label>Display name</label>
           <input id="acct-display-name" type="text" maxlength="60" placeholder="e.g. Tommy Gilmer" onkeydown="if(event.key==='Enter')saveProfile()">
+        </div>
+        <div class="acct-field">
+          <label>Department</label>
+          <select id="acct-department" style="width:100%;padding:11px 13px;border:1.5px solid var(--cs-border);border-radius:10px;font:400 14px 'DM Sans',sans-serif;color:var(--cs-text);background:#fff;outline:none">
+            <option value="">— Select department —</option>
+            <option value="bizdev">Business Development</option>
+            <option value="engineering">Engineering</option>
+            <option value="procurement">Procurement</option>
+            <option value="finance">Finance</option>
+            <option value="admin">Admin</option>
+          </select>
         </div>
         <button class="acct-btn" id="acct-profile-btn" onclick="saveProfile()">Save profile</button>
         <div class="acct-msg" id="acct-profile-msg"></div>
@@ -1865,6 +2285,28 @@ window._omegaReady = function(){
 var WORKSPACES = {
 
   // ─────────────── DEVELOPER (ENTERPRISE CLIENT) TENANTS ───────────────
+
+  // OMEGA — internal ClearSky SALES DEMO workspace. Sales reps sign in with
+  // @clearsky-usa.com; orgId is clearsky-usa.com so all demo projects scope to
+  // that domain (isolated from every client tenant and from csebuilders.com dev
+  // data). Enterprise tier => applyToolLocks() returns early and ALL tools are
+  // unlocked, so reps can show the full OMEGA suite. Exports carry the OMEGA brand.
+  'clearsky-usa.com': {
+    type: 'developer',
+    orgId: 'clearsky-usa.com',
+    clientName: 'OMEGA',
+    accountTier: 'Enterprise',
+    tierLevel: 3,                              // Enterprise — every tool unlocked
+    allowedDomain: 'clearsky-usa.com',         // only @clearsky-usa.com sales reps
+    requiredTools: ['editor','investment'],    // pinned defaults; full suite available
+    exportBrand: {
+      logo: '/omega-logo.png',                 // OMEGA mark on customer-facing exports
+      name: 'OMEGA',
+      poweredBy: 'Powered by ClearSky-OMEGA',
+      platformCopyright: '© 2026 ClearSky Energy Solutions LLC · ClearSky-OMEGA platform'
+    }
+  },
+
   // SUN Energy Solutions — full-suite developer tenant. Users sign in with
   // @sunesol.com; their orgId is sunesol.com so every project/team doc scopes
   // to that domain (matches Firestore rules' userOrg()). Enterprise tier =>
@@ -1877,7 +2319,6 @@ var WORKSPACES = {
     tierLevel: 3,                              // Enterprise — every tool unlocked
     allowedDomain: 'sunesol.com',
     requiredTools: ['editor','investment'],    // pinned/non-removable defaults
-    logo: '/sunesol-logo-color.png',           // client chip logo (topbar) — matches marketplace
     exportBrand: {
       logo: '/sunesol-logo-color.png',
       name: 'SUN Energy Solutions',
@@ -1906,12 +2347,31 @@ var WORKSPACES = {
     }
   },
 
+  // SPATCO Energy Solutions — ENTERPRISE account. Their custom EV/project
+  // estimate tool + the sitemap editor are MANDATORY (pinned, non-removable).
+  'spatco.com': {
+    type: 'developer',
+    orgId: 'spatco.com',
+    clientName: 'SPATCO Energy Solutions',
+    accountTier: 'Enterprise',
+    tierLevel: 3,                              // Enterprise — sees everything
+    allowedDomain: 'spatco.com',
+    requiredTools: ['editor','spatco_ev'],     // mandatory, pinned, non-removable
+    exportBrand: {
+      logo: '/spatco-logo.jpg',
+      name: 'SPATCO Energy Solutions',
+      poweredBy: 'Powered by ClearSky-OMEGA',
+      platformCopyright: '© 2025 ClearSky Energy Solutions LLC · ClearSky-OMEGA platform'
+    }
+  },
+
   'nextnrg.com': {
     type: 'developer',
     orgId: 'nextnrg.com',           // hard tenant lock — scopes all data
     clientName: 'NextNRG',
     accountTier: 'Enterprise',
     allowedDomain: 'nextnrg.com',   // only @nextnrg.com may use this workspace
+    requiredTools: ['editor','investment','sales'],    // BESS Site Map + Investment + Sales Proposal always pinned
     exportBrand: {
       logo: '/nextnrg-logo.png',    // client logo on customer-facing exports
       name: 'NextNRG',
@@ -1987,6 +2447,24 @@ function resolveWorkspace(email){
   return (dom && WORKSPACES.hasOwnProperty(dom)) ? WORKSPACES[dom] : null;
 }
 
+// This is the single-tenant OMEGA sales-demo portal: every legitimate user
+// signs in with @clearsky-usa.com. We use this to pre-scope the Google account
+// chooser (the `hd` hint) so reps only see their ClearSky sales account, and to
+// pre-fill the email helper text. It does NOT replace the real gate — the
+// authoritative check is still resolveWorkspace() in onAuthStateChanged below.
+var PORTAL_DEFAULT_DOMAIN = 'nextnrg.com';
+
+// ── DEPLOYMENT LOCK ──────────────────────────────────────────────────────
+// This deployment (nextnrg.csebuilders.com) ALWAYS runs as the NextNRG
+// workspace, regardless of which recognized admin email signs in. So a
+// ClearSky admin (@clearsky-usa.com) previewing the site still sees NextNRG
+// branding and NextNRG's data — never the OMEGA demo. Set to null on a
+// multi-tenant deployment to fall back to pure email-domain resolution.
+var FORCE_WORKSPACE_KEY = 'sunesol.com';
+// Admin domains allowed to view this locked deployment in addition to the
+// tenant's own domain (e.g. ClearSky staff previewing the client portal).
+var LOCK_ADMIN_DOMAINS = ['clearsky-usa.com', 'csebuilders.com'];
+
 // Active workspace for THIS session — set at sign-in by resolveWorkspace().
 // Defaults to null; every consumer must handle "no workspace yet".
 var WORKSPACE = null;
@@ -2016,8 +2494,24 @@ auth.onAuthStateChanged(user => {
     const email = user.email || '';
     // Resolve which registered workspace this user belongs to, by email domain.
     var ws = resolveWorkspace(email);
+
+    // ── DEPLOYMENT LOCK ──
+    // Force this deployment to the NextNRG workspace. Allow the tenant's own
+    // domain plus any admin domains listed in LOCK_ADMIN_DOMAINS; reject the rest.
+    if (FORCE_WORKSPACE_KEY && WORKSPACES[FORCE_WORKSPACE_KEY]) {
+      var _dom = domainOf(email);
+      var _forced = WORKSPACES[FORCE_WORKSPACE_KEY];
+      var _allowed = (_dom === _forced.allowedDomain) ||
+                     (LOCK_ADMIN_DOMAINS.indexOf(_dom) >= 0);
+      if (_allowed) {
+        ws = _forced;   // lock to NextNRG regardless of which admin signed in
+      } else {
+        ws = null;      // unknown/unauthorized domain
+      }
+    }
+
     if (!ws) {
-      showAuthErr('No ClearSky-OMEGA workspace is provisioned for @' + (domainOf(email) || 'your domain') + '. Contact your administrator to be added.');
+      showAuthErr('This workspace is restricted to @' + PORTAL_DEFAULT_DOMAIN + ' accounts. You signed in as ' + (email || 'an unrecognized account') + '. Please sign in with your @' + PORTAL_DEFAULT_DOMAIN + ' account.');
       auth.signOut();
       return;
     }
@@ -2028,7 +2522,7 @@ auth.onAuthStateChanged(user => {
     currentOrg = ws.orgId;          // scopes this user's own data (developer) or partner org
 
     showApp(user);
-    applyToolLocks();   // gate tools by workspace.unlockedTools (Solela = editor + investment)
+    applyToolLocks();   // gate tools by workspace.unlockedTools (demo Enterprise = all unlocked)
 
     // Route by tenant type:
     //  • developer → their own project portfolio (single-org roll-up)
@@ -2082,21 +2576,17 @@ function refreshGreeting(user) {
 
 function showApp(user) {
   document.getElementById('auth-screen').style.display = 'none';
-  document.getElementById('app').style.display = 'flex';
+  document.getElementById('app').style.display = 'flex';   // flex = sidebar + app-body shell
 
   var ws = WORKSPACE || {};
   var isPartner = ws.type === 'partner';
 
   // ── Brand the platform chrome from the resolved workspace ──
-  // Match the marketplace: render the client LOGO image in the chip when the
-  // workspace has one (falling back to the client name as text). We set the
-  // chip container's innerHTML rather than requiring a pre-existing <img>.
-  var chipBox = document.getElementById('tb-client-chip');
-  if (chipBox){
-    var wsLogo = ws.logo || (ws.exportBrand && ws.exportBrand.logo) || '';
-    chipBox.innerHTML = wsLogo
-      ? '<img src="' + wsLogo + '" alt="' + (ws.clientName || '') + '" onerror="this.parentNode.innerHTML=\'<span id=&quot;tb-client-logo&quot; class=&quot;tb-client-txt&quot;>' + (ws.clientName || '') + '</span>\'">'
-      : '<span id="tb-client-logo" class="tb-client-txt">' + (ws.clientName || '') + '</span>';
+  var chip = document.getElementById('tb-client-logo');
+  if (chip){
+    var logo = (ws.exportBrand && ws.exportBrand.logo) || '';
+    if (logo && chip.tagName === 'IMG'){ chip.src = logo; chip.alt = ws.clientName || ''; chip.style.display=''; }
+    else { chip.textContent = ws.clientName || ''; chip.style.display=''; }
   }
   var badge = document.getElementById('tb-ent-badge');
   if (badge){
@@ -2133,27 +2623,24 @@ function showApp(user) {
     renderDashboard();  // developer: single-org roll-up (existing behavior)
   }
 
-  // STANDARD: handle deep-link query params from other pages (projects.html /
-  // marketplace.html nav tabs). ?new=1 opens the create-project modal;
-  // ?view=improve opens the Tool Improvement board. We clear the param after so
-  // a refresh won't re-trigger. Developer tenants only.
+  // If we arrived here from the Projects page "+ New Project" button
+  // (which navigates to /?new=1 because the create-project modal lives on this
+  // page), auto-open the new-project modal. Developer tenants only; partners
+  // don't create projects. We clear the query param so a refresh won't re-open.
   try {
-    var _q = window.location.search;
-    var _wantNew = /[?&]new=1(&|$)/.test(_q);
-    var _wantImprove = /[?&]view=improve(&|$)/.test(_q);
-    if (!isPartner && (_wantNew || _wantImprove)) {
+    if (!isPartner && /[?&]new=1(&|$)/.test(window.location.search)) {
       if (window.history && window.history.replaceState) {
         window.history.replaceState({}, document.title, window.location.pathname);
       }
-      if (_wantNew && typeof openNewProjectModal === 'function') {
+      if (typeof openNewProjectModal === 'function') {
         setTimeout(function(){ openNewProjectModal('bess'); }, 60);
-      } else if (_wantImprove && typeof showImproveView === 'function') {
-        setTimeout(function(){ showImproveView(); }, 60);
       }
     }
   } catch(e){ /* non-fatal: just skip auto-open */ }
-  // Warm the shared engineering log so the Tool Improvement tab is instant.
-  if (typeof _prefetchImprovements === 'function') _prefetchImprovements();
+
+  // Restore this user's saved dashboard layout now that auth + workspace are ready.
+  try { if (window.DASH && DASH.mount) DASH.mount(); } catch(e){}
+  try { if (window.TASKFLOW && TASKFLOW.mount) TASKFLOW.mount(); } catch(e){}
 }
 
 // Developer tenant: keep the existing single-org command center.
@@ -2164,7 +2651,7 @@ function applyDeveloperChrome(ws){
   var posEl = document.getElementById('dash-positioning');
   if (posEl) { posEl.innerHTML = 'Engineering &amp; permit-set generation for BESS and EV infrastructure, powered by ClearSky-OMEGA. Questions or to unlock additional modules, email <a href="mailto:dev@clearsky-usa.com" style="color:var(--cs-accent);font-weight:600">dev@clearsky-usa.com</a>.'; }
   setDisplay('partner-view', 'none');
-  setDisplay('developer-view', 'block');
+  setDisplay('developer-view', 'grid');   // grid = rail + dev-main two-column layout
   if (typeof renderPortalApps === 'function') renderPortalApps(ws);
 }
 
@@ -2190,7 +2677,12 @@ function signInWithGoogle() {
   btn.disabled = true;
   btn.textContent = 'Signing in…';
   const provider = new firebase.auth.GoogleAuthProvider();
-  if (CFG.allowedDomain && CFG.allowedDomain.length) provider.setCustomParameters({ hd: CFG.allowedDomain });
+  // Scope the Google account chooser to this portal's domain so reps land on
+  // their @clearsky-usa.com account. Prefer the portal default; fall back to
+  // CFG.allowedDomain if one is ever set. `hd` is only a UI hint — Google does
+  // not hard-enforce it, so onAuthStateChanged still verifies the domain.
+  var hdHint = PORTAL_DEFAULT_DOMAIN || CFG.allowedDomain;
+  if (hdHint && hdHint.length) provider.setCustomParameters({ hd: hdHint, prompt: 'select_account' });
   auth.signInWithPopup(provider).catch(err => {
     showAuthErr(err.message);
     btn.disabled = false;
@@ -2524,7 +3016,8 @@ function renderPortfolioTable(rows){
     var ownerTxt = r.ownerEmail ? (r.ownerName || r.ownerEmail.split('@')[0]) : 'Unassigned';
     var ownerCls = !r.ownerEmail ? 'owner-none' : (r.ownerEmail===_me ? 'owner-me' : 'owner-other');
     return '<tr'+openAttr+'>'+
-      '<td class="site-nm">'+escHtml(r.name)+'</td>'+
+      '<td class="site-nm">'+escHtml(r.name)+
+        (r.id ? ' <button class="tf-assign-btn" title="Open task flow" onclick="event.stopPropagation();TASKFLOW.openForProject(\''+r.id+'\',\''+escHtml((r.name||'').replace(/\x27/g,""))+'\')">Task Flow</button>' : '')+'</td>'+
       '<td><span class="owner-chip '+ownerCls+'">'+escHtml(ownerTxt)+'</span></td>'+
       '<td>'+escHtml(r.utility||'—')+'</td>'+
       '<td>'+escHtml(r.program||'—')+'</td>'+
@@ -2566,6 +3059,12 @@ async function computeLiveRollup(){
               storageQuotedMwh:0, storageSubmittedMwh:0, storageOnlineMwh:0,
               portfolioCapex:0, modeledIncentives:0, projectedRevenue:0, operatingAssets:0 };
     var rows = [];
+    // ── Chart aggregations (real data, filled in the loop below) ──
+    var byType = {};
+    var byOwnerRev = {};
+    var capexByProj = [];
+    var storageByStage = {};
+    if (typeof STAGE_KEYS!=='undefined'){ STAGE_KEYS.forEach(function(s){ storageByStage[s]=0; }); }
     var myEmail = _meEmail();
     var unownedCount = 0;   // projects with no ownerEmail (legacy) — surfaced under Company view
     snap.forEach(function(doc){
@@ -2585,6 +3084,15 @@ async function computeLiveRollup(){
       if (d.quoted){ k.sitesQuoted++; k.storageQuotedMwh += mwh; }
       if (idx >= SUBMITTED_FROM_INDEX){ k.sitesSubmitted++; k.storageSubmittedMwh += mwh; }
       if (idx === ONLINE_INDEX){ k.sitesOnline++; k.storageOnlineMwh += mwh; k.operatingAssets++; }
+      // chart datasets (real per-project data)
+      var _ty = (d.type||'other').toLowerCase();
+      byType[_ty] = (byType[_ty]||0) + 1;
+      var _rev = Number(d.annualRevenue)||0;
+      var _own = d.ownerName || (owner ? owner.split('@')[0] : 'Unassigned');
+      if (_rev>0){ byOwnerRev[_own] = (byOwnerRev[_own]||0) + _rev; }
+      var _cx = Number(d.capex)||0;
+      if (_cx>0){ capexByProj.push({ name:(d.name||'Untitled'), capex:_cx }); }
+      storageByStage[stage] = (storageByStage[stage]||0) + mwh;
       rows.push({ id:doc.id, name:d.name||'Untitled', utility:d.utility||'—', program:d.program||'—',
                   stage:stage, bess: kwh ? (mwh.toFixed(1)+' MWh') : '—',
                   capex:fmtMoney(d.capex), incentive:fmtMoney(d.incentive),
@@ -2596,6 +3104,7 @@ async function computeLiveRollup(){
     k.storageOnlineMwh = +k.storageOnlineMwh.toFixed(1);
     renderKpis(k); renderPipeline(counts); renderPortfolioTable(rows);
     renderWidgets(k, counts);
+    renderCharts({ byType:byType, byOwnerRev:byOwnerRev, capexByProj:capexByProj, storageByStage:storageByStage, counts:counts, k:k });
     _updateScopeBar(rows.length, unownedCount);
     /* Activity feed from the same rows (most-recently-touched first if available). */
     var feed = rows.slice(0,6).map(function(r){
@@ -2693,238 +3202,6 @@ async function claimProject(id, mode){
     alert('Could not update ownership: ' + e.message);
   }
 }
-
-/* ══════════════════════════════════════════════════════════════════════
-   TOOL IMPROVEMENT BOARD  —  live shared bug/feature tracker.
-   Reads & writes Firestore doc  admin/improvements  ({ items:[...] }) — the
-   SAME doc the ClearSky admin console (tools.csebuilders.com) reads. Anything
-   a SUN user files here lands in Tommy's master engineering log immediately.
-   Item schema matches the console exactly:
-     { id, title, tool, type, priority, status, reporter, reporterEmail,
-       assignee, detail, at, comments:[{by,text,at}] }
-   ══════════════════════════════════════════════════════════════════════ */
-var IMP_ITEMS = [];          // local mirror of admin/improvements .items
-var IMP_LOADED = false;
-var impFilter = 'all';
-var editingImpId = null;
-
-/* Small self-contained helpers (portal has no timeAgo/truncate/kpiHtml). */
-function _impEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function _impTrunc(s,n){ s=String(s||''); return s.length>n ? s.slice(0,n-1)+'…' : s; }
-function _impTimeAgo(ts){
-  if(!ts) return '—';
-  var d=Date.now()-ts, m=Math.floor(d/60000), h=Math.floor(d/3600000), dy=Math.floor(d/86400000);
-  if(m<1) return 'just now'; if(m<60) return m+'m ago'; if(h<24) return h+'h ago';
-  if(dy<30) return dy+'d ago'; return new Date(ts).toLocaleDateString();
-}
-function _impToast(msg){
-  var t=document.getElementById('pm-toast');
-  if(!t){ return; }
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 2200);
-}
-function impTypeLabel(t){ return {bug:'Bug',feature:'Feature',improve:'Improvement',idea:'Idea'}[t]||t; }
-function impTypeChip(t){ return {bug:'red2',feature:'blue2',improve:'gold2',idea:'gray'}[t]||'gray'; }
-function impPriLabel(p){ return {p1:'P1',p2:'P2',p3:'P3',p4:'P4'}[p]||p; }
-function impStatusLabel(s){ return {open:'Open',progress:'In Progress',review:'In Review',shipped:'Shipped',wontfix:"Won't Fix"}[s]||s; }
-function impStatusDot(s){
-  var map={open:'building',progress:'degraded',review:'building',shipped:'up',wontfix:'paused'};
-  return '<span class="sdot '+(map[s]||'paused')+'"><i></i>'+impStatusLabel(s)+'</span>';
-}
-function impPriChip(p){
-  var cls={p1:'red',p2:'gold',p3:'blue',p4:'gray'}[p]||'gray';
-  return '<span class="chip pri-'+cls+'">'+impPriLabel(p)+'</span>';
-}
-function _impKpiHtml(cards){
-  return cards.map(function(c){
-    return '<div class="kpi '+(c.cls||'')+'"><div class="kpi-label">'+c.l+'</div>'+
-           '<div class="kpi-val">'+c.v+'</div></div>';
-  }).join('');
-}
-
-/* ── LOAD from Firestore (admin/improvements) ── */
-function loadImprovements(cb){
-  if (!db){ IMP_ITEMS=[]; IMP_LOADED=true; if(cb)cb(); return; }
-  db.collection('admin').doc('improvements').get().then(function(doc){
-    IMP_ITEMS = (doc && doc.exists && doc.data() && doc.data().items) ? doc.data().items.slice() : [];
-    IMP_LOADED = true;
-    if (cb) cb();
-  })['catch'](function(e){
-    console.warn('Improvements load failed:', e);
-    IMP_ITEMS=[]; IMP_LOADED=true; if(cb)cb();
-  });
-}
-/* ── PERSIST the whole array back (last-write-wins, same as console) ── */
-function persistImprovements(){
-  if (!db || !currentUser) return Promise.resolve();
-  return db.collection('admin').doc('improvements').set({ items: IMP_ITEMS }, {merge:true})['catch'](function(e){
-    console.warn('Improvements persist failed:', e);
-    alert('Could not save to the engineering log: ' + e.message);
-  });
-}
-
-/* ── VIEW SWITCHING (tab ↔ dashboard) ── */
-function _setImpTabActive(on){
-  var tab=document.getElementById('tab-improve');
-  if(tab){ if(on) tab.classList.add('active'); else tab.classList.remove('active'); }
-  // The Portal (dashboard) tab is the first .tb-tab; toggle its active state inversely.
-  var portalTab=document.querySelector('.tb-nav .tb-tab');
-  if(portalTab){ if(on) portalTab.classList.remove('active'); else portalTab.classList.add('active'); }
-}
-function showImproveView(){
-  setDisplay('dash-hero','none');       // hide the portfolio hero/intro
-  setDisplay('dash-apps','none');       // hide "My Applications" (escapes #developer-view in the DOM)
-  setDisplay('developer-view','none');
-  setDisplay('partner-view','none');
-  setDisplay('improve-view','block');
-  _setImpTabActive(true);
-  window.scrollTo(0,0);
-  if (!IMP_LOADED){ loadImprovements(renderImprove); } else { renderImprove(); }
-}
-function showDashboardView(){
-  setDisplay('improve-view','none');
-  setDisplay('dash-hero','block');      // restore the portfolio hero/intro
-  var ws = window.OMEGA_WORKSPACE;
-  if (ws && ws.type==='partner'){ setDisplay('partner-view','block'); }
-  else { setDisplay('developer-view','block'); setDisplay('dash-apps','block'); }  // restore My Applications
-  _setImpTabActive(false);
-}
-
-/* ── RENDER ── */
-function renderImprove(){
-  var arr = IMP_ITEMS;
-  document.getElementById('imp-count').textContent = arr.length;
-  var open=0, prog=0, shipped=0, bugs=0;
-  for (var i=0;i<arr.length;i++){
-    var s=arr[i].status;
-    if (s==='open') open++; else if (s==='progress'||s==='review') prog++; else if (s==='shipped') shipped++;
-    if (arr[i].type==='bug' && s!=='shipped' && s!=='wontfix') bugs++;
-  }
-  document.getElementById('imp-kpis').innerHTML = _impKpiHtml([
-    { l:'Open Items', v:open, cls:'' },
-    { l:'In Progress', v:prog, cls:'blue' },
-    { l:'Open Bugs', v:bugs, cls:(bugs>0?'red':'') },
-    { l:'Shipped', v:shipped, cls:'green' }
-  ]);
-
-  var filters=[['all','All'],['open','Open'],['progress','In Progress'],['shipped','Shipped'],['bug','Bugs'],['feature','Features']];
-  var fh='';
-  for (var f=0;f<filters.length;f++){ fh+='<button class="fpill'+(impFilter===filters[f][0]?' on':'')+'" onclick="setImpFilter(&quot;'+filters[f][0]+'&quot;)">'+filters[f][1]+'</button>'; }
-  document.getElementById('imp-filters').innerHTML=fh;
-
-  var order={open:0,progress:1,review:2,shipped:4,wontfix:5};
-  var sorted = arr.slice().sort(function(a,b){
-    var oa=order[a.status]==null?3:order[a.status], ob=order[b.status]==null?3:order[b.status];
-    if (oa!==ob) return oa-ob;
-    if (a.priority!==b.priority) return a.priority<b.priority?-1:1;
-    return (b.at||0)-(a.at||0);
-  });
-
-  var rows='';
-  for (var j=0;j<sorted.length;j++){
-    var it=sorted[j];
-    if (impFilter==='open' && it.status!=='open') continue;
-    if (impFilter==='progress' && !(it.status==='progress'||it.status==='review')) continue;
-    if (impFilter==='shipped' && it.status!=='shipped') continue;
-    if (impFilter==='bug' && it.type!=='bug') continue;
-    if (impFilter==='feature' && it.type!=='feature') continue;
-    rows += '<tr onclick="openImproveEdit(&quot;'+it.id+'&quot;)">'
-      + '<td class="imp-title-cell">'+_impEsc(it.title)+(it.detail?'<div class="imp-detail">'+_impEsc(_impTrunc(it.detail,70))+'</div>':'')+'</td>'
-      + '<td class="imp-sub">'+_impEsc(it.tool||'—')+'</td>'
-      + '<td><span class="chip '+impTypeChip(it.type)+'">'+impTypeLabel(it.type)+'</span></td>'
-      + '<td>'+impPriChip(it.priority)+'</td>'
-      + '<td>'+impStatusDot(it.status)+'</td>'
-      + '<td class="imp-sub">'+_impEsc(it.reporter||'—')+'</td>'
-      + '<td class="imp-sub">'+_impEsc(it.assignee||'—')+'</td>'
-      + '<td class="imp-sub">'+_impTimeAgo(it.at)+'</td></tr>';
-  }
-  document.getElementById('imp-body').innerHTML = rows || '<tr><td colspan="8" style="text-align:center;padding:30px;color:var(--cs-sub)">No items match this filter.</td></tr>';
-}
-function setImpFilter(f){ impFilter=f; renderImprove(); }
-
-/* ── FILE NEW ── */
-function _impMeName(){ return _meName ? _meName() : 'You'; }
-function _impMeEmail(){ return _meEmail ? _meEmail() : ''; }
-function closeModalById(id){ var el=document.getElementById(id); if(el) el.classList.remove('on'); }
-function openImproveModal(){
-  document.getElementById('im-title').value='';
-  document.getElementById('im-tool').value='Editor / SiteMap Designer';
-  document.getElementById('im-type').value='bug';
-  document.getElementById('im-priority').value='p2';
-  document.getElementById('im-assignee').value='';
-  document.getElementById('im-detail').value='';
-  document.getElementById('improve-modal').classList.add('on');
-}
-function saveImprove(){
-  var title=document.getElementById('im-title').value.trim();
-  if(!title){ alert('Enter a title.'); return; }
-  var obj={ id:'i-'+Date.now(),
-    title:title,
-    tool:document.getElementById('im-tool').value,
-    type:document.getElementById('im-type').value,
-    priority:document.getElementById('im-priority').value,
-    status:'open',
-    reporter:_impMeName(), reporterEmail:_impMeEmail(),
-    assignee:document.getElementById('im-assignee').value.trim(),
-    detail:document.getElementById('im-detail').value.trim(),
-    at:Date.now(), comments:[] };
-  IMP_ITEMS.push(obj);
-  persistImprovements().then(function(){
-    closeModalById('improve-modal'); renderImprove(); _impToast('Item filed — synced to engineering log.');
-  });
-}
-
-/* ── EDIT / COMMENT / DELETE ── */
-function _findImp(id){ for(var i=0;i<IMP_ITEMS.length;i++){ if(IMP_ITEMS[i].id===id) return IMP_ITEMS[i]; } return null; }
-function openImproveEdit(id){
-  var it=_findImp(id); if(!it) return;
-  editingImpId=id;
-  document.getElementById('ie-sub').textContent = it.title + ' · ' + (it.tool||'—') + ' · filed by ' + (it.reporter||'—');
-  document.getElementById('ie-status').value=it.status||'open';
-  document.getElementById('ie-priority').value=it.priority||'p2';
-  document.getElementById('ie-assignee').value=it.assignee||'';
-  document.getElementById('ie-comment').value='';
-  // Render existing comment thread.
-  var cwrap=document.getElementById('ie-comments'), ch='';
-  if (it.comments && it.comments.length){
-    for (var i=0;i<it.comments.length;i++){
-      var c=it.comments[i];
-      ch += '<div class="imp-cmt"><span class="by">'+_impEsc(c.by||'—')+'</span><span class="when">'+_impTimeAgo(c.at)+'</span><div>'+_impEsc(c.text||'')+'</div></div>';
-    }
-  }
-  cwrap.innerHTML = ch;
-  document.getElementById('improve-edit-modal').classList.add('on');
-}
-function saveImproveEdit(){
-  var it=_findImp(editingImpId); if(!it) return;
-  it.status=document.getElementById('ie-status').value;
-  it.priority=document.getElementById('ie-priority').value;
-  it.assignee=document.getElementById('ie-assignee').value.trim();
-  it.at=Date.now();
-  var c=document.getElementById('ie-comment').value.trim();
-  if (c){ if(!it.comments) it.comments=[]; it.comments.push({ by:_impMeName(), text:c, at:Date.now() }); }
-  persistImprovements().then(function(){
-    closeModalById('improve-edit-modal'); renderImprove(); _impToast('Item updated.');
-  });
-}
-function deleteImprove(){
-  if (!confirm('Delete this item? This removes it from the shared engineering log.')) return;
-  IMP_ITEMS = IMP_ITEMS.filter(function(x){ return x.id!==editingImpId; });
-  persistImprovements().then(function(){
-    closeModalById('improve-edit-modal'); renderImprove(); _impToast('Item deleted.');
-  });
-}
-
-/* Backdrop-close for the two improvement modals. */
-(function(){
-  ['improve-modal','improve-edit-modal'].forEach(function(id){
-    var m=document.getElementById(id);
-    if(m) m.addEventListener('click', function(e){ if(e.target===this) this.classList.remove('on'); });
-  });
-})();
-
-/* Prefetch the log shortly after sign-in so the tab badge/board is instant. */
-function _prefetchImprovements(){ if (currentUser && !IMP_LOADED) loadImprovements(function(){}); }
 
 /* ══════════════════════════════════════════════════════════════════════
    TEAM HUB — to-dos, company messages, direct messages, current users.
@@ -3258,10 +3535,41 @@ function renderConvoList(){
       +     '<div class="convo-item-last">'+sub+'</div></div></div>';
   }
   box.innerHTML = h;
+  _paintSidebarDMs();
 }
 
+// Mirror the conversation list into the left sidebar (#sn-dm-list)
+function _paintSidebarDMs(){
+  var side = document.getElementById('sn-dm-list'); if(!side) return;
+  if (!_convos.length){ side.innerHTML=''; return; }
+  var h='';
+  for (var i=0;i<_convos.length;i++){
+    var c=_convos[i], on=(c.id===_convoOpen);
+    var name=_convoTitle(c); var ini=(name||'?').charAt(0).toUpperCase();
+    h += '<a class="sn-dm-item'+(on?' active':'')+'" href="#" data-convo="'+c.id+'">'
+      +  '<span class="dm-ava">'+ini+'</span><span>'+escHtml(name)+'</span></a>';
+  }
+  side.innerHTML=h;
+}
+
+// Delegated click for sidebar DM items (robust vs inline onclick encoding).
+if (!window.__snDmWired){
+  window.__snDmWired = true;
+  document.addEventListener('click', function(e){
+    var it = e.target && e.target.closest ? e.target.closest('.sn-dm-item') : null;
+    if (it){ e.preventDefault(); var id=it.getAttribute('data-convo'); if(id) openConvo(id); }
+  });
+}
 function openConvo(id){
   _convoOpen = id;
+  if (window.swSelect) swSelect('msgs');
+  _snHighlight('chat');
+  // open the drawer + scrim (clicking a DM should pop the panel out)
+  var sw=document.getElementById('sw'), scrim=document.getElementById('sw-scrim');
+  var title=document.getElementById('sw-drawer-title'); if(title) title.textContent='Messages';
+  if (sw) sw.classList.add('sw-open');
+  if (scrim) scrim.classList.add('on');
+  document.body.style.overflow='hidden';
   renderConvoList();
   var c = null; for (var i=0;i<_convos.length;i++){ if(_convos[i].id===id){ c=_convos[i]; break; } }
   if (!c) return;
@@ -3454,6 +3762,8 @@ function openAccount(){
   var myMember = _memberByEmail(_meEmail()) || {};
   var savedName = (_myProfile && _myProfile.name) || myMember.name || (u.displayName || '');
   document.getElementById('acct-display-name').value = savedName || '';
+  var deptSel = document.getElementById('acct-department');
+  if (deptSel) deptSel.value = (_myProfile && _myProfile.department) || myMember.department || '';
   _acctPendingPhoto = null;   // reset any unsaved pick
   renderAcctAvatar((_myProfile && _myProfile.photo) || myMember.photo || '', savedName || (u.email||''));
   _profileMsg('', '');
@@ -3539,7 +3849,9 @@ function saveProfile(){
 
   var btn = document.getElementById('acct-profile-btn'); btn.disabled = true; _profileMsg('Saving…', '');
   var id = currentOrg + '__' + _meEmail();
-  var payload = { orgId: currentOrg, email: _meEmail(), name: name,
+  var deptSel = document.getElementById('acct-department');
+  var dept = deptSel ? deptSel.value : '';
+  var payload = { orgId: currentOrg, email: _meEmail(), name: name, department: dept,
                   lastSeen: firebase.firestore.FieldValue.serverTimestamp() };
   if (_acctPendingPhoto === '__REMOVE__') payload.photo = '';
   else if (_acctPendingPhoto) payload.photo = _acctPendingPhoto;
@@ -3548,6 +3860,7 @@ function saveProfile(){
     // update local cache so the rest of the UI reflects it immediately
     if (!_myProfile) _myProfile = {};
     _myProfile.name = name;
+    _myProfile.department = dept;
     if (_acctPendingPhoto === '__REMOVE__') _myProfile.photo = '';
     else if (_acctPendingPhoto) _myProfile.photo = _acctPendingPhoto;
     _acctPendingPhoto = null;
@@ -3970,7 +4283,7 @@ if (document.readyState === 'loading') {
 
 /* ══════════════════════════════════════════════════════════════════════
    TOOL ACCESS GATING — locks tiles not in workspace.unlockedTools and shows
-   an "Upgrade" overlay. Editor + underwriting stay live for Solela.
+   an "Upgrade" overlay. (Demo tenant is Enterprise — all tools stay live.)
    ══════════════════════════════════════════════════════════════════════ */
 function applyToolLocks(){
   var ws = window.OMEGA_WORKSPACE;
@@ -3989,7 +4302,15 @@ function applyToolLocks(){
   for(var t=0;t<tiles.length;t++){
     var tile = tiles[t];
     var key = tile.getAttribute('data-tool');
-    if(unlocked[key]){ continue; }           // live tool — leave it
+    if(unlocked[key]){
+      // Live tool: ensure its link carries the tenant org so it opens
+      // branded to THIS tenant, not the generic tools.csebuilders root.
+      if (tile.tagName === "A" && tile.getAttribute("href")){
+        var _h = tile.getAttribute("href");
+        if (_h && _h.charAt(0) !== "#" && _h.indexOf("javascript:") !== 0){ tile.setAttribute("href", _withOrg(_h)); }
+      }
+      continue;
+    }
     lockTile(tile, key);
   }
 }
@@ -4041,8 +4362,8 @@ function showUpgradeModal(toolName){
         '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'+
       '</div>'+
       '<div style="font-size:19px;font-weight:700;color:#08384F;margin-bottom:8px">Unlock '+esc2(toolName)+'</div>'+
-      '<div style="font-size:13px;color:#5A7180;line-height:1.55;margin-bottom:22px">Your Solela workspace currently includes the <b>Site Designer &amp; permit engine</b>. '+esc2(toolName)+' is part of the full ClearSky-OMEGA suite \u2014 financial modeling, investor underwriting, procurement, and more.</div>'+
-      '<a href="mailto:dev@clearsky-usa.com?subject=Solela%20\u2014%20Unlock%20'+encodeURIComponent(toolName)+'" style="display:block;background:linear-gradient(135deg,#006F9A,#00A9A4);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:13px;border-radius:10px;margin-bottom:10px">Request access</a>'+
+      '<div style="font-size:13px;color:#5A7180;line-height:1.55;margin-bottom:22px">Your OMEGA demo workspace currently includes the <b>Site Designer &amp; permit engine</b>. '+esc2(toolName)+' is part of the full ClearSky-OMEGA suite \u2014 financial modeling, investor underwriting, procurement, and more.</div>'+
+      '<a href="mailto:dev@clearsky-usa.com?subject=OMEGA%20Demo%20\u2014%20Unlock%20'+encodeURIComponent(toolName)+'" style="display:block;background:linear-gradient(135deg,#006F9A,#00A9A4);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:13px;border-radius:10px;margin-bottom:10px">Request access</a>'+
       '<button onclick="document.getElementById(\'upgrade-modal\').remove()" style="background:none;border:none;color:#5A7180;font-size:13px;cursor:pointer;font-family:inherit">Maybe later</button>'+
     '</div>';
   m.addEventListener('click', function(e){ if(e.target===m) m.remove(); });
@@ -4059,11 +4380,26 @@ function esc2(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 <script>
 /* ══════════════════════════════════════════════════════════════════════
    DASHBOARD + MARKETPLACE render (reads the shared OMEGATools catalog)
-   • Marketplace = every tool Solela's tier can see.
+   • Marketplace = every tool the demo tier can see.
    • Dashboard   = required tools (always, non-removable) + pinned tools.
    ══════════════════════════════════════════════════════════════════════ */
-var PORTAL_STROKE = '#00A9A4';       // Solela teal
+var PORTAL_STROKE = '#00A9A4';       // OMEGA teal
 var _PORTAL_WS = null, _PINNED = [];
+// Append ?org=<tenant> to a tool link so external tools (on tools.csebuilders.com)
+// open branded to the tenant the user is in — not the admin/default tenant.
+function _withOrg(href){
+  try {
+    if (!href || href === '#') return href;
+    if (href.charAt(0) === '#') return href;
+    var org = (_PORTAL_WS && _PORTAL_WS.orgId) || '';
+    if (!org) return href;
+    // don't double-add
+    if (/[?&]org=/.test(href)) return href;
+    // only add to page links (skip javascript:, mailto:, etc.)
+    if (/^(javascript|mailto|tel):/i.test(href)) return href;
+    return href + (href.indexOf('?') >= 0 ? '&' : '?') + 'org=' + encodeURIComponent(org);
+  } catch(e){ return href; }
+}
 
 /* Local HTML escaper — the render code below uses esc(); define it here so
    it never depends on whatever the host page happens to name its escaper. */
@@ -4073,8 +4409,23 @@ function esc(s){
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
+// Rewrite every hardcoded tool link (Quick Access, etc.) so it opens branded
+// to the current tenant. Runs regardless of tier (applyToolLocks early-returns
+// for Enterprise, so it can't be relied on for this).
+function _brandToolLinks(){
+  try {
+    var links = document.querySelectorAll('a[data-tool][href]');
+    for (var i=0;i<links.length;i++){
+      var h = links[i].getAttribute('href');
+      if (h && h.charAt(0) !== '#' && h.indexOf('javascript:') !== 0){
+        links[i].setAttribute('href', _withOrg(h));
+      }
+    }
+  } catch(e){}
+}
 function renderPortalApps(ws){
   _PORTAL_WS = ws;
+  _brandToolLinks();   // ensure Quick Access + tool links carry ?org=
   // omega-tools.js loads cross-origin from the host and may not be ready yet
   // at sign-in. Instead of giving up, wait for it (retry up to ~5s).
   if (typeof OMEGATools === 'undefined'){
@@ -4123,12 +4474,22 @@ function _catLabel(key){
   return fallback[key] || key;
 }
 
+// Dashboard holds at most this many apps. Required tools (e.g. BESS Site Map)
+// are placed first and always count toward — and fit within — this cap.
+var DASH_MAX = 6;
 function _paintDash(){
   var el = document.getElementById('dash-grid'); if(!el) return;
   el.className = 'pm-grid';
-  var tools = _qualifying(), html = '', renderedKeys = {};
+  var tools = _qualifying(), html = '', renderedKeys = {}, count = 0;
+  // Pass 1: required tools always render first.
   for (var i=0;i<tools.length;i++){
-    if (_required(tools[i]) || _pinned(tools[i].key)){ html += _tile(tools[i], true); renderedKeys[tools[i].key]=true; }
+    if (count >= DASH_MAX) break;
+    if (_required(tools[i])){ html += _tile(tools[i], true); renderedKeys[tools[i].key]=true; count++; }
+  }
+  // Pass 2: user-pinned tools fill the remaining slots up to the cap.
+  for (var j=0;j<tools.length;j++){
+    if (count >= DASH_MAX) break;
+    if (!renderedKeys[tools[j].key] && _pinned(tools[j].key)){ html += _tile(tools[j], true); renderedKeys[tools[j].key]=true; count++; }
   }
   // SPATCO EV tool fallback: if the shared catalog doesn't (yet) carry the
   // 'spatco_ev' key but this workspace requires it, render a direct tile so
@@ -4200,6 +4561,7 @@ function _paintMarket(){
 
 function _tile(t, onDash){
   var href = OMEGATools.hrefFor(t, _PORTAL_WS);
+  href = _withOrg(href);   // ensure tenant-branded tools open in the right tenant
   var stroke = t.soon ? '#9AA6B4' : PORTAL_STROKE;
   var req = _required(t), pinned = _pinned(t.key);
   var open;
@@ -4235,10 +4597,39 @@ function togglePin(ev, key){
   if (ev && ev.preventDefault){ ev.preventDefault(); ev.stopPropagation(); }
   var orgId = _PORTAL_WS && _PORTAL_WS.orgId;
   if (!orgId || typeof db==='undefined' || !db) return;
+  var adding = !_pinned(key);
+  // Enforce the dashboard cap: required tools + pinned tools may not exceed DASH_MAX.
+  if (adding){
+    var used = _dashCount();
+    if (used >= DASH_MAX){
+      _dashCapMsg('Your dashboard is full (' + DASH_MAX + ' apps). Remove one to add another.');
+      return;
+    }
+  }
   var op = _pinned(key)
     ? OMEGATools.unpinTool(db, firebase, orgId, key)
     : OMEGATools.pinTool(db, firebase, orgId, key);
   op.then(function(keys){ _PINNED = keys||[]; _paintDash(); _paintMarket(); });
+}
+
+// How many dashboard slots are currently used (required + pinned, deduped, capped view).
+function _dashCount(){
+  // Count distinct required+pinned tools, but never report more than the cap —
+  // this is the number of slots actually shown on the dashboard.
+  var tools = _qualifying(), seen = {}, n = 0;
+  for (var i=0;i<tools.length;i++){
+    var k = tools[i].key;
+    if ((_required(tools[i]) || _pinned(k)) && !seen[k]){ seen[k]=true; n++; }
+  }
+  return Math.min(n, DASH_MAX);
+}
+// Lightweight toast for the cap message (reuses the existing pm-toast element).
+function _dashCapMsg(msg){
+  var t = document.getElementById('pm-toast');
+  if (!t){ alert(msg); return; }
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(window.__capT);
+  window.__capT = setTimeout(function(){ t.classList.remove('show'); }, 3200);
 }
 </script>
 
@@ -4265,7 +4656,6 @@ function togglePin(ev, key){
 #mkt-search{width:100%;padding:11px 14px 11px 40px;border:1.5px solid var(--cs-border,#DDD8D0);border-radius:10px;font:400 14px/1.2 inherit;color:var(--cs-text,#1A2332);background:#fff;outline:none;transition:border-color .15s}
 #mkt-search:focus{border-color:#00A9A4}
 </style>
-
 
 <script>
 /* ══ MOBILE NAV DRAWER ══ */
@@ -4354,5 +4744,697 @@ function togglePin(ev, key){
   else build();
 })();
 </script>
+<script>
+/* ══ Team & Messages rail: tab switching ══ */
+function tmTab(which){
+  var tabs = document.querySelectorAll('.tm-tab');
+  var panes = document.querySelectorAll('.tm-pane');
+  for (var i=0;i<tabs.length;i++){ tabs[i].classList.toggle('active', tabs[i].getAttribute('data-tm')===which); }
+  for (var j=0;j<panes.length;j++){ panes[j].classList.toggle('active', panes[j].getAttribute('data-tm-pane')===which); }
+}
+
+</script>
+<script>
+/* ══ Team Workspace (Slack-style) view switching ══ */
+function swSelect(which){
+  var items = document.querySelectorAll('.sw-item');
+  for (var i=0;i<items.length;i++){ items[i].classList.toggle('active', items[i].getAttribute('data-sw')===which); }
+  var views = document.querySelectorAll('.sw-view');
+  for (var j=0;j<views.length;j++){ views[j].classList.toggle('active', views[j].getAttribute('data-sw-view')===which); }
+}
+// When a conversation is opened from the nav list, switch the reading pane to the thread view.
+(function(){
+  var _origOpen = window.openConversation;
+  if (typeof _origOpen === 'function'){
+    window.openConversation = function(){
+      var r = _origOpen.apply(this, arguments);
+      // reflect selection in nav + show the msgs view
+      var items = document.querySelectorAll('.sw-item');
+      for (var i=0;i<items.length;i++){ items[i].classList.remove('active'); }
+      var views = document.querySelectorAll('.sw-view');
+      for (var j=0;j<views.length;j++){ views[j].classList.toggle('active', views[j].getAttribute('data-sw-view')==='msgs'); }
+      return r;
+    };
+  }
+})();
+
+</script>
+<script>
+/* ══ PORTFOLIO ANALYTICS — Chart.js, fed by real Firestore aggregations ══ */
+var _anCharts = {};
+function _anDestroy(id){ if(_anCharts[id]){ _anCharts[id].destroy(); delete _anCharts[id]; } }
+function _fmtK(n){ n=Number(n)||0; if(n>=1e6) return '$'+(n/1e6).toFixed(1)+'M'; if(n>=1e3) return '$'+Math.round(n/1e3)+'K'; return '$'+Math.round(n); }
+
+var AN_STAGE_COLORS = ['#0070F2','#1B90FF','#00A9A4','#00C4BC','#F0A030','#E06C4F','#2E9C3C','#6B4FA0'];
+var AN_TYPE_COLORS  = { bess:'#0070F2', dcfc:'#00A9A4', solar:'#F0A030', other:'#8A97A6' };
+
+function renderCharts(a){
+  window._lastAgg = a;   // cache for the dashboard builder
+  if (typeof Chart === 'undefined') return;
+  var STAGE = (typeof STAGE_KEYS!=='undefined')?STAGE_KEYS:Object.keys(a.counts||{});
+  var LBL = (typeof STAGE_LABEL!=='undefined')?STAGE_LABEL:{};
+
+  // ── Donut: projects by stage ──
+  (function(){
+    var el=document.getElementById('an-stage'); if(!el) return;
+    var labels=[], data=[], colors=[];
+    STAGE.forEach(function(s,i){ var v=(a.counts&&a.counts[s])||0; if(v>0){ labels.push(LBL[s]||s); data.push(v); colors.push(AN_STAGE_COLORS[i%AN_STAGE_COLORS.length]); } });
+    var total=data.reduce(function(x,y){return x+y;},0);
+    _anDestroy('stage');
+    _anCharts['stage']=new Chart(el,{type:'doughnut',
+      data:{labels:total?labels:['No projects'],datasets:[{data:total?data:[1],backgroundColor:total?colors:['#EAECEF'],borderWidth:0,hoverOffset:6}]},
+      options:{cutout:'66%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:!!total,callbacks:{label:function(c){var p=total?Math.round(c.parsed/total*100):0;return ' '+c.label+': '+c.parsed+' ('+p+'%)';}}}}},
+      plugins:[{id:'ct',afterDraw:function(ch){var x=ch.ctx,ca=ch.chartArea,cx=(ca.left+ca.right)/2,cy=(ca.top+ca.bottom)/2;x.save();x.textAlign='center';x.fillStyle='#223548';x.font='700 26px DM Sans,sans-serif';x.fillText(String(total),cx,cy-2);x.fillStyle='#556B82';x.font='400 11px DM Sans,sans-serif';x.fillText('projects',cx,cy+15);x.restore();}}]
+    });
+    var lg=document.getElementById('an-stage-legend');
+    if(lg) lg.innerHTML=labels.map(function(l,i){return '<span class="an-leg"><span class="dot" style="background:'+colors[i]+'"></span>'+l+'</span>';}).join('');
+  })();
+
+  // ── Donut: projects by type ──
+  (function(){
+    var el=document.getElementById('an-type'); if(!el) return;
+    var keys=Object.keys(a.byType||{});
+    var labels=[],data=[],colors=[];
+    keys.forEach(function(k){ labels.push(k.toUpperCase()); data.push(a.byType[k]); colors.push(AN_TYPE_COLORS[k]||'#8A97A6'); });
+    var total=data.reduce(function(x,y){return x+y;},0);
+    _anDestroy('type');
+    _anCharts['type']=new Chart(el,{type:'doughnut',
+      data:{labels:total?labels:['No projects'],datasets:[{data:total?data:[1],backgroundColor:total?colors:['#EAECEF'],borderWidth:0,hoverOffset:6}]},
+      options:{cutout:'66%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:!!total,callbacks:{label:function(c){var p=total?Math.round(c.parsed/total*100):0;return ' '+c.label+': '+c.parsed+' ('+p+'%)';}}}}},
+      plugins:[{id:'ct2',afterDraw:function(ch){var x=ch.ctx,ca=ch.chartArea,cx=(ca.left+ca.right)/2,cy=(ca.top+ca.bottom)/2;x.save();x.textAlign='center';x.fillStyle='#223548';x.font='700 26px DM Sans,sans-serif';x.fillText(String(total),cx,cy-2);x.fillStyle='#556B82';x.font='400 11px DM Sans,sans-serif';x.fillText('projects',cx,cy+15);x.restore();}}]
+    });
+    var lg=document.getElementById('an-type-legend');
+    if(lg) lg.innerHTML=labels.map(function(l,i){return '<span class="an-leg"><span class="dot" style="background:'+colors[i]+'"></span>'+l+'</span>';}).join('');
+  })();
+
+  // ── Horizontal bars: top projects by capex ──
+  (function(){
+    var el=document.getElementById('an-capex'); if(!el) return;
+    var items=(a.capexByProj||[]).slice().sort(function(x,y){return y.capex-x.capex;}).slice(0,8);
+    _anDestroy('capex');
+    _anCharts['capex']=new Chart(el,{type:'bar',
+      data:{labels:items.length?items.map(function(i){return i.name;}):['No data'],
+        datasets:[{data:items.length?items.map(function(i){return i.capex;}):[0],backgroundColor:'#0070F2',borderRadius:5,barThickness:18}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' '+_fmtK(c.parsed.x);}}}},
+        scales:{x:{ticks:{callback:function(v){return _fmtK(v);},font:{size:10}},grid:{color:'#EEF1F5'}},y:{ticks:{font:{size:11}},grid:{display:false}}}}
+    });
+  })();
+
+  // ── Horizontal bars: projected revenue by owner ──
+  (function(){
+    var el=document.getElementById('an-owner'); if(!el) return;
+    var keys=Object.keys(a.byOwnerRev||{}).sort(function(x,y){return a.byOwnerRev[y]-a.byOwnerRev[x];}).slice(0,8);
+    _anDestroy('owner');
+    _anCharts['owner']=new Chart(el,{type:'bar',
+      data:{labels:keys.length?keys:['No data'],datasets:[{data:keys.length?keys.map(function(k){return a.byOwnerRev[k];}):[0],backgroundColor:'#00A9A4',borderRadius:5,barThickness:18}]},
+      options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' '+_fmtK(c.parsed.x);}}}},
+        scales:{x:{ticks:{callback:function(v){return _fmtK(v);},font:{size:10}},grid:{color:'#EEF1F5'}},y:{ticks:{font:{size:11}},grid:{display:false}}}}
+    });
+  })();
+
+  // ── Bar: storage capacity by stage (MWh) ──
+  (function(){
+    var el=document.getElementById('an-storage'); if(!el) return;
+    var labels=[],data=[];
+    STAGE.forEach(function(s){ labels.push(LBL[s]||s); data.push(+(a.storageByStage&&a.storageByStage[s]||0).toFixed(1)); });
+    var any=data.some(function(v){return v>0;});
+    _anDestroy('storage');
+    _anCharts['storage']=new Chart(el,{type:'bar',
+      data:{labels:labels,datasets:[{data:any?data:labels.map(function(){return 0;}),backgroundColor:'#1B90FF',borderRadius:5,maxBarThickness:44}]},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return ' '+c.parsed.y+' MWh';}}}},
+        scales:{y:{ticks:{callback:function(v){return v+' MWh';},font:{size:10}},grid:{color:'#EEF1F5'}},x:{ticks:{font:{size:10}},grid:{display:false}}}}
+    });
+  })();
+}
+
+</script>
+<script>
+/* ══ LEFT SIDEBAR NAV ══ */
+// Highlight a sidebar item by data-sn value.
+function _snHighlight(which){
+  var items=document.querySelectorAll('#side-nav .sn-item');
+  for (var i=0;i<items.length;i++){ items[i].classList.toggle('active', items[i].getAttribute('data-sn')===which); }
+  var dms=document.querySelectorAll('#sn-dm-list .sn-dm-item');
+  for (var j=0;j<dms.length;j++){ dms[j].classList.remove('active'); }
+}
+// Sidebar → Team Workspace: highlight, reveal the workspace, switch the reading pane.
+var _SW_TITLES = { todos:'To-Dos', team:'Team', feed:'Company Feed', msgs:'Messages' };
+function snWork(ev, view){
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var snKey = (view==='msgs')?'chat':view;
+  _snHighlight(snKey);
+  var sw=document.getElementById('sw'), scrim=document.getElementById('sw-scrim');
+  var title=document.getElementById('sw-drawer-title');
+  if (title) title.textContent = _SW_TITLES[view] || 'Team Workspace';
+  if (window.swSelect) swSelect(view);
+  if (sw) sw.classList.add('sw-open');
+  if (scrim) scrim.classList.add('on');
+  document.body.style.overflow='hidden';   // lock scroll while drawer open
+}
+function closeWorkspace(){
+  var sw=document.getElementById('sw'), scrim=document.getElementById('sw-scrim');
+  if (sw) sw.classList.remove('sw-open');
+  if (scrim) scrim.classList.remove('on');
+  document.body.style.overflow='';
+  // restore Dashboard highlight
+  _snHighlight('dashboard');
+}
+// Close the drawer on Escape.
+document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ closeWorkspace(); } });
+function snGo(ev, which){
+  if (ev && ev.preventDefault) ev.preventDefault();
+  // highlight
+  var items=document.querySelectorAll('#side-nav .sn-item');
+  for (var i=0;i<items.length;i++){ items[i].classList.toggle('active', items[i].getAttribute('data-sn')===which); }
+  // scroll to the matching in-page section
+  var target=null;
+  if (which==='dashboard'){
+    closeWorkspace();
+    target=document.querySelector('#dev-fixed .block-head') || document.querySelector('#developer-view .block-head');
+  }
+  else if (which==='team'){ target=document.getElementById('sw') || document.querySelector('[data-sw-view="team"]'); if(target&&window.swSelect) swSelect('team'); }
+  else if (which==='chat'){ target=document.getElementById('sw'); if(target&&window.swSelect) swSelect('msgs'); }
+  if (target && target.scrollIntoView){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
+function snToggleChat(ev){
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var btn = ev.currentTarget;
+  var list = document.getElementById('sn-dm-list');
+  var open = list.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open?'true':'false');
+  if (typeof _paintSidebarDMs==='function') _paintSidebarDMs();
+  // Opening Chat also reveals the workspace in the Messages view.
+  if (open){ snWork(ev, 'msgs'); }
+}
+function snToggleApps(ev){
+  if (ev && ev.preventDefault) ev.preventDefault();
+  var btn=ev.currentTarget;
+  var list=document.getElementById('sn-apps-list');
+  var open=list.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open?'true':'false');
+  if (open) _paintSideApps();
+}
+// Populate the sidebar's My Applications sublist from the same pinned/required tools.
+function _paintSideApps(){
+  var list=document.getElementById('sn-apps-list'); if(!list) return;
+  var html='';
+  try{
+    if (typeof _qualifying==='function'){
+      var tools=_qualifying(), n=0;
+      for (var i=0;i<tools.length && n<DASH_MAX;i++){
+        var t=tools[i];
+        if (_required(t) || _pinned(t.key)){
+          var label = (t.name||t.key);
+          if (t.key==='editor'){ label='Site Map'; }
+          // The Site Map editor opens the new-project flow; other tools use their href.
+          if (t.key==='editor'){
+            html += '<a class="sn-app" href="#" onclick="if(typeof openNewProjectModal===\'function\'){openNewProjectModal(\'bess\');}return false;"><span class="sn-app-dot"></span>'+label+'</a>';
+          } else {
+            var href = _withOrg((typeof OMEGATools!=='undefined' && OMEGATools.hrefFor)?OMEGATools.hrefFor(t):'#');
+            html += '<a class="sn-app" href="'+href+'"><span class="sn-app-dot"></span>'+label+'</a>';
+          }
+          n++;
+        }
+      }
+    }
+  }catch(e){}
+  list.innerHTML = html || '<a class="sn-app" href="/marketplace.html"><span class="sn-app-dot"></span>Browse Marketplace…</a>';
+}
+
+</script>
+
+    <!-- Add-widget palette (in-place edit) -->
+    <div id="dash-palette">
+      <div class="dp-head"><span>Add a Widget</span><button class="dp-x" onclick="DASH.togglePalette()">&times;</button></div>
+      <div class="dp-body"></div>
+    </div>
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   IN-PLACE DASHBOARD EDITING. The portal IS the dashboard.
+   Edit mode makes the existing .dash-block sections draggable/reorderable,
+   hideable, and lets you add more from a palette. Order + hidden + added
+   blocks save per-user to Firestore and restore on load.
+   ══════════════════════════════════════════════════════════════════════ */
+var DASH = (function(){
+  var editing=false, dragEl=null, _saveT=null;
+  var state = { order:[], hidden:[], added:[] };  // order: block keys; hidden: keys; added: [{key,type}]
+
+  // Widgets that can be ADDED (not already on the page by default)
+  var ADDABLE = [
+    { key:'w-stage',  type:'stage',  name:'Projects by Stage' },
+    { key:'w-ptype',  type:'ptype',  name:'Projects by Type' },
+    { key:'w-capex',  type:'capex',  name:'Top CapEx' },
+    { key:'w-owner',  type:'owner',  name:'Revenue by Owner' },
+    { key:'w-storage',type:'storage',name:'Storage by Stage' },
+  ];
+
+  function host(){ return document.getElementById('dev-fixed'); }
+  function blocks(){ return Array.prototype.slice.call(host().querySelectorAll(':scope > .dash-block')); }
+  function byKey(k){ return host().querySelector('.dash-block[data-block="'+k+'"]'); }
+
+  // ── Apply saved state: reorder, hide, re-add ──
+  function apply(){
+    var h=host(); if(!h) return;
+    // re-add any saved 'added' widgets that aren't in the DOM
+    state.added.forEach(function(a){
+      if(!byKey(a.key)){ h.appendChild(_makeWidgetBlock(a.key, a.type)); }
+    });
+    // order
+    if(state.order && state.order.length){
+      state.order.forEach(function(k){ var b=byKey(k); if(b) h.appendChild(b); });
+    }
+    // hidden
+    blocks().forEach(function(b){
+      var k=b.getAttribute('data-block');
+      b.style.display = (state.hidden.indexOf(k)>=0 && !editing) ? 'none' : '';
+    });
+  }
+
+  function _makeWidgetBlock(key, type){
+    var names={stage:'Projects by Stage',ptype:'Projects by Type',capex:'Top CapEx',owner:'Revenue by Owner',storage:'Storage by Stage'};
+    var div=document.createElement('div');
+    div.className='dash-block'; div.setAttribute('data-block',key); div.setAttribute('data-added','1');
+    div.innerHTML='<div class="block-head"><div><div class="block-title">'+(names[type]||type)+'</div></div></div>'+
+      '<div class="an-card" style="margin-top:8px"><div class="an-chartwrap"><canvas id="wc-'+key+'"></canvas></div></div>';
+    return div;
+  }
+
+  function _drawAdded(){
+    if(typeof Chart==='undefined' || !window._lastAgg) return;
+    state.added.forEach(function(a){
+      var el=document.getElementById('wc-'+a.key); if(!el) return;
+      _drawChartInto(el, a.type, window._lastAgg);
+    });
+  }
+
+  // ── Edit toggle ──
+  function toggle(){
+    editing=!editing;
+    document.body.classList.toggle('dash-edit-on', editing);
+    var btn=document.getElementById('edit-toggle-btn');
+    if(btn){ btn.classList.toggle('on',editing); btn.querySelector('.et-label').textContent=editing?'Done Editing':'Edit Dashboard'; }
+    document.getElementById('edit-add-btn').style.display = editing?'inline-flex':'none';
+    document.getElementById('dash-hint').style.display = editing?'block':'none';
+    if(editing){ _decorate(); }
+    else { _undecorate(); closePalette(); apply(); scheduleSave(); }
+  }
+
+  // ── Add edit chrome (handles + hide buttons) to each block ──
+  function _decorate(){
+    blocks().forEach(function(b){
+      b.style.display=''; // show hidden ones (dimmed) while editing
+      var k=b.getAttribute('data-block');
+      if(state.hidden.indexOf(k)>=0) b.classList.add('db-hidden'); else b.classList.remove('db-hidden');
+      if(b.querySelector(':scope > .db-bar')) return;
+      var bar=document.createElement('div'); bar.className='db-bar';
+      bar.innerHTML='<span class="db-handle" title="Drag to reorder">⠿</span>'+
+        '<span class="db-key">'+k+'</span>'+
+        '<button class="db-hide" title="Hide/show">'+(state.hidden.indexOf(k)>=0?'Show':'Hide')+'</button>';
+      b.insertBefore(bar, b.firstChild);
+      b.setAttribute('draggable','true');
+      bar.querySelector('.db-hide').addEventListener('click', function(e){
+        e.stopPropagation(); var kk=b.getAttribute('data-block');
+        var i=state.hidden.indexOf(kk);
+        if(i>=0){ state.hidden.splice(i,1); b.classList.remove('db-hidden'); this.textContent='Hide'; }
+        else { state.hidden.push(kk); b.classList.add('db-hidden'); this.textContent='Show'; }
+        scheduleSave();
+      });
+    });
+    _wireDrag();
+  }
+  function _undecorate(){
+    blocks().forEach(function(b){
+      b.removeAttribute('draggable');
+      var bar=b.querySelector(':scope > .db-bar'); if(bar) bar.remove();
+      b.classList.remove('db-hidden','db-dragging');
+    });
+  }
+
+  // ── Drag to reorder ──
+  function _wireDrag(){
+    blocks().forEach(function(b){
+      b.addEventListener('dragstart', function(e){ dragEl=b; b.classList.add('db-dragging'); e.dataTransfer.effectAllowed='move'; try{e.dataTransfer.setData('text/plain',b.getAttribute('data-block'));}catch(x){} });
+      b.addEventListener('dragend', function(){ if(dragEl) dragEl.classList.remove('db-dragging'); dragEl=null; _commitOrder(); });
+    });
+    var h=host();
+    h.addEventListener('dragover', function(e){
+      e.preventDefault();
+      var after=_afterElement(h, e.clientY);
+      if(!dragEl) return;
+      if(after==null) h.appendChild(dragEl); else h.insertBefore(dragEl, after);
+    });
+  }
+  function _afterElement(container, y){
+    var els=blocks().filter(function(b){return b!==dragEl;});
+    var closest={offset:-Infinity, el:null};
+    els.forEach(function(b){
+      var box=b.getBoundingClientRect(); var offset=y-box.top-box.height/2;
+      if(offset<0 && offset>closest.offset){ closest={offset:offset, el:b}; }
+    });
+    return closest.el;
+  }
+  function _commitOrder(){
+    state.order = blocks().map(function(b){return b.getAttribute('data-block');});
+    scheduleSave();
+  }
+
+  // ── Palette (add widgets) ──
+  function togglePalette(){ var p=document.getElementById('dash-palette'); if(p.classList.contains('open')) closePalette(); else openPalette(); }
+  function openPalette(){
+    var p=document.getElementById('dash-palette');
+    p.querySelector('.dp-body').innerHTML = ADDABLE.map(function(a){
+      var already = state.added.some(function(x){return x.type===a.type;});
+      return '<button class="dp-item" onclick="DASH.addWidget(\''+a.type+'\')" '+(already?'disabled':'')+'>'+a.name+(already?' ✓':'')+'</button>';
+    }).join('');
+    p.classList.add('open');
+  }
+  function closePalette(){ var p=document.getElementById('dash-palette'); if(p) p.classList.remove('open'); }
+  function addWidget(type){
+    var key='w-'+type+'-'+Math.random().toString(36).slice(2,6);
+    state.added.push({key:key, type:type});
+    host().appendChild(_makeWidgetBlock(key, type));
+    if(editing) _decorate();
+    _drawAdded();
+    _commitOrder(); closePalette();
+  }
+
+  // ── Chart drawing for added widgets (reuses cached aggregation) ──
+  var _dch={};
+  function _drawChartInto(el, type, a){
+    if(typeof Chart==='undefined') return;
+    if(_dch[el.id]){ try{_dch[el.id].destroy();}catch(e){} }
+    var STAGE=(typeof STAGE_KEYS!=='undefined')?STAGE_KEYS:[]; var LBL=(typeof STAGE_LABEL!=='undefined')?STAGE_LABEL:{};
+    var SC=['#0070F2','#1B90FF','#00A9A4','#00C4BC','#F0A030','#E06C4F','#2E9C3C','#6B4FA0']; var TC={bess:'#0070F2',dcfc:'#00A9A4',solar:'#F0A030',other:'#8A97A6'};
+    var cfg=null;
+    if(type==='stage'){var L=[],D=[],C=[];STAGE.forEach(function(s,i){var v=(a.counts&&a.counts[s])||0;if(v>0){L.push(LBL[s]||s);D.push(v);C.push(SC[i%SC.length]);}});var t=D.reduce(function(x,y){return x+y;},0);cfg={type:'doughnut',data:{labels:t?L:['No data'],datasets:[{data:t?D:[1],backgroundColor:t?C:['#EAECEF'],borderWidth:0}]},options:{cutout:'64%',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}}}};}
+    else if(type==='ptype'){var ks=Object.keys(a.byType||{}),L2=[],D2=[],C2=[];ks.forEach(function(k){L2.push(k.toUpperCase());D2.push(a.byType[k]);C2.push(TC[k]||'#8A97A6');});var t2=D2.reduce(function(x,y){return x+y;},0);cfg={type:'doughnut',data:{labels:t2?L2:['No data'],datasets:[{data:t2?D2:[1],backgroundColor:t2?C2:['#EAECEF'],borderWidth:0}]},options:{cutout:'64%',responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}}}}};}
+    else if(type==='capex'){var it=(a.capexByProj||[]).slice().sort(function(x,y){return y.capex-x.capex;}).slice(0,8);cfg={type:'bar',data:{labels:it.length?it.map(function(i){return i.name;}):['No data'],datasets:[{data:it.length?it.map(function(i){return i.capex;}):[0],backgroundColor:'#0070F2',borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:10}}}}}};}
+    else if(type==='owner'){var ok=Object.keys(a.byOwnerRev||{}).sort(function(x,y){return a.byOwnerRev[y]-a.byOwnerRev[x];}).slice(0,8);cfg={type:'bar',data:{labels:ok.length?ok:['No data'],datasets:[{data:ok.length?ok.map(function(k){return a.byOwnerRev[k];}):[0],backgroundColor:'#00A9A4',borderRadius:5}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9}}},y:{ticks:{font:{size:10}}}}}};}
+    else if(type==='storage'){var L3=[],D3=[];STAGE.forEach(function(s){L3.push(LBL[s]||s);D3.push(+((a.storageByStage&&a.storageByStage[s])||0).toFixed(1));});cfg={type:'bar',data:{labels:L3,datasets:[{data:D3,backgroundColor:'#1B90FF',borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{font:{size:9}}},x:{ticks:{font:{size:9}}}}}};}
+    if(cfg) _dch[el.id]=new Chart(el,cfg);
+  }
+
+  // ── Persistence ──
+  function _docRef(){
+    if(typeof db==='undefined'||!db) return null;
+    var u=(typeof auth!=='undefined'&&auth.currentUser)?auth.currentUser:null;
+    var org=(typeof _PORTAL_WS!=='undefined'&&_PORTAL_WS&&_PORTAL_WS.orgId)||'default';
+    if(!u) return null;
+    return db.collection('dashboard_layouts').doc(org+'__'+u.uid);
+  }
+  function scheduleSave(){ clearTimeout(_saveT); _saveT=setTimeout(persist,600); }
+  function persist(){ var r=_docRef(); if(!r) return; r.set({state:JSON.stringify(state), updatedAt:(firebase.firestore.FieldValue.serverTimestamp?firebase.firestore.FieldValue.serverTimestamp():Date.now())},{merge:true}).catch(function(){}); }
+  function load(cb){
+    var r=_docRef(); if(!r){ cb&&cb(); return; }
+    r.get().then(function(doc){ if(doc&&doc.exists){ try{ var s=JSON.parse(doc.data().state); state.order=s.order||[]; state.hidden=s.hidden||[]; state.added=s.added||[]; }catch(e){} } cb&&cb(); }).catch(function(){ cb&&cb(); });
+  }
+
+  return {
+    mount:function(){
+      if(!host()) return;
+      load(function(){ apply(); setTimeout(_drawAdded, 400); });
+    },
+    remount:function(){ if(host()){ load(function(){ apply(); setTimeout(_drawAdded,400); }); } },
+    toggle:toggle,
+    togglePalette:togglePalette,
+    addWidget:addWidget,
+    refresh:function(){ apply(); _drawAdded(); },
+    _state:function(){ return state; }
+  };
+})();
+/* DASH.mount() is called from the auth callback once the user is known. */
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════
+   PROJECT TASK FLOW  —  lifecycle task board.
+   Walks a project from origination → analysis/pre-dev → plot plan +
+   engineering stamp → funding → interconnection → AHJ permitting →
+   construction/commissioning. Tasks are assignable by DEPARTMENT and
+   INDIVIDUAL, with completion tracking. Saved per project to Firestore
+   collection 'project_tasks' (doc id = "<org>__<projectId>").
+   ══════════════════════════════════════════════════════════════════════ */
+var TASKFLOW = (function(){
+  var DEPARTMENTS = [
+    { key:'bizdev',      label:'Business Development' },
+    { key:'engineering', label:'Engineering' },
+    { key:'procurement', label:'Procurement' },
+    { key:'finance',     label:'Finance' },
+    { key:'admin',       label:'Admin' }
+  ];
+  function deptLabel(k){ for(var i=0;i<DEPARTMENTS.length;i++){ if(DEPARTMENTS[i].key===k) return DEPARTMENTS[i].label; } return k||'Unassigned'; }
+
+  // Task statuses.
+  var STATUSES = [
+    { key:'todo',    label:'To-do',       cls:'st-todo' },
+    { key:'active',  label:'In progress', cls:'st-active' },
+    { key:'passed',  label:'Passed',      cls:'st-passed' },
+    { key:'failed',  label:'Failed',      cls:'st-failed' },
+    { key:'skipped', label:'Skipped',     cls:'st-skipped' },
+    { key:'hold',    label:'On hold',     cls:'st-hold' }
+  ];
+  function statusMeta(k){ for(var i=0;i<STATUSES.length;i++){ if(STATUSES[i].key===k) return STATUSES[i]; } return STATUSES[0]; }
+
+  // Default template (used to seed a project's flow the first time).
+  function _defaultFlow(){
+    var T = [
+      { key:'origination', stage:'candidate', name:'Origination & Analysis', dept:'bizdev',
+        tasks:['Intake & qualify the opportunity','Preliminary feasibility screen','Utility & tariff analysis','Load / bill analysis (12-mo history)'] },
+      { key:'predev', stage:'candidate', name:'Pre-Development', dept:'bizdev',
+        tasks:['Secure site control (lease/option)','Preliminary site layout','Confirm interconnection feasibility'] },
+      { key:'plotplan', stage:'package', name:'Plot Plan & Engineering', dept:'engineering',
+        tasks:['Build site map / plot plan','Internal design validation','Engineering review','Engineering stamp / PE sign-off'] },
+      { key:'funding', stage:'finance', name:'Funding', dept:'finance',
+        tasks:['Run investment analysis / pro forma','Determine financing path (self-funded vs external)','Secure funding commitment','Project funded'] },
+      { key:'interconnection', stage:'submitted', name:'Interconnection', dept:'engineering',
+        tasks:['Prepare interconnection application','Submit to utility','Interconnection study / review','Receive interconnection agreement'] },
+      { key:'permitting', stage:'permitting', name:'AHJ Permitting', dept:'engineering',
+        tasks:['Assemble permit set','Submit plot plan for validation','Submit to AHJ','Respond to AHJ comments','Permit approved'] },
+      { key:'construction', stage:'construction', name:'Construction & Commissioning', dept:'procurement',
+        tasks:['Procurement & equipment orders','Construction / installation','Commissioning & PTO','Project online'] }
+    ];
+    var out=[];
+    for (var i=0;i<T.length;i++){
+      var ph=T[i], tasks=[];
+      for (var j=0;j<ph.tasks.length;j++){ tasks.push({ id:_uid(), text:ph.tasks[j], status:'todo', dept:ph.dept, assignee:'' }); }
+      out.push({ key:ph.key, name:ph.name, dept:ph.dept, stage:ph.stage, tasks:tasks });
+    }
+    return out;
+  }
+  function _uid(){ return 't'+Math.random().toString(36).slice(2,9); }
+
+  var _proj = null;        // {id,name,stage}
+  var _view = 0;           // which step/phase is being viewed
+  var _flow = [];          // [{key,name,dept,stage,tasks:[{id,text,status,dept,assignee}]}]
+  var _projects = [];
+  var _saveT = null;
+
+  function _docRef(){
+    if (typeof db==='undefined' || !db || !_proj) return null;
+    var org = (typeof currentOrg!=='undefined' && currentOrg) || 'default';
+    return db.collection('project_tasks').doc(org+'__'+_proj.id);
+  }
+  function scheduleSave(){ clearTimeout(_saveT); _saveT=setTimeout(persist,500); }
+  function persist(){
+    var r=_docRef(); if(!r) return;
+    r.set({ orgId:(currentOrg||''), projectId:_proj.id, flow:JSON.stringify(_flow),
+            updatedAt:(firebase.firestore.FieldValue.serverTimestamp?firebase.firestore.FieldValue.serverTimestamp():Date.now()) },{merge:true})['catch'](function(){});
+  }
+  function load(cb){
+    var r=_docRef(); if(!r){ _flow=_defaultFlow(); cb&&cb(); return; }
+    r.get().then(function(doc){
+      _flow = null;
+      if (doc && doc.exists){
+        var data=doc.data();
+        if (data.flow){ try{ _flow=JSON.parse(data.flow); }catch(e){} }
+        // migrate an older {tasks:{id:{done}}} doc if present and no flow yet
+        if (!_flow && data.tasks){ _flow=_migrateOld(data.tasks); }
+      }
+      if (!_flow || !_flow.length) _flow=_defaultFlow();
+      cb&&cb();
+    })['catch'](function(){ _flow=_defaultFlow(); cb&&cb(); });
+  }
+  function _migrateOld(tasksObj){
+    var f=_defaultFlow();
+    // best-effort: mark passed where old done==true (keys were phaseKey_index)
+    for (var p=0;p<f.length;p++){ for(var t=0;t<f[p].tasks.length;t++){ var oid=f[p].key+'_'+t; if(tasksObj[oid]&&tasksObj[oid].done) f[p].tasks[t].status='passed'; if(tasksObj[oid]){ if(tasksObj[oid].dept)f[p].tasks[t].dept=tasksObj[oid].dept; if(tasksObj[oid].assignee)f[p].tasks[t].assignee=tasksObj[oid].assignee; } } }
+    return f;
+  }
+
+  function _loadProjects(cb){
+    if (typeof db==='undefined' || !db || !currentOrg){ cb&&cb([]); return; }
+    db.collection('projects').where('orgId','==',currentOrg).get().then(function(snap){
+      var out=[]; snap.forEach(function(d){ var x=d.data(); out.push({id:d.id, name:x.name||'(untitled)', stage:x.stage||'candidate'}); });
+      cb&&cb(out);
+    })['catch'](function(){ cb&&cb([]); });
+  }
+
+  function _teamOptions(selected){
+    var opts='<option value="">Anyone</option>', seen={};
+    if (typeof _teamMembers!=='undefined'){
+      for (var i=0;i<_teamMembers.length;i++){ var m=_teamMembers[i]; if(!m.email||seen[m.email])continue; seen[m.email]=1;
+        opts+='<option value="'+escHtml(m.email)+'"'+(selected===m.email?' selected':'')+'>'+escHtml(m.name||m.email)+'</option>'; }
+    }
+    return opts;
+  }
+  function _deptOptions(selected){
+    var o='<option value="">Any dept</option>';
+    for (var i=0;i<DEPARTMENTS.length;i++){ o+='<option value="'+DEPARTMENTS[i].key+'"'+(selected===DEPARTMENTS[i].key?' selected':'')+'>'+DEPARTMENTS[i].label+'</option>'; }
+    return o;
+  }
+  function _statusOptions(selected){
+    var o='';
+    for (var i=0;i<STATUSES.length;i++){ o+='<option value="'+STATUSES[i].key+'"'+(selected===STATUSES[i].key?' selected':'')+'>'+STATUSES[i].label+'</option>'; }
+    return o;
+  }
+
+  // Progress counts "passed" and "skipped" as resolved.
+  function _progress(){
+    var total=0, done=0;
+    for (var p=0;p<_flow.length;p++){ for(var t=0;t<_flow[p].tasks.length;t++){ total++; var s=_flow[p].tasks[t].status; if(s==='passed'||s==='skipped') done++; } }
+    return { total:total, done:done, pct: total?Math.round(done/total*100):0 };
+  }
+
+  // A phase is complete when all its tasks are resolved (passed/skipped) OR
+  // it's been manually marked complete.
+  function phaseComplete(p){
+    var ph=_flow[p]; if(!ph) return false;
+    if (ph.doneManual) return true;
+    if (!ph.tasks.length) return false;
+    for (var t=0;t<ph.tasks.length;t++){ var s=ph.tasks[t].status; if(s!=='passed'&&s!=='skipped') return false; }
+    return true;
+  }
+  function activeStep(){
+    for (var p=0;p<_flow.length;p++){ if(!phaseComplete(p)) return p; }
+    return _flow.length-1;
+  }
+
+  function render(){
+    var host=document.getElementById('tf-body'); if(!host) return;
+    if (!_proj){ host.innerHTML='<div class="tf-empty">Select a project above to see its task flow.</div>'; _renderProgress(); return; }
+    if (_view<0 || _view>=_flow.length) _view = activeStep();
+    var active = activeStep();
+
+    var rail='<div class="tf-stepper-wrap"><button class="tf-nav" onclick="TASKFLOW.scrollSteps(-1)" aria-label="Scroll left">&#8249;</button>'
+           + '<div class="tf-stepper" id="tf-stepper">';
+    for (var p=0;p<_flow.length;p++){
+      var done=phaseComplete(p), isActive=(p===active), isView=(p===_view);
+      var cls='tf-step'+(done?' done':'')+(isActive?' active':'')+(isView?' viewing':'');
+      var badge = done ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>' : String(p+1);
+      rail += '<div class="'+cls+'" onclick="TASKFLOW.goStep('+p+')">'
+           +  '<span class="tf-step-badge">'+badge+'</span>'
+           +  '<span class="tf-step-name">'+escHtml(_flow[p].name)+'</span>'
+           +  '</div>';
+      if (p<_flow.length-1) rail += '<span class="tf-step-line'+(done?' done':'')+'"></span>';
+    }
+    rail += '</div><button class="tf-nav" onclick="TASKFLOW.scrollSteps(1)" aria-label="Scroll right">&#8250;</button></div>';
+
+    var ph=_flow[_view], pt=ph.tasks.length, pdone=0;
+    for (var t0=0;t0<pt;t0++){ var s0=ph.tasks[t0].status; if(s0==='passed'||s0==='skipped') pdone++; }
+    var pcDone=phaseComplete(_view);
+    var panel='<div class="tf-panel'+(pcDone?' done':'')+'">'
+        + '<div class="tf-panel-head">'
+        +   '<span class="tf-panel-badge">'+(_view+1)+'</span>'
+        +   '<input class="tf-phase-name-input" value="'+escHtml(ph.name)+'" onchange="TASKFLOW.renamePhase('+_view+',this.value)" title="Rename phase">'
+        +   '<select class="tf-phase-dept" onchange="TASKFLOW.setPhaseDept('+_view+',this.value)">'+_deptOptions(ph.dept)+'</select>'
+        +   '<span class="tf-phase-count">'+pdone+'/'+pt+'</span>'
+        +   '<button class="tf-mark'+(ph.doneManual?' on':'')+'" onclick="TASKFLOW.toggleManual('+_view+')">'+(ph.doneManual?'Completed':'Mark complete')+'</button>'
+        +   '<button class="tf-phase-del" onclick="TASKFLOW.deletePhase('+_view+')" title="Delete phase">&times;</button>'
+        + '</div>'
+        + '<div class="tf-tasks">';
+    for (var t=0;t<ph.tasks.length;t++){
+      var tk=ph.tasks[t], meta=statusMeta(tk.status);
+      panel += '<div class="tf-task '+meta.cls+'">'
+           +  '<span class="tf-status-dot '+meta.cls+'"></span>'
+           +  '<input class="tf-task-txt-input" value="'+escHtml(tk.text)+'" onchange="TASKFLOW.editTask('+_view+','+t+',this.value)">'
+           +  '<select class="tf-status-sel '+meta.cls+'" onchange="TASKFLOW.setStatus('+_view+','+t+',this.value)">'+_statusOptions(tk.status)+'</select>'
+           +  '<select class="tf-assign-dept" onchange="TASKFLOW.setDept('+_view+','+t+',this.value)">'+_deptOptions(tk.dept||ph.dept)+'</select>'
+           +  '<select class="tf-assign-who" onchange="TASKFLOW.setAssignee('+_view+','+t+',this.value)">'+_teamOptions(tk.assignee||'')+'</select>'
+           +  '<button class="tf-task-del" onclick="TASKFLOW.deleteTask('+_view+','+t+')" title="Delete task">&times;</button>'
+           +  '</div>';
+    }
+    panel += '<div class="tf-panel-actions">'
+          +  '<button class="tf-add-task" onclick="TASKFLOW.addTask('+_view+')">+ Add task</button>'
+          +  '<div class="tf-step-move">'
+          +    '<button class="tf-step-btn" onclick="TASKFLOW.goStep('+(_view-1)+')"'+(_view<=0?' disabled':'')+'>&#8249; Previous</button>'
+          +    '<button class="tf-step-btn" onclick="TASKFLOW.goStep('+(_view+1)+')"'+(_view>=_flow.length-1?' disabled':'')+'>Next &#8250;</button>'
+          +  '</div></div>';
+    panel += '</div>';
+    panel += '<button class="tf-add-phase" onclick="TASKFLOW.addPhase()">+ Add phase</button>';
+
+    host.innerHTML = rail + panel;
+    _renderProgress();
+    setTimeout(function(){ var s=document.querySelector('#tf-stepper .tf-step.viewing'); if(s&&s.scrollIntoView) s.scrollIntoView({inline:'center',block:'nearest'}); }, 30);
+  }
+
+  function _renderProgress(){
+    var pr=_progress();
+    var bar=document.getElementById('tf-progress-bar'); if(bar) bar.style.width=pr.pct+'%';
+    var lbl=document.getElementById('tf-progress-lbl'); if(lbl){
+      if (!_proj){ lbl.textContent='-'; return; }
+      var doneP=0; for(var p=0;p<_flow.length;p++){ if(phaseComplete(p)) doneP++; }
+      lbl.textContent = doneP+' / '+_flow.length+' steps';
+    }
+  }
+
+  // ── Mutations ──
+  function setStatus(p,t,v){ _flow[p].tasks[t].status=v; scheduleSave(); render(); }
+  function setDept(p,t,v){ _flow[p].tasks[t].dept=v; scheduleSave(); }
+  function setAssignee(p,t,v){ _flow[p].tasks[t].assignee=v; scheduleSave(); }
+  function editTask(p,t,v){ _flow[p].tasks[t].text=v; scheduleSave(); }
+  function deleteTask(p,t){ _flow[p].tasks.splice(t,1); scheduleSave(); render(); }
+  function addTask(p){ _flow[p].tasks.push({ id:_uid(), text:'New task', status:'todo', dept:_flow[p].dept, assignee:'' }); scheduleSave(); render(); }
+  function renamePhase(p,v){ _flow[p].name=v; scheduleSave(); }
+  function setPhaseDept(p,v){ _flow[p].dept=v; scheduleSave(); }
+  function deletePhase(p){ if(!confirm('Delete this phase and its tasks?')) return; _flow.splice(p,1); scheduleSave(); render(); }
+  function addPhase(){ _flow.push({ key:'phase_'+_uid(), name:'New Phase', dept:'', stage:'', tasks:[] }); scheduleSave(); render(); }
+  function toggleManual(p){ _flow[p].doneManual = !_flow[p].doneManual; scheduleSave(); render(); }
+  function goStep(p){ if(p<0||p>=_flow.length) return; _view=p; render(); }
+  function scrollSteps(dir){ var el=document.getElementById('tf-stepper'); if(el) el.scrollBy({left:dir*180,behavior:'smooth'}); }
+
+  function selectProject(id){
+    var proj=null;
+    for (var i=0;i<_projects.length;i++){ if(_projects[i].id===id){ proj=_projects[i]; break; } }
+    _proj=proj;
+    var sel=document.getElementById('tf-project'); if(sel) sel.value=id||'';
+    if (_proj){ load(function(){ _view=activeStep(); render(); }); } else { _flow=[]; _view=0; render(); }
+  }
+
+  function _paintPicker(){
+    var sel=document.getElementById('tf-project'); if(!sel) return;
+    var html='<option value="">Select a project…</option>';
+    for (var i=0;i<_projects.length;i++){ html+='<option value="'+escHtml(_projects[i].id)+'">'+escHtml(_projects[i].name)+'</option>'; }
+    sel.innerHTML=html;
+    if (_proj) sel.value=_proj.id;
+  }
+
+  return {
+    mount:function(){
+      if(!document.getElementById('tf-body')) return;
+      _loadProjects(function(list){ _projects=list||[]; _paintPicker(); render(); });
+    },
+    refresh:function(){ this.mount(); },
+    onPick:function(v){ selectProject(v); },
+    // Portal entry point: open the widget focused on a given project id.
+    openForProject:function(id, name){
+      var found=false;
+      for (var i=0;i<_projects.length;i++){ if(_projects[i].id===id){ found=true; break; } }
+      if (!found && id){ _projects.push({id:id, name:name||'(project)', stage:'candidate'}); _paintPicker(); }
+      var blk=document.querySelector('.dash-block[data-block="taskflow"]');
+      if (blk && blk.scrollIntoView) blk.scrollIntoView({behavior:'smooth', block:'start'});
+      selectProject(id);
+    },
+    setStatus:setStatus, setDept:setDept, setAssignee:setAssignee,
+    editTask:editTask, deleteTask:deleteTask, addTask:addTask,
+    renamePhase:renamePhase, setPhaseDept:setPhaseDept, deletePhase:deletePhase, addPhase:addPhase,
+    toggleManual:toggleManual, goStep:goStep, scrollSteps:scrollSteps,
+    DEPARTMENTS:DEPARTMENTS, STATUSES:STATUSES
+  };
+})();
+</script>
+
 </body>
 </html>
