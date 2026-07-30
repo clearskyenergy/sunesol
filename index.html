@@ -2,15 +2,15 @@
 <!--
   ═══════════════════════════════════════════════════════════════════════════════
   ClearSky-OMEGA · EnergyOS Platform
-  NextNRG Enterprise Workspace
+  SUN Energy Solutions Enterprise Workspace
 
   © 2025 ClearSky Energy Solutions LLC. All rights reserved.
   Proprietary and Confidential. Author: Tommy Gilmer.
 
   This software and its underlying platform (ClearSky-OMEGA / EnergyOS) are the
   proprietary intellectual property of ClearSky Energy Solutions LLC, authored by
-  Tommy Gilmer. Licensed for use by NextNRG as an enterprise client. Customer-facing
-  exports are branded to NextNRG; the platform and all source code remain the
+  Tommy Gilmer. Licensed for use by SUN Energy Solutions as an enterprise client. Customer-facing
+  exports are branded to SUN Energy Solutions; the platform and all source code remain the
   property of ClearSky Energy Solutions LLC. Unauthorized copying, modification,
   distribution, or reverse engineering is prohibited.
   ═══════════════════════════════════════════════════════════════════════════════
@@ -19,7 +19,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Platform: ClearSky-OMEGA · Client workspace: NextNRG (Enterprise) -->
+<!-- Platform: ClearSky-OMEGA · Client workspace: SUN Energy Solutions (Enterprise) -->
 <meta name="author" content="Tommy Gilmer · ClearSky Energy Solutions LLC">
 <meta name="copyright" content="© 2025 ClearSky Energy Solutions LLC. Proprietary.">
 <title>SUN Energy Solutions · Site Development Platform</title>
@@ -1344,17 +1344,17 @@ window._omegaReady = function(){
 <div id="auth-screen">
   <div class="auth-card">
     <div class="auth-logo">
-      <!-- Client login: NextNRG brand, on the ClearSky-OMEGA platform -->
+      <!-- Client login: SUN Energy Solutions brand, on the ClearSky-OMEGA platform -->
       <img src="/sunesol-logo-color.png" alt="SUN Energy Solutions" style="height:88px;width:auto;display:block;margin:0 auto" onerror="this.style.display='none'">
     </div>
-    <div class="auth-company">NextNRG Workspace</div>
+    <div class="auth-company">SUN Energy Solutions Workspace</div>
     <div class="auth-sub" id="auth-sub">Enterprise energy project &amp; asset management</div>
 
     <!-- EMAIL / PASSWORD (ClearSky sales reps) -->
     <div class="auth-fields">
       <div class="auth-field">
         <label for="auth-email">Work email</label>
-        <input id="auth-email" type="email" placeholder="you@nextnrg.com" autocomplete="email">
+        <input id="auth-email" type="email" placeholder="you@sunesol.com" autocomplete="email">
       </div>
       <div class="auth-field">
         <label for="auth-pass">Password</label>
@@ -1371,10 +1371,10 @@ window._omegaReady = function(){
       <a onclick="sendPasswordReset()" id="auth-forgot-link">Forgot password?</a>
     </div>
     <div class="auth-toggle" id="auth-toggle-wrap">
-      New to the NextNRG workspace? <a onclick="toggleAuthMode()" id="auth-toggle-link">Create an account</a>
+      New to the SUN Energy Solutions workspace? <a onclick="toggleAuthMode()" id="auth-toggle-link">Create an account</a>
     </div>
 
-    <p class="auth-note" style="margin-top:22px">Access restricted to <strong>@nextnrg.com</strong> accounts · Powered by ClearSky-OMEGA</p>
+    <p class="auth-note" style="margin-top:22px">Access restricted to <strong>@sunesol.com</strong> accounts · Powered by ClearSky-OMEGA</p>
     <div id="auth-err"></div>
     <div id="auth-ok"></div>
   </div>
@@ -1439,7 +1439,7 @@ window._omegaReady = function(){
     <a href="/" class="tb-logo">
       <!-- Platform identity stays ClearSky-OMEGA (like Salesforce shows Salesforce) -->
       <img src="/clearsky-omega-mark-white.png" alt="OMEGA" class="tb-omega">
-      <span class="tb-logo-txt">NextNRG</span>
+      <span class="tb-logo-txt">SUN Energy Solutions</span>
     </a>
     <div class="tb-sep"></div>
     <span class="tb-portal">EnergyOS</span>
@@ -1507,7 +1507,7 @@ window._omegaReady = function(){
       <!-- Nav strip (hidden — sidebar drives nav) -->
       <div class="sw-nav">
         <div class="sw-nav-head">
-          <span class="sw-workspace">NextNRG</span>
+          <span class="sw-workspace">SUN Energy Solutions</span>
           <span class="sw-workspace-sub">Team Workspace</span>
         </div>
 
@@ -1962,7 +1962,7 @@ window._omegaReady = function(){
     <div class="block-head">
       <div>
         <div class="block-title">Company Overview <span class="co-badge">Company-wide</span></div>
-        <div class="block-sub">Aggregate performance across every NextNRG project</div>
+        <div class="block-sub">Aggregate performance across every SUN Energy Solutions project</div>
       </div>
       <button class="block-toggle" id="co-toggle" onclick="toggleCompanyOverview()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -2033,7 +2033,7 @@ window._omegaReady = function(){
       <a class="quick-link" href="guided-build-walkthrough.pdf" download>
         <div class="ql-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
         <div class="ql-title">Download Tutorial (PDF)</div>
-        <div class="ql-desc">NextNRG-branded walkthrough</div>
+        <div class="ql-desc">SUN Energy Solutions-branded walkthrough</div>
       </a>
       <!-- Guided Build video tutorial -->
       <a class="quick-link" onclick="openVideoTutorial()">
@@ -2452,7 +2452,7 @@ function resolveWorkspace(email){
 // chooser (the `hd` hint) so reps only see their ClearSky sales account, and to
 // pre-fill the email helper text. It does NOT replace the real gate — the
 // authoritative check is still resolveWorkspace() in onAuthStateChanged below.
-var PORTAL_DEFAULT_DOMAIN = 'nextnrg.com';
+var PORTAL_DEFAULT_DOMAIN = 'sunesol.com';
 
 // ── DEPLOYMENT LOCK ──────────────────────────────────────────────────────
 // This deployment (nextnrg.csebuilders.com) ALWAYS runs as the NextNRG
