@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="omega-build" content="marketplace-standalone-2026-07-13">
+<meta name="omega-build" content="marketplace-standalone-2026-07-30">
 <title>ClearSky-OMEGA · App Marketplace</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -283,34 +283,14 @@ body{overflow-x:hidden}
   #side-nav{display:none}   /* mobile uses the top hamburger drawer instead */
   #app-body #main{padding:20px 14px 48px}
 }
-.sn-head{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
-.sn-logo-txt{display:block;font:700 16px/1.1 'DM Sans',sans-serif;color:#fff}
-.sn-sub{display:block;font-size:11px;color:#7E93A6;margin-top:3px;letter-spacing:.3px}
-.sn-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:none;background:none;cursor:pointer;
-.sn-item svg{width:17px;height:17px;flex:none;opacity:.85}
-.sn-item span{flex:1}
-.sn-item:hover{background:rgba(255,255,255,.08);color:#fff}
-.sn-item.active{background:#1264A3;color:#fff}
-.sn-item.active svg{opacity:1}
-.sn-caret{width:14px !important;height:14px !important;transition:transform .18s}
-.sn-toggle[aria-expanded="true"] .sn-caret{transform:rotate(180deg)}
-.sn-subnav{max-height:0;overflow:hidden;transition:max-height .22s ease;padding-left:8px}
-.sn-subnav.open{max-height:420px}
-.sn-app{display:flex;align-items:center;gap:9px;padding:7px 12px 7px 26px;color:#A9BCCC;text-decoration:none;
-.sn-app:hover{background:rgba(255,255,255,.07);color:#fff}
-.sn-app .sn-app-dot{width:6px;height:6px;border-radius:50%;background:#00A9A4;flex:none}
-.sn-section-label{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,214,226,.5);padding:2px 12px 8px}
 .sn-dm-list{padding:2px 8px 0}
 .sn-dm-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 26px;color:#A9BCCC;text-decoration:none;
+  font:500 12.5px/1.2 'DM Sans',sans-serif;border-radius:7px;transition:background .1s,color .1s}
 .sn-dm-item:hover{background:rgba(255,255,255,.07);color:#fff}
 .sn-dm-item.active{background:#1264A3;color:#fff}
 .sn-dm-item .dm-ava{width:20px;height:20px;border-radius:5px;background:#2C5D82;color:#fff;font:700 10px/20px sans-serif;text-align:center;flex:none}
 .sn-subnav.sn-dm-list{padding-left:8px}
 .sn-subnav.sn-dm-list.open{max-height:400px;overflow-y:auto}
-    var it = e.target && e.target.closest ? e.target.closest('.sn-dm-item') : null;
-  var items=document.querySelectorAll('#side-nav .sn-item');
-  var dms=document.querySelectorAll('#sn-dm-list .sn-dm-item');
-  var items=document.querySelectorAll('#side-nav .sn-item');
 #app{display:flex !important}
 @media (min-width:901px){ #app-body .tb-nav{display:none !important} }
 #app-body #main{max-width:none}
@@ -393,10 +373,6 @@ window._omegaReady = function(){
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 22V12h6v10"/></svg>
         <span>Marketplace</span>
       </a>
-      <a class="sn-item" data-sn="improve" href="/?view=improve">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
-        <span>Tool Improvement</span>
-      </a>
     </div>
   </nav>
 
@@ -424,10 +400,6 @@ window._omegaReady = function(){
       <a class="tb-tab" href="/projects.html" id="tab-projects">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         Projects
-      </a>
-      <a class="tb-tab" href="/?view=improve" id="tab-improve">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg>
-        Tool Improvement
       </a>
     </div>
     <div class="tb-spacer"></div>
