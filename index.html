@@ -2124,13 +2124,14 @@ window._omegaReady = function(){
       <input id="np-addr" placeholder="e.g. 1234 Main St, Clinton, IA 52732">
     </div>
     <div class="mrow">
-      <label>Project Type</label>
-      <select id="np-type">
-        <option value="bess">BESS – Battery Energy Storage System</option>
-        <option value="dcfc">DCFC – DC Fast Charging</option>
-        <option value="solar">Solar + Storage</option>
-        <option value="other">Other</option>
-      </select>
+      <label>Project Type <span style="font-weight:400;opacity:.6">— pick everything this site includes</span></label>
+      <!-- A single dropdown could not describe a real site: "Solar + Storage"
+           was itself a combination sitting alongside its own parts, and there
+           was no Data centre, DER or Level 2 at all. Multi-select, because a
+           lot with DCFC and Level 2, or solar with storage, is the norm. -->
+      <div id="np-types" style="display:grid;grid-template-columns:1fr 1fr;gap:8px"></div>
+      <input type="hidden" id="np-type" value="bess">
+      <div id="np-type-hint" style="font-size:11.5px;opacity:.65;margin-top:8px;min-height:15px"></div>
     </div>
     <div class="mrow">
       <label>Client / Customer</label>
@@ -4217,11 +4218,66 @@ function pmSoon(name, el) {
 }
 window.pmSoon = pmSoon;
 
-// ══════════ NEW PROJECT MODAL (UNCHANGED) ══════════
+// ══════════ NEW PROJECT MODAL ══════════
+/* The editor opens differently per discipline — a Level 2 job wants the L2
+   catalogue and a 240V single-phase build, a data centre wants compute
+   blocks and a load profile, DCFC wants 480V switchgear. Asking once here
+   is what lets the editor arrive configured instead of the user hunting.
+   Kept deliberately identical to the list on the projects page so the two
+   never drift into separate vocabularies for the same thing. */
+var NP_TYPES = [
+  { id:'der',        label:'DER / Solar',           sub:'PV, wind, generation on site' },
+  { id:'bess',       label:'Storage / BESS',        sub:'Batteries, PCS, EMS' },
+  { id:'datacenter', label:'Data centre / Compute', sub:'Compute blocks, load profile' },
+  { id:'dcfc',       label:'DCFC',                  sub:'480V 3\u00d8 fast charging' },
+  { id:'l2',         label:'Level 2 EV',            sub:'240V 1\u00d8 off an existing service' },
+  { id:'microgrid',  label:'Microgrid',             sub:'Islanding, transfer, critical loads' }
+];
+var _npSel = {};
 let newProjType = 'bess';
+
+function npRenderTypes(){
+  var host=document.getElementById('np-types'); if(!host) return;
+  host.innerHTML = NP_TYPES.map(function(t){
+    var on=!!_npSel[t.id];
+    return '<button type="button" data-np="'+t.id+'" onclick="npToggle(\''+t.id+'\')" '
+      +'style="text-align:left;padding:9px 11px;border-radius:8px;cursor:pointer;'
+      +'border:1.5px solid '+(on?'#2563EB':'rgba(128,128,128,.35)')+';'
+      +'background:'+(on?'rgba(37,99,235,.10)':'transparent')+';color:inherit;font:inherit">'
+      +'<div style="font-size:12.5px;font-weight:650">'+t.label+'</div>'
+      +'<div style="font-size:10.5px;opacity:.6;margin-top:1px">'+t.sub+'</div>'
+      +'</button>';
+  }).join('');
+  npTypeHint();
+}
+function npToggle(id){ _npSel[id]=!_npSel[id]; npRenderTypes(); }
+window.npToggle=npToggle;
+
+function npPicked(){
+  return NP_TYPES.filter(function(t){ return _npSel[t.id]; }).map(function(t){ return t.id; });
+}
+function npTypeHint(){
+  var el=document.getElementById('np-type-hint'); if(!el) return;
+  var p=npPicked();
+  if(!p.length){ el.textContent='Pick at least one \u2014 it sets which build tools open.'; return; }
+  var opens=[];
+  if(_npSel.der)        opens.push('DER build + auto-layout');
+  if(_npSel.bess)       opens.push('BESS build + sizer');
+  if(_npSel.datacenter) opens.push('compute blocks');
+  if(_npSel.dcfc)       opens.push('DCFC guided build');
+  if(_npSel.l2)         opens.push('Level 2 guided build');
+  if(_npSel.microgrid)  opens.push('microgrid topology');
+  el.textContent='Opens with '+opens.join(', ')+'.';
+}
+
 function openNewProjectModal(type) {
-  newProjType = type;
-  document.getElementById('np-type').value = type;
+  /* Legacy callers pass a single id; 'solar' meant solar+storage. */
+  _npSel = {};
+  if (type === 'solar') { _npSel.der = true; _npSel.bess = true; }
+  else if (type && type !== 'other') { _npSel[type] = true; }
+  else { _npSel.bess = true; }
+  newProjType = npPicked()[0] || 'bess';
+  npRenderTypes();
   document.getElementById('new-proj-modal').classList.add('on');
   setTimeout(()=>document.getElementById('np-name').focus(), 100);
 }
@@ -4232,7 +4288,11 @@ function closeNewProjectModal() {
 async function createProject() {
   const name = document.getElementById('np-name').value.trim();
   const addr = document.getElementById('np-addr').value.trim();
-  const type = document.getElementById('np-type').value;
+  const types = npPicked();
+  if (!types.length) { npTypeHint(); return; }
+  /* `type` stays a single value so every existing table, filter and rule
+     that reads it keeps working; `types` is the full picture. */
+  const type = types[0];
   const client = document.getElementById('np-client').value.trim();
   if (!name) { alert('Please enter a project name.'); return; }
 
@@ -4242,26 +4302,32 @@ async function createProject() {
       orgId: currentOrg,   // tenant tag — enforced by Firestore security rules
       ownerEmail: (currentUser.email||'').toLowerCase(),  // per-user scope key ("My Projects")
       ownerName: _meName(),                                 // friendly owner label for tables
-      name, address: addr, type, client,
+      name, address: addr, type, types, client,
       stage: 'candidate', // seed pipeline stage so the dashboard can roll it up
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
       elements: [], conduits: [], bessList: [], annotations: []
     });
     closeNewProjectModal();
-    openProject(ref.id);
+    openProject(ref.id, types);
   } catch(e) {
     alert('Error creating project: ' + e.message);
   }
 }
 
-function openProject(id) {
+function openProject(id, types) {
   // Pass the resolved tenant slug so the editor brands correctly on a fresh
   // page load (window.OMEGA_WORKSPACE does NOT survive navigation).
   var ws = window.OMEGA_WORKSPACE;
   var slug = (ws && ws.allowedDomain) ? String(ws.allowedDomain).split('.')[0] : '';
   var url = '/editor.html?id=' + encodeURIComponent(id);
   if (slug) { url += '&org=' + encodeURIComponent(slug); }
+  /* Carried on the URL as well as in the document: the editor needs it at
+     first paint to decide which builds to open, before the doc has loaded. */
+  var t = types && types.length ? types
+        : (function(){ try{ var p=(allProjects||[]).filter(function(x){return x.id===id;})[0];
+                             return p && (p.types || (p.type?[p.type]:null)); }catch(e){ return null; } })();
+  if (t && t.length) url += '&types=' + encodeURIComponent(t.join(','));
   window.location.href = url;
 }
 
